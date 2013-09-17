@@ -27,4 +27,7 @@
 
 -(void)stop:(BOOL)waitDone;
 
+//是否设置了停止的信号
+-(BOOL)isShouldStop;
+
 @end

@@ -113,6 +113,13 @@
     }
 }
 
+-(BOOL)isShouldStop{
+    if (stopFlag) {
+        return YES;
+    }
+    return NO;
+}
+
 -(void)invokeCallback{
     self.running=NO;
 }

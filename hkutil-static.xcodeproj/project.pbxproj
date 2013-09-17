@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9BE0B89E17E80AC700B96412 /* HKAnimationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE0B89D17E80AC700B96412 /* HKAnimationUtil.m */; };
 		9BFFA94617E48D7400F353A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFFA94517E48D7400F353A5 /* Foundation.framework */; };
 		9BFFA94D17E48D7400F353A5 /* hkutil_static.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA94C17E48D7400F353A5 /* hkutil_static.m */; };
 		9BFFA9C517E48DE500F353A5 /* HKPOSTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA95617E48DE500F353A5 /* HKPOSTable.m */; };
@@ -189,6 +190,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9BE0B89C17E80AC600B96412 /* HKAnimationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKAnimationUtil.h; sourceTree = "<group>"; };
+		9BE0B89D17E80AC700B96412 /* HKAnimationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKAnimationUtil.m; sourceTree = "<group>"; };
 		9BFFA94217E48D7400F353A5 /* libhkutil-static.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libhkutil-static.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BFFA94517E48D7400F353A5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9BFFA94917E48D7400F353A5 /* hkutil-static-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hkutil-static-Prefix.pch"; sourceTree = "<group>"; };
@@ -566,6 +569,8 @@
 				9BFFA9C217E48DE500F353A5 /* HKWorkCaller.m */,
 				9BFFA9C317E48DE500F353A5 /* UIView+HKEx.h */,
 				9BFFA9C417E48DE500F353A5 /* UIView+HKEx.m */,
+				9BE0B89C17E80AC600B96412 /* HKAnimationUtil.h */,
+				9BE0B89D17E80AC700B96412 /* HKAnimationUtil.m */,
 			);
 			path = tools;
 			sourceTree = "<group>";
@@ -672,6 +677,7 @@
 				9BFFA9F517E48DE500F353A5 /* HKViewUtil.m in Sources */,
 				9BFFA9F617E48DE500F353A5 /* HKWorkCaller.m in Sources */,
 				9BFFA9F717E48DE500F353A5 /* UIView+HKEx.m in Sources */,
+				9BE0B89E17E80AC700B96412 /* HKAnimationUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
