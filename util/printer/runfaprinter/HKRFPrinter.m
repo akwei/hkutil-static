@@ -28,7 +28,7 @@
     HKSocket* socket = [[HKSocket alloc] initWithHost:self.host port:self.port timeout:self.timeoutMillis/1000];
     @try {
         [socket open];
-        [socket writeData:self.commandData blockSize:5];
+        [socket writeData:self.commandData blockSize:50];
     }
     @catch (HKSocketConnectionException* e) {
         HKPrinterConnectException* ex = (HKPrinterConnectException*)[HKPrinterConnectException exceptionWithName:@"connect printer err" reason:e.reason userInfo:nil];

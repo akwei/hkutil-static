@@ -126,8 +126,8 @@
 
 -(void)afterResponse{
     [self.cond lock];
-    self.done = YES;
     self.error = nil;
+    self.done = YES;
     [self.cond signal];
     [self.cond unlock];
 }
@@ -148,7 +148,11 @@
 #if HK_SOCKET_DEBUG
     NSLog(@"connect to %@:%i",host,port);
 #endif
-    [self afterResponse];
+    [self.con_cond lock];
+    self.error = nil;
+    self.done = YES;
+    [self.con_cond signal];
+    [self.con_cond unlock];
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag{
@@ -184,11 +188,11 @@
 #pragma mark - open and close
 
 -(void)open{
+    [self.con_cond lock];
     if (!self.host || self.port<=0) {
         @throw [HKSocketConnectionException exceptionWithName:@"connect error" reason:@"must set host and port" userInfo:nil];
     }
     self.done = NO;
-    [self.con_cond lock];
     if (self.socket) {
         self.socket = nil;
     }

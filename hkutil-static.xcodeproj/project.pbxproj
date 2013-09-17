@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B00540E17E80D9400231190 /* HKAnimationUtil.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BE0B89C17E80AC600B96412 /* HKAnimationUtil.h */; };
 		9BE0B89E17E80AC700B96412 /* HKAnimationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE0B89D17E80AC700B96412 /* HKAnimationUtil.m */; };
 		9BFFA94617E48D7400F353A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFFA94517E48D7400F353A5 /* Foundation.framework */; };
 		9BFFA94D17E48D7400F353A5 /* hkutil_static.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA94C17E48D7400F353A5 /* hkutil_static.m */; };
@@ -131,6 +132,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				9B00540E17E80D9400231190 /* HKAnimationUtil.h in CopyFiles */,
 				9BFFACCC17E4B1B500F353A5 /* HKPOSTable.h in CopyFiles */,
 				9BFFACCE17E4B1B500F353A5 /* HKPrinter.h in CopyFiles */,
 				9BFFACD017E4B1B500F353A5 /* HKPrinterBitmap.h in CopyFiles */,
