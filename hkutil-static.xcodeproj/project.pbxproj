@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9B00540E17E80D9400231190 /* HKAnimationUtil.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BE0B89C17E80AC600B96412 /* HKAnimationUtil.h */; };
+		9BC8BD3917ED818100DF9423 /* HKGridTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC8BD3717ED818100DF9423 /* HKGridTableView.m */; };
+		9BC8BD3A17ED819300DF9423 /* HKGridTableView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BC8BD3817ED818100DF9423 /* HKGridTableView.h */; };
 		9BE0B89E17E80AC700B96412 /* HKAnimationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE0B89D17E80AC700B96412 /* HKAnimationUtil.m */; };
 		9BFFA94617E48D7400F353A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFFA94517E48D7400F353A5 /* Foundation.framework */; };
 		9BFFA94D17E48D7400F353A5 /* hkutil_static.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA94C17E48D7400F353A5 /* hkutil_static.m */; };
@@ -132,6 +134,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				9BC8BD3A17ED819300DF9423 /* HKGridTableView.h in CopyFiles */,
 				9B00540E17E80D9400231190 /* HKAnimationUtil.h in CopyFiles */,
 				9BFFACCC17E4B1B500F353A5 /* HKPOSTable.h in CopyFiles */,
 				9BFFACCE17E4B1B500F353A5 /* HKPrinter.h in CopyFiles */,
@@ -192,6 +195,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9BC8BD3717ED818100DF9423 /* HKGridTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKGridTableView.m; sourceTree = "<group>"; };
+		9BC8BD3817ED818100DF9423 /* HKGridTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKGridTableView.h; sourceTree = "<group>"; };
 		9BE0B89C17E80AC600B96412 /* HKAnimationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKAnimationUtil.h; sourceTree = "<group>"; };
 		9BE0B89D17E80AC700B96412 /* HKAnimationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKAnimationUtil.m; sourceTree = "<group>"; };
 		9BFFA94217E48D7400F353A5 /* libhkutil-static.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libhkutil-static.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -516,6 +521,8 @@
 		9BFFA98D17E48DE500F353A5 /* tools */ = {
 			isa = PBXGroup;
 			children = (
+				9BC8BD3717ED818100DF9423 /* HKGridTableView.m */,
+				9BC8BD3817ED818100DF9423 /* HKGridTableView.h */,
 				9BFFA98E17E48DE500F353A5 /* GTMDefines.h */,
 				9BFFA98F17E48DE500F353A5 /* GTMStringEncoding.h */,
 				9BFFA99017E48DE500F353A5 /* GTMStringEncoding.m */,
@@ -680,6 +687,7 @@
 				9BFFA9F617E48DE500F353A5 /* HKWorkCaller.m in Sources */,
 				9BFFA9F717E48DE500F353A5 /* UIView+HKEx.m in Sources */,
 				9BE0B89E17E80AC700B96412 /* HKAnimationUtil.m in Sources */,
+				9BC8BD3917ED818100DF9423 /* HKGridTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
