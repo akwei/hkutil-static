@@ -93,5 +93,14 @@
     return [fmt stringFromNumber:n];
 }
 
++(BOOL)isEmpty:(NSString *)str{
+    if (!str) {
+        return YES;
+    }
+    if ([[self trim:str] length] == 0) {
+        return YES;
+    }
+    return NO;
+}
 
 @end

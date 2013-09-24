@@ -68,7 +68,7 @@
     [self addSubview:view];
 }
 
--(void)addSubview:(UIView *)view belowView:(UIView *)refView distance:(CGFloat)distance left:(CGFloat)left right:(CGFloat)right{
+-(void)addSubview:(UIView *)view below:(UIView *)refView distance:(CGFloat)distance left:(CGFloat)left right:(CGFloat)right{
     if (refView.superview != self) {
         return;
     }
@@ -78,7 +78,7 @@
 }
 
 
--(void)addSubview:(UIView *)view topView:(UIView *)refView distance:(CGFloat)distance left:(CGFloat)left right:(CGFloat)right{
+-(void)addSubview:(UIView *)view above:(UIView *)refView distance:(CGFloat)distance left:(CGFloat)left right:(CGFloat)right{
     if (refView.superview != self) {
         return;
     }
@@ -87,7 +87,7 @@
     [self buildXAndAddSubview0:view y:y refViewFrame:refViewFrame left:left right:right];
 }
 
--(void)addSubview:(UIView *)view leftView:(UIView *)refView distance:(CGFloat)distance top:(CGFloat)top bottom:(CGFloat)bottom{
+-(void)addSubview:(UIView *)view left:(UIView *)refView distance:(CGFloat)distance top:(CGFloat)top bottom:(CGFloat)bottom{
     if (refView.superview != self) {
         return;
     }
@@ -96,13 +96,49 @@
     [self buildYAndAddSubview1:view x:x refViewFrame:refViewFrame top:top bottom:bottom];
 }
 
--(void)addSubview:(UIView *)view rightView:(UIView *)refView distance:(CGFloat)distance top:(CGFloat)top bottom:(CGFloat)bottom{
+-(void)addSubview:(UIView *)view right:(UIView *)refView distance:(CGFloat)distance top:(CGFloat)top bottom:(CGFloat)bottom{
     if (refView.superview != self) {
         return;
     }
     CGRect refViewFrame = refView.frame;
     CGFloat x = refViewFrame.origin.x + refViewFrame.size.width + distance;
     [self buildYAndAddSubview1:view x:x refViewFrame:refViewFrame top:top bottom:bottom];
+}
+
+-(void)changeFrameOrigin:(CGPoint)origin{
+    CGRect frame = self.frame;
+    frame.origin = origin;
+    self.frame = frame;
+}
+
+-(void)changeFrameSize:(CGSize)size{
+    CGRect frame = self.frame;
+    frame.size = size;
+    self.frame = frame;
+}
+
+-(void)changeFrameOriginX:(CGFloat)x{
+    CGRect frame = self.frame;
+    frame.origin.x = x;
+    self.frame = frame;
+}
+
+-(void)changeFrameOriginY:(CGFloat)y{
+    CGRect frame = self.frame;
+    frame.origin.y = y;
+    self.frame = frame;
+}
+
+-(void)changeFrameSizeWidth:(CGFloat)width{
+    CGRect frame = self.frame;
+    frame.size.width = width;
+    self.frame = frame;
+}
+
+-(void)changeFrameSizeHeight:(CGFloat)height{
+    CGRect frame = self.frame;
+    frame.size.height = height;
+    self.frame = frame;
 }
 
 @end

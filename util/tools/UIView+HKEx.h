@@ -29,7 +29,7 @@
  @param right 与refView右边界的距离 >0向右 <0向左
  当left right其中一个=0，一个!=0时，选取!=0的值使用,left right 都!=0时，取left计算
  **/
--(void)addSubview:(UIView*)view belowView:(UIView*)refView distance:(CGFloat)distance left:(CGFloat)left right:(CGFloat)right;
+-(void)addSubview:(UIView*)view below:(UIView*)refView distance:(CGFloat)distance left:(CGFloat)left right:(CGFloat)right;
 
 /**
  在refView上边添加view
@@ -40,7 +40,7 @@
  @param right 与refView右边界的距离 >0向右 <0向左
  当left right其中一个=0，一个!=0时，选取!=0的值使用,left right 都!=0时，取left计算
  **/
--(void)addSubview:(UIView*)view topView:(UIView*)refView distance:(CGFloat)distance left:(CGFloat)left right:(CGFloat)right;
+-(void)addSubview:(UIView*)view above:(UIView*)refView distance:(CGFloat)distance left:(CGFloat)left right:(CGFloat)right;
 
 /**
  在refView左边添加view
@@ -51,7 +51,7 @@
  @param bottom 与refView下边界的距离 >0向下 <0向上
  当top bottom其中一个=0，一个!=0时，选取!=0的值使用,top bottom都!=0时，取top计算
  **/
--(void)addSubview:(UIView*)view leftView:(UIView*)refView distance:(CGFloat)distance top:(CGFloat)top bottom:(CGFloat)bottom;
+-(void)addSubview:(UIView*)view left:(UIView*)refView distance:(CGFloat)distance top:(CGFloat)top bottom:(CGFloat)bottom;
 
 /**
  在refView左边添加view
@@ -62,7 +62,15 @@
  @param bottom 与refView下边界的距离 >0向下 <0向上
  当top bottom其中一个=0，一个!=0时，选取!=0的值使用,top bottom都!=0时，取top计算
  **/
--(void)addSubview:(UIView*)view rightView:(UIView*)refView distance:(CGFloat)distance top:(CGFloat)top bottom:(CGFloat)bottom;
+-(void)addSubview:(UIView*)view right:(UIView*)refView distance:(CGFloat)distance top:(CGFloat)top bottom:(CGFloat)bottom;
 
+-(void)changeFrameOrigin:(CGPoint)origin;
+
+-(void)changeFrameSize:(CGSize)size;
+
+-(void)changeFrameOriginX:(CGFloat)x;
+-(void)changeFrameOriginY:(CGFloat)y;
+-(void)changeFrameSizeWidth:(CGFloat)width;
+-(void)changeFrameSizeHeight:(CGFloat)height;
 
 @end

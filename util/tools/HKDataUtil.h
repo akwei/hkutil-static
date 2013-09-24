@@ -30,4 +30,6 @@
 
 +(NSString*) formatNumber:(NSNumber*)n format:(NSString*)format;
 
++(BOOL)isEmpty:(NSString*)str;
+
 @end

@@ -25,10 +25,10 @@
  @param tableView 当前table
  @param cell 当前获得的UITableViewCell
  @param section 当前section
- @param index 当前row中单元格的下标
+ @param rowIndex 当前row中单元格的下标
  @param dataIndex 数据数组的下标
  **/
--(UIView*)gridTableView:(HKGridTableView *)tableView viewForCell:(HKGridTableViewCell*)cell section:(NSInteger)section indexInRow:(NSInteger)index dataIndex:(NSInteger)dataIndex;
+-(UIView*)gridTableView:(HKGridTableView *)tableView viewForCell:(HKGridTableViewCell*)cell section:(NSInteger)section indexInRow:(NSInteger)rowIndex dataIndex:(NSInteger)dataIndex;
 //获得section中每行的高度
 -(CGFloat)gridTableView:(HKGridTableView *)tableView heightForRowInSection:(NSInteger)section atDataIndexes:(NSArray*)dataIndexes;
 @end
