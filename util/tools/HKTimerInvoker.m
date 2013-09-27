@@ -66,7 +66,7 @@
     }
     self.running=YES;
     stopFlag=NO;
-    __unsafe_unretained HKTimerInvoker* me = self;
+    __weak HKTimerInvoker* me = self;
     [_threadUtil asyncBlock:^{
         [condition lock];
         if (t>0) {
@@ -103,9 +103,9 @@
         return;
     }
     BOOL canCallback = self.jobBlock();
+    __weak HKTimerInvoker* me = self;
     if (canCallback) {
         if (self.callbackBlock) {
-            __block __unsafe_unretained HKTimerInvoker* me = self;
             [_threadUtil syncBlockToMainThread:^{
                 me.callbackBlock();
             }];
