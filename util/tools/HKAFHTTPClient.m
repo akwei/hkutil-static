@@ -46,7 +46,6 @@
 -(void)dealloc{
 #if NEEDS_DISPATCH_RETAIN_RELEASE
 	if (_asyncQueue) dispatch_release(_asyncQueue);
-    NSLog(@"release _asyncQueue < iOS6.0");
 #endif
 	_asyncQueue = NULL;
 }
