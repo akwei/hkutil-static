@@ -8,6 +8,7 @@
 
 
 #import "HKDownloader.h"
+#import "CfgHeader.h"
 
 @implementation HKCallbackHandler
 @end
@@ -65,9 +66,9 @@
 }
 
 -(void)dealloc{
-#if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_6_0
-    dispatch_release(_syncQueue);
-    dispatch_release(_asyncQueue);
+#if NEEDS_DISPATCH_RETAIN_RELEASE
+	if (_syncQueue) dispatch_release(_syncQueue);
+    if (_asyncQueue) dispatch_release(_asyncQueue);
 #endif
 }
 

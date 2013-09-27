@@ -7,6 +7,7 @@
 //
 
 #import "HKSQLQuery.h"
+#import "CfgHeader.h"
 
 #define DbConnDebug 0
 #define DbConnTrDebug 0
@@ -14,6 +15,7 @@
 #define _SQL_EXCEPTION_OPEN 1
 #define SQLExceptionMsg @"database write error"
 #define DB_CNF_FILE_NAME @"db_cfg"
+
 
 static NSMutableDictionary* DbConn_pubDic=nil;
 static NSMutableArray* ignoreRollbackExArr=nil;
@@ -90,8 +92,8 @@ static NSMutableDictionary* objQueryDic=nil;
 }
 
 -(void)dealloc{
-#if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_6_0
-    dispatch_release(syncQueue);
+#if NEEDS_DISPATCH_RETAIN_RELEASE
+	if (syncQueue) dispatch_release(syncQueue);
 #endif
 }
 
@@ -453,8 +455,8 @@ static NSMutableDictionary* objQueryDic=nil;
 }
 
 -(void)dealloc{
-#if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_6_0
-    dispatch_release(syncQueue);
+#if NEEDS_DISPATCH_RETAIN_RELEASE
+	if (syncQueue) dispatch_release(syncQueue);
 #endif
 }
 

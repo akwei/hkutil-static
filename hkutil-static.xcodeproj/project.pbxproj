@@ -195,6 +195,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9B7E400B17F4932800258ACA /* CfgHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CfgHeader.h; sourceTree = "<group>"; };
 		9BC8BD3717ED818100DF9423 /* HKGridTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKGridTableView.m; sourceTree = "<group>"; };
 		9BC8BD3817ED818100DF9423 /* HKGridTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKGridTableView.h; sourceTree = "<group>"; };
 		9BE0B89C17E80AC600B96412 /* HKAnimationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKAnimationUtil.h; sourceTree = "<group>"; };
@@ -521,6 +522,7 @@
 		9BFFA98D17E48DE500F353A5 /* tools */ = {
 			isa = PBXGroup;
 			children = (
+				9B7E400B17F4932800258ACA /* CfgHeader.h */,
 				9BC8BD3717ED818100DF9423 /* HKGridTableView.m */,
 				9BC8BD3817ED818100DF9423 /* HKGridTableView.h */,
 				9BFFA98E17E48DE500F353A5 /* GTMDefines.h */,

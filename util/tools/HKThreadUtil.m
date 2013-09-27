@@ -7,6 +7,7 @@
 //
 
 #import "HKThreadUtil.h"
+#import "CfgHeader.h"
 
 static HKThreadUtil* _sharedHKThreadUtil;
 @implementation HKThreadUtil{
@@ -30,8 +31,8 @@ static HKThreadUtil* _sharedHKThreadUtil;
 }
 
 -(void)dealloc{
-#if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_6_0
-    dispatch_release(_asyncQueue);
+#if NEEDS_DISPATCH_RETAIN_RELEASE
+	if (_asyncQueue) dispatch_release(_asyncQueue);
 #endif
 }
 

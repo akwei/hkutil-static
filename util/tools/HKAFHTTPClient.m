@@ -9,6 +9,8 @@
 #import "HKAFHTTPClient.h"
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
+#import "CfgHeader.h"
+
 
 @interface HKAFHTTPClient ()
 @property(nonatomic,strong) NSMutableDictionary *dataParams;//请求的上传数据的key_value值
@@ -42,9 +44,11 @@
 }
 
 -(void)dealloc{
-#if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_6_0
-    dispatch_release(_asyncQueue);
+#if NEEDS_DISPATCH_RETAIN_RELEASE
+	if (_asyncQueue) dispatch_release(_asyncQueue);
+    NSLog(@"release _asyncQueue < iOS6.0");
 #endif
+	_asyncQueue = NULL;
 }
 
 -(void)executeMethod:(NSString*)method{
