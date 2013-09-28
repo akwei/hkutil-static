@@ -36,6 +36,14 @@ static HKCache* _cache = nil;
     _cache = cache;
 }
 
++(id)getCache{
+    return _cache;
+}
+
++(void)removeAllFromCache{
+    [_cache removeAll];
+}
+
 +(void)initialize{
     _globalTimeout = 30;
 }

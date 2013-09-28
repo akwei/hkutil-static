@@ -27,6 +27,8 @@
 +(NSTimeInterval)getGlobalTimeout;
 
 +(void)setCache:(HKCache*)cache;
++(id)getCache;
++(void)removeAllFromCache;
 /*
  显示图片
  @param url:图片地址
