@@ -49,17 +49,18 @@
     
 }
 
-@end
+-(void)removeForKey:(NSString *)key{
+}
 
-#pragma mark - HKFileCache
 
-@implementation HKFileCache
+-(void)removeAll{
+}
+
 @end
 
 #pragma mark - HKSQLiteCache
 
 @interface HKSQLiteCache ()
-//@property(nonatomic,strong)HKTimerInvoker* timerInvoker;
 @end
 
 @implementation HKSQLiteCache
@@ -146,6 +147,16 @@
     return data;
 }
 
+-(void)removeForKey:(NSString *)key{
+    NSMutableArray* params = [[NSMutableArray alloc] init];
+    [params addObject:key];
+    [HKCacheData deleteWithWhere:@"key=?" params:params];
+}
+
+-(void)removeAll{
+    [HKCacheData deleteWithWhere:nil params:nil];
+}
+
 @end
 
 #pragma mark - HKMemCache
@@ -198,6 +209,14 @@
         [cd reNewUpdateTime];
     }
     return cd;
+}
+
+-(void)removeForKey:(NSString *)key{
+    [self.cache removeObjectForKey:key];
+}
+
+-(void)removeAll{
+    [self.cache removeAllObjects];
 }
 
 @end
@@ -255,6 +274,16 @@
         }
     }
     return cd;
+}
+
+-(void)removeAll{
+    [self.memCache removeAll];
+    [self.sqliteCache removeAll];
+}
+
+-(void)removeForKey:(NSString *)key{
+    [self.memCache removeForKey:key];
+    [self.sqliteCache removeForKey:key];
 }
 
 @end

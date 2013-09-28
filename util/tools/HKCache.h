@@ -30,10 +30,8 @@
 -(id)objectForKey:(NSString*)key;
 //清除过期数据，或者是删除多数据
 -(void)cleanExpired;
-@end
-
-
-@interface HKFileCache : HKCache
+-(void)removeForKey:(NSString*)key;
+-(void)removeAll;
 @end
 
 @interface HKSQLiteCache : HKCache
