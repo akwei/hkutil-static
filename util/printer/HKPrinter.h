@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HKPrinterCfg.h"
 #import "HKTableText.h"
 
 typedef enum
@@ -23,11 +24,7 @@ typedef enum{
     HKPrinterTextAlignmentRight = 2
 }HKPrinterTextAlignment;
 
-@interface HKPrinterConnectException : NSException
-@end
 
-@interface HKPrinterException : NSException
-@end
 
 @interface HKPrinter : NSObject
 @property(nonatomic,strong,readonly)NSMutableData* commandData;

@@ -8,12 +8,6 @@
 
 #import "HKPrinter.h"
 
-@implementation HKPrinterConnectException
-@end
-
-@implementation HKPrinterException
-@end
-
 @implementation HKPrinter
 
 -(id)init{
