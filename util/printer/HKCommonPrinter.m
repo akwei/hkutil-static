@@ -33,6 +33,12 @@
     [self.commandData appendBytes:bytes length:length];
 }
 
+-(void)addTextCommand:(NSString *)text{
+    NSStringEncoding gbk=CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    NSData *textData = [text dataUsingEncoding:gbk];
+    [self addCommand:textData];
+}
+
 -(void)connect{
     _socket = [[HKSocket alloc] initWithHost:self.host port:self.port timeout:self.timeoutMillis/1000];
     @try {

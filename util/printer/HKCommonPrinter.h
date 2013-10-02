@@ -23,6 +23,9 @@
 //添加命令
 - (void)addBytesCommand:(const void *)bytes length:(NSUInteger)length;
 
+//添加文本命令
+-(void)addTextCommand:(NSString*)text;
+
 //连接打印机
 -(void)connect;
 
