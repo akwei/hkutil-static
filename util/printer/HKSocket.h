@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "GCDAsyncSocket.h"
 
-#define HK_SOCKET_DEBUG 0
+#define HK_SOCKET_DEBUG 1
 
 @interface HKSocketConnectionException : NSException
 @end

@@ -200,6 +200,9 @@
     NSError *err = nil;
     NSException* ex;
     @try {
+#if HK_SOCKET_DEBUG
+        NSLog(@"try to connect to host:%@ port:%d",self.host,self.port);
+#endif
         if (![self.socket connectToHost:self.host onPort:self.port withTimeout:self.timeout error:&err]) // Asynchronous!
         {
             // If there was an error, it's likely something like "already connected" or "no delegate set"
@@ -210,7 +213,8 @@
             [self.con_cond wait];
         }
         if (self.error) {
-            ex = [HKSocketConnectionException exceptionWithName:@"connect error" reason:[err description] userInfo:nil];
+            NSString* reason = self.error.description;
+            ex = [HKSocketConnectionException exceptionWithName:@"connect error" reason:reason userInfo:nil];
             @throw ex;
         }
     }
