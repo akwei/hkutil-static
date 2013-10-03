@@ -54,7 +54,7 @@
 -(void)addSubview:(UIView*)view left:(UIView*)refView distance:(CGFloat)distance top:(CGFloat)top bottom:(CGFloat)bottom;
 
 /**
- 在refView左边添加view
+ 在refView右边添加view
  @param view 添加的view
  @param refView 在当前view中需要位置参考的view
  @param distance 与refView右边距离
@@ -72,5 +72,45 @@
 -(void)changeFrameOriginY:(CGFloat)y;
 -(void)changeFrameSizeWidth:(CGFloat)width;
 -(void)changeFrameSizeHeight:(CGFloat)height;
+
+/**
+ 更改view的位置在refView上边
+ @param refView 在当前view中需要位置参考的view
+ @param distance 与refView上边距离
+ @param left 与refView左边界的距离 >0向右 <0向左
+ @param right 与refView右边界的距离 >0向右 <0向左
+ 当left right其中一个=0，一个!=0时，选取!=0的值使用,left right 都!=0时，取left计算
+ **/
+-(void)changePositionAbove:(UIView*)refView distance:(CGFloat)distance left:(CGFloat)left right:(CGFloat)right;
+
+/**
+ 更改view的位置在refView下边
+ @param refView 在当前view中需要位置参考的view
+ @param distance 与refView下边距离
+ @param left 与refView左边界的距离 >0向右 <0向左
+ @param right 与refView右边界的距离 >0向右 <0向左
+ 当left right其中一个=0，一个!=0时，选取!=0的值使用,left right 都!=0时，取left计算
+ **/
+-(void)changePositionBelow:(UIView*)refView distance:(CGFloat)distance left:(CGFloat)left right:(CGFloat)right;
+
+/**
+ 更改view的位置在refView左边
+ @param refView 在当前view中需要位置参考的view
+ @param distance 与refView右边距离
+ @param top 与refView上边界的距离 >0向下 <0向上
+ @param bottom 与refView下边界的距离 >0向下 <0向上
+ 当top bottom其中一个=0，一个!=0时，选取!=0的值使用,top bottom都!=0时，取top计算
+ **/
+-(void)changePositionLeft:(UIView*)refView distance:(CGFloat)distance top:(CGFloat)top bottom:(CGFloat)bottom;
+
+/**
+ 更改view的位置在refView右边
+ @param refView 在当前view中需要位置参考的view
+ @param distance 与refView右边距离
+ @param top 与refView上边界的距离 >0向下 <0向上
+ @param bottom 与refView下边界的距离 >0向下 <0向上
+ 当top bottom其中一个=0，一个!=0时，选取!=0的值使用,top bottom都!=0时，取top计算
+ **/
+-(void)changePositionRight:(UIView*)refView distance:(CGFloat)distance top:(CGFloat)top bottom:(CGFloat)bottom;
 
 @end

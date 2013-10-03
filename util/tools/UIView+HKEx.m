@@ -141,4 +141,32 @@
     self.frame = frame;
 }
 
+-(void)changePositionAbove:(UIView *)refView distance:(CGFloat)distance left:(CGFloat)left right:(CGFloat)right{
+    CGRect refFrame = refView.frame;
+    CGFloat x = refFrame.origin.x;
+    CGFloat y = refFrame.origin.y - self.frame.size.height - distance;
+    self.frame = CGRectMake(x, y, self.frame.size.width, self.frame.size.height);
+}
+
+-(void)changePositionBelow:(UIView *)refView distance:(CGFloat)distance left:(CGFloat)left right:(CGFloat)right{
+    CGRect refFrame = refView.frame;
+    CGFloat x = refFrame.origin.x;
+    CGFloat y = refFrame.origin.y + refFrame.size.height + distance;
+    self.frame = CGRectMake(x, y, self.frame.size.width, self.frame.size.height);
+}
+
+-(void)changePositionLeft:(UIView *)refView distance:(CGFloat)distance top:(CGFloat)top bottom:(CGFloat)bottom{
+    CGRect refFrame = refView.frame;
+    CGFloat x = refFrame.origin.x - self.frame.size.width - distance;
+    CGFloat y = refFrame.origin.y;
+    self.frame = CGRectMake(x, y, self.frame.size.width, self.frame.size.height);
+}
+
+-(void)changePositionRight:(UIView *)refView distance:(CGFloat)distance top:(CGFloat)top bottom:(CGFloat)bottom{
+    CGRect refFrame = refView.frame;
+    CGFloat x = refFrame.origin.x + refFrame.size.width + distance;
+    CGFloat y = refFrame.origin.y;
+    self.frame = CGRectMake(x, y, self.frame.size.width, self.frame.size.height);
+}
+
 @end
