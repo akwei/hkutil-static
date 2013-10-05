@@ -42,7 +42,6 @@
         self.backgroundColor = clearColor;
         self.shadow=[[UIView alloc] initWithFrame:ooframe];
         self.shadow.backgroundColor=nil;
-        self.shadow.alpha=0.5;
         self.shadow.autoresizesSubviews=YES;
         self.shadow.autoresizingMask=defViewAutoresizing;
         [self addSubview:self.shadow];
@@ -170,7 +169,9 @@
     CGPoint centerP=self.viewContainer.center;
     centerP = [self.viewContainer convertPoint:centerP fromView:self.viewContainer.superview];
     view.center=centerP;
+    view.hidden = YES;
     [self.viewContainer addSubview:view];
+    view.hidden = NO;
     self.currentShowView=view;
     self.currentShowView.autoresizingMask=UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin;
 }
