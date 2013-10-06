@@ -10,21 +10,6 @@
 #import "HKPrinterCfg.h"
 #import "HKTableText.h"
 
-typedef enum
-{
-    HKCutType_FULL_CUT = 0,
-    HKCutType_PARCIAL_CUT = 1,
-    HKCutType_FULL_CUT_FEED = 2,
-    HKCutType_PARTIAL_CUT_FEED = 3
-} HKCutType;
-
-typedef enum{
-    HKPrinterTextAlignmentLeft = 0,
-    HKPrinterTextAlignmentCenter = 1,
-    HKPrinterTextAlignmentRight = 2
-}HKPrinterTextAlignment;
-
-
 
 @interface HKPrinter : NSObject
 @property(nonatomic,strong,readonly)NSMutableData* commandData;
@@ -40,18 +25,8 @@ typedef enum{
 //添加命令
 - (void)addBytesCommand:(const void *)bytes length:(NSUInteger)length;
 
-//添加切纸命令
--(void)addCut:(HKCutType)cutType;
-
 //添加开启钱箱命令
 -(void)addOpenCashDrawer;
-
-//添加文本打印命令
--(void)addTextCommand:(NSString*)text
-                width:(NSUInteger)width
-               height:(NSUInteger)height
-           leftMargin:(NSUInteger)leftMargin
-                align:(HKPrinterTextAlignment)align;
 
 //进行打印
 -(void)execute;

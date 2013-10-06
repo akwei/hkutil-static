@@ -35,19 +35,7 @@
     [self.commandData appendBytes:bytes length:length];
 }
 
--(void)addCut:(HKCutType)cutType{
-    NSLog(@"HKPrinter : child can impl");
-}
-
 -(void)addOpenCashDrawer{
-    NSLog(@"HKPrinter : child can impl");
-}
-
--(void)addTextCommand:(NSString *)text
-                width:(NSUInteger)width
-               height:(NSUInteger)height
-           leftMargin:(NSUInteger)leftMargin
-                align:(HKPrinterTextAlignment)align{
     NSLog(@"HKPrinter : child can impl");
 }
 

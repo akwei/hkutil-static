@@ -67,6 +67,14 @@
     self.starPort = nil;
 }
 
+-(void)addCommand:(NSData *)data{
+    [self.commandData appendData:data];
+}
+
+-(void)addBytesCommand:(const void *)bytes length:(NSUInteger)length{
+    [self.commandData appendBytes:bytes length:length];
+}
+
 -(void)sendCommand:(NSData *)commandsToPrint{
     int commandSize = [commandsToPrint length];
     unsigned char *dataToSentToPrinter = (unsigned char *)malloc(commandSize);
@@ -186,34 +194,23 @@
     [self addBytesCommand:cmd length:length];
 }
 
--(void)addTextCommand:(NSString *)text
-                width:(NSUInteger)width
-               height:(NSUInteger)height
-           leftMargin:(NSUInteger)leftMargin
-                align:(HKPrinterTextAlignment)align{
-    unsigned char characterExpansion[] = {0x1b, 0x69, 0x00, 0x00};
-    characterExpansion[2] = height + '0';
-    characterExpansion[3] = width + '0';
-    [self addBytesCommand:characterExpansion length:4];
-    
-    unsigned char leftMarginCommand[] = {0x1b, 0x6c, 0x00};
-    leftMarginCommand[2] = leftMargin;
-    [self addBytesCommand:leftMarginCommand length:3];
-    
+-(void)addAlignment:(HKStarPrinterTextAlignment)align{
     unsigned char alignmentCommand[] = {0x1b, 0x1d, 0x61, 0x00};
     switch (align){
-        case HKPrinterTextAlignmentLeft:
+        case HKStarPrinterTextAlignmentLeft:
             alignmentCommand[3] = 48;
             break;
-        case HKPrinterTextAlignmentCenter:
+        case HKStarPrinterTextAlignmentCenter:
             alignmentCommand[3] = 49;
             break;
-        case HKPrinterTextAlignmentRight:
+        case HKStarPrinterTextAlignmentRight:
             alignmentCommand[3] = 50;
             break;
     }
     [self addBytesCommand:alignmentCommand length:4];
-    
+}
+
+-(void)addTextCommand:(NSString *)text{
     NSStringEncoding gbk=CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
     NSData *textNSData = [text dataUsingEncoding:gbk];
     unsigned char *textData = (unsigned char *)malloc([textNSData length]);
