@@ -14,7 +14,7 @@
 @interface HKShadowView ()
 @property (strong, nonatomic) UIView *viewContainer;
 @property(nonatomic,retain)UIView* currentShowView;
-@property(nonatomic,assign)BOOL aniProcessing;//动画是否正在进行
+//@property(nonatomic,assign)BOOL aniProcessing;//动画是否正在进行
 @property(nonatomic,strong)UIView* shadow;//作用是渐变式弹出阴影层，不收view切换影响
 @end
 
@@ -64,19 +64,24 @@
 }
 
 -(void)showView:(UIView *)view completeBlock:(void (^)(void))block animation:(CAAnimation*)animation{
-    [self showView:view];
     if (animation) {
-        if (self.aniProcessing) {
-            return ;
-        }
-        self.aniProcessing=YES;
+//        if (self.aniProcessing) {
+//            return ;
+//        }
+//        self.aniProcessing=YES;
         [animation setRemovedOnCompletion:YES];
         animation.delegate = self;
         [animation setValue:block forKey:kBlockKey];
         [self.viewContainer.layer addAnimation:animation forKey:nil];
+        [self showView:view];
     }
     else{
-        self.aniProcessing = NO;
+//        self.aniProcessing=YES;
+        [self showView:view];
+        if (block) {
+            block();
+        }
+//        self.aniProcessing = NO;
     }
 }
 
@@ -128,27 +133,28 @@
 }
 
 -(void)closeViewWithCompleteBlock:(void (^)(void))block animation:(CAAnimation *)animation{
-    [self hideView];
     if (animation) {
-        if (self.aniProcessing) {
-            return ;
-        }
-        self.aniProcessing=YES;
+//        if (self.aniProcessing) {
+//            return ;
+//        }
+//        self.aniProcessing=YES;
         animation.removedOnCompletion = YES;
         animation.delegate = self;
         [animation setValue:block forKey:kBlockKey];
         [self.layer addAnimation:animation forKey:nil];
+        [self hideView];
     }
     else{
+        [self hideView];
         if (block) {
             block();
         }
-        self.aniProcessing = NO;
+//        self.aniProcessing = NO;
     }
 }
 
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
-    self.aniProcessing=NO;
+//    self.aniProcessing=NO;
     void (^block)(void) = [anim valueForKey:kBlockKey];
     if (block) {
         block();
@@ -192,6 +198,7 @@
 
 -(CATransition*)createAnimationWithtype:(NSString*)type subType:(NSString*)subType{
     CATransition *transition = [CATransition animation];
+    transition.delegate = self;
     transition.duration = self.aniTime;
     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     transition.type=type;
