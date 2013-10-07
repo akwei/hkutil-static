@@ -27,6 +27,7 @@
     self = [super init];
     if (self) {
         self.timeoutMillis = 10000;
+        _commandData = [[NSMutableData alloc] init];
     }
     return self;
 }
@@ -220,8 +221,17 @@
     free(textData);
 }
 
+-(void)addLeftMargin:(NSUInteger)leftMargin{
+    if (leftMargin > 255) {
+        leftMargin = 255;
+    }
+    unsigned char cmd[] = {0x1b,0x6c,leftMargin};
+    [self addBytesCommand:cmd length:3];
+}
+
 -(void)execute{
     [self sendCommand:self.commandData];
+    _commandData = nil;
 }
 
 @end

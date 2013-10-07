@@ -45,6 +45,9 @@ typedef enum{
 //添加文本命令
 -(void)addTextCommand:(NSString*)text;
 
+//增加左边距
+-(void)addLeftMargin:(NSUInteger)leftMargin;
+
 //添加切纸命令
 -(void)addCut:(HKCutType)cutType;
 
