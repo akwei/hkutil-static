@@ -35,4 +35,7 @@
 //与打印机断开连接
 -(void)disconnect;
 
+//直接发送现有的所有数据，自动打开连接和关闭连接.blockSize 指定的每次发送的块大小，单位为字节
+-(void)executeWithBlockSize:(NSUInteger)blockSize;
+
 @end

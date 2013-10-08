@@ -69,4 +69,14 @@
     _socket = nil;
 }
 
+-(void)executeWithBlockSize:(NSUInteger)blockSize{
+    @try {
+        [self connect];
+        [self sendWithBlockSize:blockSize];
+    }
+    @finally {
+        [self disconnect];
+    }
+}
+
 @end
