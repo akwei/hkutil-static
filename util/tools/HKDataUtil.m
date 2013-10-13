@@ -103,4 +103,11 @@
     return NO;
 }
 
++(NSDecimalNumber*)doubleRound:(double)value scale:(short)scale roundingMode:(NSRoundingMode)roundingMode{
+    NSDecimalNumberHandler* handler = [[NSDecimalNumberHandler alloc] initWithRoundingMode:roundingMode scale:scale raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
+    NSDecimalNumber* _num = [[NSDecimalNumber alloc] initWithDouble:value];
+    NSDecimalNumber* result = [_num decimalNumberByRoundingAccordingToBehavior:handler];
+    return result;
+}
+
 @end

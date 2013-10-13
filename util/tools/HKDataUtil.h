@@ -32,4 +32,7 @@
 
 +(BOOL)isEmpty:(NSString*)str;
 
+//double类型四舍五入
++(NSDecimalNumber*)doubleRound:(double)value scale:(short)scale roundingMode:(NSRoundingMode)roundingMode;
+
 @end
