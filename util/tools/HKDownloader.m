@@ -29,7 +29,7 @@
 
 -(void)start{
     NSLog(@"download url [%@]",self.url);
-    NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:self.timeout];
+    NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.url] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:self.timeout];
     NSError* error ;
     NSHTTPURLResponse* response;
     NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
