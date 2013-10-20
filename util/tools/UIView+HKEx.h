@@ -123,4 +123,9 @@
  */
 -(void)moveToHorizontalCenter;
 
+/**
+ 在superview中垂直和水平居中
+ */
+-(void)moveToCenter;
+
 @end

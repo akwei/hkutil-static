@@ -189,4 +189,10 @@
     self.frame = oframe;
 }
 
+-(void)moveToCenter{
+    CGPoint center = self.superview.center;
+    center = [self.superview convertPoint:center fromView:self.superview.superview];
+    self.center = center;
+}
+
 @end
