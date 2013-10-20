@@ -169,4 +169,24 @@
     self.frame = CGRectMake(x, y, self.frame.size.width, self.frame.size.height);
 }
 
+-(void)moveToVerticalCenter{
+    CGPoint center = self.superview.center;
+    center = [self.superview convertPoint:center fromView:self.superview.superview];
+    CGRect frame = self.frame;
+    self.center = center;
+    CGRect oframe = self.frame;
+    oframe.origin.x = frame.origin.x;
+    self.frame = oframe;
+}
+
+-(void)moveToHorizontalCenter{
+    CGPoint center = self.superview.center;
+    center = [self.superview convertPoint:center fromView:self.superview.superview];
+    CGRect frame = self.frame;
+    self.center = center;
+    CGRect oframe = self.frame;
+    oframe.origin.y = frame.origin.y;
+    self.frame = oframe;
+}
+
 @end

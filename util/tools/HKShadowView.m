@@ -16,6 +16,8 @@
 @property(nonatomic,retain)UIView* currentShowView;
 //@property(nonatomic,assign)BOOL aniProcessing;//动画是否正在进行
 @property(nonatomic,strong)UIView* shadow;//作用是渐变式弹出阴影层，不收view切换影响
+//当前添加的所有view
+@property(nonatomic,strong)NSMutableArray* views;
 @end
 
 

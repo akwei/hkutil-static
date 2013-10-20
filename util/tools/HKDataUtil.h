@@ -35,4 +35,8 @@
 //double类型四舍五入
 +(NSDecimalNumber*)doubleRound:(double)value scale:(short)scale roundingMode:(NSRoundingMode)roundingMode;
 
++(BOOL)isArray:(id)obj;
+
++(BOOL)isDictionary:(id)obj;
+
 @end

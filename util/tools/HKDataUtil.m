@@ -110,4 +110,18 @@
     return result;
 }
 
++(BOOL)isArray:(id)obj{
+    if ([obj isKindOfClass:[NSArray class]]) {
+        return YES;
+    }
+    return NO;
+}
+
++(BOOL)isDictionary:(id)obj{
+    if ([obj isKindOfClass:[NSDictionary class]]) {
+        return YES;
+    }
+    return NO;
+}
+
 @end

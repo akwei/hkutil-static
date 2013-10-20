@@ -113,4 +113,14 @@
  **/
 -(void)changePositionRight:(UIView*)refView distance:(CGFloat)distance top:(CGFloat)top bottom:(CGFloat)bottom;
 
+/**
+ 在superview中垂直居中
+ */
+-(void)moveToVerticalCenter;
+
+/**
+ 在superview中水平居中
+ */
+-(void)moveToHorizontalCenter;
+
 @end
