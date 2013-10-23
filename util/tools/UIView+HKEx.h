@@ -21,6 +21,29 @@
 -(CGFloat)getContentWidth;
 
 /**
+ 添加子视图，位置居中
+ @param animated 是否需要默认动画
+ @param toCenter 是否添加到视图的中间位置
+ */
+-(void)addSubviewToCenter:(UIView *)view;
+
+/**
+ 添加子视图，并显示在最前
+ @param animated 是否需要默认动画
+ @param toCenter 是否添加到视图的中间位置
+ @param onCompleteBlock 添加完成后执行的block
+ */
+-(void)addSubview:(UIView *)view animated:(BOOL)animated toCenter:(BOOL)toCenter onCompleteBlock:(void(^)(void))onCompleteBlock;
+
+/**
+ 添加子视图，并显示在最前
+ @param animated 是否需要默认动画
+ @param toCenter 是否添加到视图的中间位置
+ @param onCompleteBlock 添加完成后执行的block
+ */
+-(void)addSubview:(UIView *)view animated:(BOOL)animated toCenter:(BOOL)toCenter;
+
+/**
  在refView下边添加view
  @param view 添加的view
  @param refView 在当前view中需要位置参考的view
@@ -63,6 +86,35 @@
  当top bottom其中一个=0，一个!=0时，选取!=0的值使用,top bottom都!=0时，取top计算
  **/
 -(void)addSubview:(UIView*)view right:(UIView*)refView distance:(CGFloat)distance top:(CGFloat)top bottom:(CGFloat)bottom;
+
+/**
+ 添加子视图，距离左边内边距和下边内边距
+ @param paddingLeft 左边内边距
+ @param paddingBottom 下边内边距
+ */
+-(void)addSubview:(UIView*)view paddingLeft:(CGFloat)paddingLeft paddingBottom:(CGFloat)paddingBottom;
+
+/**
+ 添加子视图，距离右边内边距和上边内边距
+ @param paddingRight 右边内边距
+ @param paddingTop 上边内边距
+ */
+-(void)addSubview:(UIView*)view paddingRight:(CGFloat)paddingRight paddingTop:(CGFloat)paddingTop;
+
+/**
+ 添加子视图，距离右边内边距和下边内边距
+ @param paddingRight 右边内边距
+ @param paddingBottom 下边内边距
+ */
+-(void)addSubview:(UIView*)view paddingRight:(CGFloat)paddingRight paddingBottom:(CGFloat)paddingBottom;
+
+/**
+ 从父级视图中删除
+ @param animated 是否需要默认动画
+ @param delay 延迟删除的时间
+ @param onCompleteBlock 添加完成后执行的block
+ */
+-(void)removeFromSuperviewWithAnimated:(BOOL)animated delay:(NSTimeInterval)delay onCompleteBlock:(void(^)(void))onCompleteBlock;
 
 -(void)changeFrameOrigin:(CGPoint)origin;
 
@@ -127,5 +179,10 @@
  在superview中垂直和水平居中
  */
 -(void)moveToCenter;
+
+/**
+ 创建一个与自己一样大的view，默认背景色为clearColor
+ */
+-(UIView*)createViewFromSelf;
 
 @end

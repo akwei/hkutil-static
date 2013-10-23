@@ -68,6 +68,56 @@
     [self addSubview:view];
 }
 
+-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+    void (^onCompleteBlock) (void) = [anim valueForKey:@"onCompleteBlock"];
+    if (onCompleteBlock) {
+        onCompleteBlock();
+    }
+}
+
+-(void)addSubviewToCenter:(UIView *)view{
+    CGPoint center = self.center;
+    center = [self convertPoint:center fromView:self.superview];
+    view.center = center;
+}
+
+-(void)addSubview:(UIView *)view animation:(CAAnimation *)animation toCenter:(BOOL)toCenter onCompleteBlock:(void (^)(void))onCompleteBlock{
+    if (toCenter) {
+        CGPoint center = self.center;
+        center = [self convertPoint:center fromView:self.superview];
+        view.center = center;
+    }
+    [self addSubview:view];
+    if (animation) {
+        animation.delegate = self;
+        animation.removedOnCompletion = YES;
+        if (onCompleteBlock) {
+            [animation setValue:onCompleteBlock forKey:@"onCompleteBlock"];
+        }
+        [self.layer addAnimation:animation forKey:nil];
+    }
+    else{
+        if (onCompleteBlock) {
+            onCompleteBlock();
+        }
+    }
+}
+
+-(void)addSubview:(UIView *)view animated:(BOOL)animated toCenter:(BOOL)toCenter onCompleteBlock:(void (^)(void))onCompleteBlock{
+    CATransition *transition = nil;
+    if (animated) {
+        transition = [CATransition animation];
+        transition.duration = .4;
+        transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        transition.type=kCATransitionFade;
+    }
+    [self addSubview:view animation:transition toCenter:toCenter onCompleteBlock:onCompleteBlock];
+}
+
+-(void)addSubview:(UIView *)view animated:(BOOL)animated toCenter:(BOOL)toCenter{
+    [self addSubview:view animated:animated toCenter:toCenter onCompleteBlock:nil];
+}
+
 -(void)addSubview:(UIView *)view below:(UIView *)refView distance:(CGFloat)distance left:(CGFloat)left right:(CGFloat)right{
     if (refView.superview != self) {
         return;
@@ -103,6 +153,66 @@
     CGRect refViewFrame = refView.frame;
     CGFloat x = refViewFrame.origin.x + refViewFrame.size.width + distance;
     [self buildYAndAddSubview1:view x:x refViewFrame:refViewFrame top:top bottom:bottom];
+}
+
+-(void)addSubview:(UIView *)view paddingLeft:(CGFloat)paddingLeft paddingBottom:(CGFloat)paddingBottom{
+    CGRect frame = view.frame;
+    frame.origin.x = paddingLeft;
+    frame.origin.y = self.frame.size.height - paddingBottom - frame.size.height;
+    view.frame = frame;
+    [self addSubview:view];
+}
+
+-(void)addSubview:(UIView *)view paddingRight:(CGFloat)paddingRight paddingBottom:(CGFloat)paddingBottom{
+    CGRect frame = view.frame;
+    frame.origin.x = self.frame.size.width - paddingRight - frame.size.width;
+    frame.origin.y = self.frame.size.height - paddingBottom - frame.size.height;
+    view.frame = frame;
+    [self addSubview:view];
+}
+
+-(void)addSubview:(UIView *)view paddingRight:(CGFloat)paddingRight paddingTop:(CGFloat)paddingTop{
+    CGRect frame = view.frame;
+    frame.origin.x = self.frame.size.width - paddingRight - frame.size.width;
+    frame.origin.y = paddingTop;
+    view.frame = frame;
+    [self addSubview:view];
+}
+
+-(void)removeFromSuperviewWithAnimated:(BOOL)animated delay:(NSTimeInterval)delay onCompleteBlock:(void (^)(void))onCompleteBlock{
+    NSMutableDictionary* info = [[NSMutableDictionary alloc] init];
+    [info setValue:[NSNumber numberWithBool:animated] forKey:@"animated"];
+    [info setValue:onCompleteBlock forKey:@"onCompleteBlock"];
+    if (delay <= 0) {
+        [self removeFromSuperviewWithInfo:info];
+    }
+    else{
+        [self performSelector:@selector(removeFromSuperviewWithInfo:) withObject:info afterDelay:delay];
+    }
+}
+
+-(void)removeFromSuperviewWithInfo:(NSDictionary*)info{
+    BOOL animated = [[info valueForKey:@"animated"] boolValue];
+    void (^onCompleteBlock) (void) = [info valueForKey:@"onCompleteBlock"];
+    if (animated) {
+        CATransition *transition = [CATransition animation];
+        transition.duration = .4;
+        transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        transition.type=kCATransitionFade;
+        transition.delegate = self;
+        transition.removedOnCompletion = YES;
+        if (onCompleteBlock) {
+            [transition setValue:onCompleteBlock forKey:@"onCompleteBlock"];
+        }
+        [self.superview.layer addAnimation:transition forKey:nil];
+        [self removeFromSuperview];
+    }
+    else{
+        [self removeFromSuperview];
+        if (onCompleteBlock) {
+            onCompleteBlock();
+        }
+    }
 }
 
 -(void)changeFrameOrigin:(CGPoint)origin{
@@ -193,6 +303,13 @@
     CGPoint center = self.superview.center;
     center = [self.superview convertPoint:center fromView:self.superview.superview];
     self.center = center;
+}
+
+-(UIView *)createViewFromSelf{
+    UIView* oview = [[UIView alloc] init];
+    oview.frame = self.bounds;
+    oview.backgroundColor = [UIColor clearColor];
+    return oview;
 }
 
 @end
