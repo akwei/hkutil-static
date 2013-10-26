@@ -13,6 +13,8 @@
 		9B1F435317F99242009E7E4F /* HKPrinterCfg.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B1F435017F9909F009E7E4F /* HKPrinterCfg.h */; };
 		9B1F435417F99242009E7E4F /* HKCommonPrinter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B0F63D217F9581B0093797C /* HKCommonPrinter.h */; };
 		9B68FFBB17FBE1C1006F98A2 /* HKSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B68FFBA17FBE1C1006F98A2 /* HKSocket.m */; };
+		9B6E21DF181BA71C00BF154D /* NSDictionary+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E21DE181BA71C00BF154D /* NSDictionary+HKEx.m */; };
+		9B6E21E2181BA80600BF154D /* NSMutableDictionary+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E21E1181BA80600BF154D /* NSMutableDictionary+HKEx.m */; };
 		9BC8BD3917ED818100DF9423 /* HKGridTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC8BD3717ED818100DF9423 /* HKGridTableView.m */; };
 		9BC8BD3A17ED819300DF9423 /* HKGridTableView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BC8BD3817ED818100DF9423 /* HKGridTableView.h */; };
 		9BE0B89E17E80AC700B96412 /* HKAnimationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE0B89D17E80AC700B96412 /* HKAnimationUtil.m */; };
@@ -205,6 +207,10 @@
 		9B1F435117F9909F009E7E4F /* HKPrinterCfg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKPrinterCfg.m; sourceTree = "<group>"; };
 		9B68FFB917FBE1C1006F98A2 /* HKSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKSocket.h; sourceTree = "<group>"; };
 		9B68FFBA17FBE1C1006F98A2 /* HKSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKSocket.m; sourceTree = "<group>"; };
+		9B6E21DD181BA71C00BF154D /* NSDictionary+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+HKEx.h"; sourceTree = "<group>"; };
+		9B6E21DE181BA71C00BF154D /* NSDictionary+HKEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+HKEx.m"; sourceTree = "<group>"; };
+		9B6E21E0181BA80600BF154D /* NSMutableDictionary+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+HKEx.h"; sourceTree = "<group>"; };
+		9B6E21E1181BA80600BF154D /* NSMutableDictionary+HKEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+HKEx.m"; sourceTree = "<group>"; };
 		9B7E400B17F4932800258ACA /* CfgHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CfgHeader.h; sourceTree = "<group>"; };
 		9BC8BD3717ED818100DF9423 /* HKGridTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKGridTableView.m; sourceTree = "<group>"; };
 		9BC8BD3817ED818100DF9423 /* HKGridTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKGridTableView.h; sourceTree = "<group>"; };
@@ -594,6 +600,10 @@
 				9BFFA9C417E48DE500F353A5 /* UIView+HKEx.m */,
 				9BE0B89C17E80AC600B96412 /* HKAnimationUtil.h */,
 				9BE0B89D17E80AC700B96412 /* HKAnimationUtil.m */,
+				9B6E21DD181BA71C00BF154D /* NSDictionary+HKEx.h */,
+				9B6E21DE181BA71C00BF154D /* NSDictionary+HKEx.m */,
+				9B6E21E0181BA80600BF154D /* NSMutableDictionary+HKEx.h */,
+				9B6E21E1181BA80600BF154D /* NSMutableDictionary+HKEx.m */,
 			);
 			path = tools;
 			sourceTree = "<group>";
@@ -669,6 +679,7 @@
 				9BFFA9D717E48DE500F353A5 /* AFURLConnectionOperation.m in Sources */,
 				9BFFA9D817E48DE500F353A5 /* AFXMLRequestOperation.m in Sources */,
 				9BFFA9D917E48DE500F353A5 /* UIImageView+AFNetworking.m in Sources */,
+				9B6E21E2181BA80600BF154D /* NSMutableDictionary+HKEx.m in Sources */,
 				9BFFA9DA17E48DE500F353A5 /* GCDAsyncSocket.m in Sources */,
 				9BFFA9DB17E48DE500F353A5 /* JSONKit.m in Sources */,
 				9BFFA9DC17E48DE500F353A5 /* MBProgressHUD.m in Sources */,
@@ -678,6 +689,7 @@
 				9BFFA9E017E48DE500F353A5 /* HKCache.m in Sources */,
 				9BFFA9E117E48DE500F353A5 /* HKCtrlUtil.m in Sources */,
 				9BFFA9E217E48DE500F353A5 /* HKDataUtil.m in Sources */,
+				9B6E21DF181BA71C00BF154D /* NSDictionary+HKEx.m in Sources */,
 				9BFFA9E317E48DE500F353A5 /* HKDeviceUtil.m in Sources */,
 				9BFFA9E417E48DE500F353A5 /* HKDownloader.m in Sources */,
 				9BFFA9E517E48DE500F353A5 /* HKEncUtil.m in Sources */,
