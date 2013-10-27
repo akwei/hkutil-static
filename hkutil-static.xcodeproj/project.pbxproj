@@ -15,6 +15,12 @@
 		9B68FFBB17FBE1C1006F98A2 /* HKSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B68FFBA17FBE1C1006F98A2 /* HKSocket.m */; };
 		9B6E21DF181BA71C00BF154D /* NSDictionary+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E21DE181BA71C00BF154D /* NSDictionary+HKEx.m */; };
 		9B6E21E2181BA80600BF154D /* NSMutableDictionary+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E21E1181BA80600BF154D /* NSMutableDictionary+HKEx.m */; };
+		9B6E21E3181BAA4F00BF154D /* NSDictionary+HKEx.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B6E21DD181BA71C00BF154D /* NSDictionary+HKEx.h */; };
+		9B6E21E5181BAA4F00BF154D /* NSMutableDictionary+HKEx.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B6E21E0181BA80600BF154D /* NSMutableDictionary+HKEx.h */; };
+		9B6E21E9181CBE3D00BF154D /* NSArray+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E21E8181CBE3D00BF154D /* NSArray+HKEx.m */; };
+		9B6E21EC181CBE4B00BF154D /* NSMutableArray+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E21EB181CBE4B00BF154D /* NSMutableArray+HKEx.m */; };
+		9B6E21ED181CC10700BF154D /* NSArray+HKEx.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B6E21E7181CBE3D00BF154D /* NSArray+HKEx.h */; };
+		9B6E21EE181CC10700BF154D /* NSMutableArray+HKEx.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B6E21EA181CBE4B00BF154D /* NSMutableArray+HKEx.h */; };
 		9BC8BD3917ED818100DF9423 /* HKGridTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC8BD3717ED818100DF9423 /* HKGridTableView.m */; };
 		9BC8BD3A17ED819300DF9423 /* HKGridTableView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BC8BD3817ED818100DF9423 /* HKGridTableView.h */; };
 		9BE0B89E17E80AC700B96412 /* HKAnimationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE0B89D17E80AC700B96412 /* HKAnimationUtil.m */; };
@@ -139,6 +145,10 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				9B6E21ED181CC10700BF154D /* NSArray+HKEx.h in CopyFiles */,
+				9B6E21EE181CC10700BF154D /* NSMutableArray+HKEx.h in CopyFiles */,
+				9B6E21E3181BAA4F00BF154D /* NSDictionary+HKEx.h in CopyFiles */,
+				9B6E21E5181BAA4F00BF154D /* NSMutableDictionary+HKEx.h in CopyFiles */,
 				9B1F435317F99242009E7E4F /* HKPrinterCfg.h in CopyFiles */,
 				9B1F435417F99242009E7E4F /* HKCommonPrinter.h in CopyFiles */,
 				9BC8BD3A17ED819300DF9423 /* HKGridTableView.h in CopyFiles */,
@@ -211,6 +221,10 @@
 		9B6E21DE181BA71C00BF154D /* NSDictionary+HKEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+HKEx.m"; sourceTree = "<group>"; };
 		9B6E21E0181BA80600BF154D /* NSMutableDictionary+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+HKEx.h"; sourceTree = "<group>"; };
 		9B6E21E1181BA80600BF154D /* NSMutableDictionary+HKEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+HKEx.m"; sourceTree = "<group>"; };
+		9B6E21E7181CBE3D00BF154D /* NSArray+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+HKEx.h"; sourceTree = "<group>"; };
+		9B6E21E8181CBE3D00BF154D /* NSArray+HKEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+HKEx.m"; sourceTree = "<group>"; };
+		9B6E21EA181CBE4B00BF154D /* NSMutableArray+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+HKEx.h"; sourceTree = "<group>"; };
+		9B6E21EB181CBE4B00BF154D /* NSMutableArray+HKEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+HKEx.m"; sourceTree = "<group>"; };
 		9B7E400B17F4932800258ACA /* CfgHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CfgHeader.h; sourceTree = "<group>"; };
 		9BC8BD3717ED818100DF9423 /* HKGridTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKGridTableView.m; sourceTree = "<group>"; };
 		9BC8BD3817ED818100DF9423 /* HKGridTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKGridTableView.h; sourceTree = "<group>"; };
@@ -604,6 +618,10 @@
 				9B6E21DE181BA71C00BF154D /* NSDictionary+HKEx.m */,
 				9B6E21E0181BA80600BF154D /* NSMutableDictionary+HKEx.h */,
 				9B6E21E1181BA80600BF154D /* NSMutableDictionary+HKEx.m */,
+				9B6E21E7181CBE3D00BF154D /* NSArray+HKEx.h */,
+				9B6E21E8181CBE3D00BF154D /* NSArray+HKEx.m */,
+				9B6E21EA181CBE4B00BF154D /* NSMutableArray+HKEx.h */,
+				9B6E21EB181CBE4B00BF154D /* NSMutableArray+HKEx.m */,
 			);
 			path = tools;
 			sourceTree = "<group>";
@@ -683,6 +701,7 @@
 				9BFFA9DA17E48DE500F353A5 /* GCDAsyncSocket.m in Sources */,
 				9BFFA9DB17E48DE500F353A5 /* JSONKit.m in Sources */,
 				9BFFA9DC17E48DE500F353A5 /* MBProgressHUD.m in Sources */,
+				9B6E21E9181CBE3D00BF154D /* NSArray+HKEx.m in Sources */,
 				9BFFA9DD17E48DE500F353A5 /* GTMStringEncoding.m in Sources */,
 				9BFFA9DE17E48DE500F353A5 /* HKAFHTTPClient.m in Sources */,
 				9BFFA9DF17E48DE500F353A5 /* HKAutoSizeLabel.m in Sources */,
@@ -696,6 +715,7 @@
 				9BFFA9E617E48DE500F353A5 /* HKFileUtil.m in Sources */,
 				9BFFA9E717E48DE500F353A5 /* HKKeyboardNotice.m in Sources */,
 				9BFFA9E817E48DE500F353A5 /* HKKVEncoder.m in Sources */,
+				9B6E21EC181CBE4B00BF154D /* NSMutableArray+HKEx.m in Sources */,
 				9BFFA9E917E48DE500F353A5 /* HKLanUtil.m in Sources */,
 				9BFFA9EA17E48DE500F353A5 /* HKMyIp.m in Sources */,
 				9BFFA9EB17E48DE500F353A5 /* HKPageHelper.m in Sources */,
