@@ -21,6 +21,8 @@
 		9B6E21EC181CBE4B00BF154D /* NSMutableArray+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E21EB181CBE4B00BF154D /* NSMutableArray+HKEx.m */; };
 		9B6E21ED181CC10700BF154D /* NSArray+HKEx.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B6E21E7181CBE3D00BF154D /* NSArray+HKEx.h */; };
 		9B6E21EE181CC10700BF154D /* NSMutableArray+HKEx.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B6E21EA181CBE4B00BF154D /* NSMutableArray+HKEx.h */; };
+		9BA56D4F1820AADD006A73FB /* UIImage+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA56D4E1820AADD006A73FB /* UIImage+HKEx.m */; };
+		9BA56D501820AB3A006A73FB /* UIImage+HKEx.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BA56D4D1820AADD006A73FB /* UIImage+HKEx.h */; };
 		9BC8BD3917ED818100DF9423 /* HKGridTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC8BD3717ED818100DF9423 /* HKGridTableView.m */; };
 		9BC8BD3A17ED819300DF9423 /* HKGridTableView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BC8BD3817ED818100DF9423 /* HKGridTableView.h */; };
 		9BE0B89E17E80AC700B96412 /* HKAnimationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE0B89D17E80AC700B96412 /* HKAnimationUtil.m */; };
@@ -145,6 +147,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				9BA56D501820AB3A006A73FB /* UIImage+HKEx.h in CopyFiles */,
 				9B6E21ED181CC10700BF154D /* NSArray+HKEx.h in CopyFiles */,
 				9B6E21EE181CC10700BF154D /* NSMutableArray+HKEx.h in CopyFiles */,
 				9B6E21E3181BAA4F00BF154D /* NSDictionary+HKEx.h in CopyFiles */,
@@ -226,6 +229,8 @@
 		9B6E21EA181CBE4B00BF154D /* NSMutableArray+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+HKEx.h"; sourceTree = "<group>"; };
 		9B6E21EB181CBE4B00BF154D /* NSMutableArray+HKEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+HKEx.m"; sourceTree = "<group>"; };
 		9B7E400B17F4932800258ACA /* CfgHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CfgHeader.h; sourceTree = "<group>"; };
+		9BA56D4D1820AADD006A73FB /* UIImage+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HKEx.h"; sourceTree = "<group>"; };
+		9BA56D4E1820AADD006A73FB /* UIImage+HKEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HKEx.m"; sourceTree = "<group>"; };
 		9BC8BD3717ED818100DF9423 /* HKGridTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKGridTableView.m; sourceTree = "<group>"; };
 		9BC8BD3817ED818100DF9423 /* HKGridTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKGridTableView.h; sourceTree = "<group>"; };
 		9BE0B89C17E80AC600B96412 /* HKAnimationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKAnimationUtil.h; sourceTree = "<group>"; };
@@ -622,6 +627,8 @@
 				9B6E21E8181CBE3D00BF154D /* NSArray+HKEx.m */,
 				9B6E21EA181CBE4B00BF154D /* NSMutableArray+HKEx.h */,
 				9B6E21EB181CBE4B00BF154D /* NSMutableArray+HKEx.m */,
+				9BA56D4D1820AADD006A73FB /* UIImage+HKEx.h */,
+				9BA56D4E1820AADD006A73FB /* UIImage+HKEx.m */,
 			);
 			path = tools;
 			sourceTree = "<group>";
@@ -734,6 +741,7 @@
 				9BE0B89E17E80AC700B96412 /* HKAnimationUtil.m in Sources */,
 				9BC8BD3917ED818100DF9423 /* HKGridTableView.m in Sources */,
 				9B0F63D417F9581B0093797C /* HKCommonPrinter.m in Sources */,
+				9BA56D4F1820AADD006A73FB /* UIImage+HKEx.m in Sources */,
 				9B1F435217F9909F009E7E4F /* HKPrinterCfg.m in Sources */,
 				9B68FFBB17FBE1C1006F98A2 /* HKSocket.m in Sources */,
 			);
