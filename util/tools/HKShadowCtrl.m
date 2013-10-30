@@ -296,14 +296,15 @@
 #pragma mark - private method
 
 -(void)showViewController:(UIViewController*)viewController animation:(CAAnimation*)animation onComplete:(void (^)(void))completeBlock{
-    [self showView:viewController.view];
     if (animation) {
         animation.delegate = self;
         animation.removedOnCompletion = YES;
         [animation setValue:completeBlock forKey:kBlockKey];
         [self.hkViewContainer.layer addAnimation:animation forKey:nil];
+        [self showView:viewController.view];
     }
     else{
+        [self showView:viewController.view];
         animating = NO;
     }
 }
@@ -337,20 +338,21 @@
     if (![self doProcessing]) {
         return ;
     }
-    [self clearAll];
-    self.view.hidden = YES;
     CAAnimation* tr = [info valueForKey:kAnimationKey];
     void (^block)(void) = [info valueForKey:kBlockKey];
     if (tr) {
         tr.delegate = self;
         tr.removedOnCompletion = YES;
-        //        [tr setValue:@true forKey:kCloseAni];
         if (block) {
             [tr setValue:block forKey:kBlockKey];
         }
         [self.view.layer addAnimation:tr forKey:nil];
+        self.view.hidden = YES;
+        [self clearAll];
     }
     else{
+        self.view.hidden = YES;
+        [self clearAll];
         if (block) {
             block();
         }
