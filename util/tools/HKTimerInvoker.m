@@ -106,7 +106,7 @@
     __weak HKTimerInvoker* me = self;
     if (canCallback) {
         if (self.callbackBlock) {
-            [_threadUtil syncBlockToMainThread:^{
+            [_threadUtil asyncBlockToMainThread:^{
                 me.callbackBlock();
             }];
         }

@@ -11,7 +11,6 @@
 
 static HKThreadUtil* _sharedHKThreadUtil;
 @implementation HKThreadUtil{
-    dispatch_queue_t _asyncQueue;
 }
 +(HKThreadUtil *)shareInstance{
     static dispatch_once_t onceToken;
@@ -24,8 +23,9 @@ static HKThreadUtil* _sharedHKThreadUtil;
 -(id)init{
     self = [super init];
     if (self) {
-        NSString* queueName = [[NSString alloc] initWithFormat:@"hkutil2.HKThreadUtil_asyncQueue_%@_%f",[self description],[[NSDate date] timeIntervalSince1970]];
-        _asyncQueue = dispatch_queue_create([queueName UTF8String], DISPATCH_QUEUE_CONCURRENT);
+//        NSString* queueName = [[NSString alloc] initWithFormat:@"hkutil2.HKThreadUtil_asyncQueue_%@_%f",[self description],[[NSDate date] timeIntervalSince1970]];
+//        _asyncQueue = dispatch_queue_create([queueName UTF8String], DISPATCH_QUEUE_CONCURRENT);
+        _asyncQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     }
     return self;
 }
@@ -58,6 +58,10 @@ static HKThreadUtil* _sharedHKThreadUtil;
             block();
         }
     });
+}
+
+-(void)asyncBlock:(void (^)(void))block toGroup:(dispatch_group_t)group{
+    dispatch_group_async(group, _asyncQueue, block);
 }
 
 @end

@@ -13,12 +13,23 @@
 #import <Foundation/Foundation.h>
 
 @interface HKThreadUtil : NSObject
+@property(nonatomic,assign)dispatch_queue_t asyncQueue;
 //单例
 +(HKThreadUtil*)shareInstance;
-//异步提交到并发队列中
+/**
+ 异步提交到并发队列中
+ */
 -(void)asyncBlock:(void (^)(void))block;
-//异步提交到主线程中
+/**
+ 异步提交到主线程中
+ */
 -(void)asyncBlockToMainThread:(void(^)(void))block;
-//同步提交到主线程中
--(void)syncBlockToMainThread:(void(^)(void))block;
+
+/**
+ 并发线程组的操作，当一组线程执行完毕，才能继续下面的操作
+ @param block 要执行的block
+ @param group 组
+ */
+-(void)asyncBlock:(void (^)(void))block toGroup:(dispatch_group_t)group;
+
 @end
