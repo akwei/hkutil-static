@@ -84,7 +84,7 @@
 -(void)writeData:(NSData*)data{
     HKSocket* me = self;
     [self workWithBlock:^{
-        [me.socket writeData:data withTimeout:self.timeout tag:1];
+        [me.socket writeData:data withTimeout:me.timeout tag:1];
     }];
 }
 
@@ -104,7 +104,7 @@
             remain = remain - writeSize;
             NSRange range = NSMakeRange(offset, writeSize);
             NSData* blockData = [data subdataWithRange:range];
-            [me.socket writeData:blockData withTimeout:self.timeout tag:1];
+            [me.socket writeData:blockData withTimeout:me.timeout tag:1];
             if (remain == 0) {
                 break;
             }
@@ -134,15 +134,15 @@
 
 #pragma mark - GCDAsyncSocket delegate
 
--(NSTimeInterval)socket:(GCDAsyncSocket *)sock shouldTimeoutReadWithTag:(long)tag elapsed:(NSTimeInterval)elapsed bytesDone:(NSUInteger)length{
-    NSLog(@"shouldTimeoutReadWithTag %lx",tag);
-    return self.timeout;
-}
-
--(NSTimeInterval)socket:(GCDAsyncSocket *)sock shouldTimeoutWriteWithTag:(long)tag elapsed:(NSTimeInterval)elapsed bytesDone:(NSUInteger)length{
-    NSLog(@"shouldTimeoutWriteWithTag %lx",tag);
-    return self.timeout;
-}
+//-(NSTimeInterval)socket:(GCDAsyncSocket *)sock shouldTimeoutReadWithTag:(long)tag elapsed:(NSTimeInterval)elapsed bytesDone:(NSUInteger)length{
+//    NSLog(@"shouldTimeoutReadWithTag %lx",tag);
+//    return self.timeout;
+//}
+//
+//-(NSTimeInterval)socket:(GCDAsyncSocket *)sock shouldTimeoutWriteWithTag:(long)tag elapsed:(NSTimeInterval)elapsed bytesDone:(NSUInteger)length{
+//    NSLog(@"shouldTimeoutWriteWithTag %lx",tag);
+//    return self.timeout;
+//}
 
 - (void)socket:(GCDAsyncSocket *)sender didConnectToHost:(NSString *)host port:(UInt16)port{
 #if HK_SOCKET_DEBUG
