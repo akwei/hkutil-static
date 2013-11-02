@@ -7,6 +7,7 @@
 //
 
 #import "HKShadowCtrl.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define kBlockKey @"block"
 #define kAnimationKey @"animation"
@@ -37,8 +38,7 @@
         animating = NO;
         self.viewControllers=[[NSMutableArray alloc] init];
         self.parent=parent;
-        CGRect parentFrame = parent.frame;
-        self.viewFrame = CGRectMake(0, 0, parentFrame.size.width, parentFrame.size.height);
+        self.viewFrame = self.parent.bounds;
         self.animationTime=.4;
         self.forwardType = kCATransitionPush;
         self.forwardSubType = kCATransitionFromRight;
@@ -54,37 +54,33 @@
 }
 
 -(void)loadView{
-    [super loadView];
-    animating=NO;
+    self.view = [[UIView alloc] initWithFrame:self.parent.bounds];
+}
+
+-(void)viewDidLoad{
     UIColor* clearColor = [UIColor clearColor];
     if (!self.shadowColor) {
         self.shadowColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:.5];
     }
     CGRect rect = self.viewFrame;
+    self.view.hidden=YES;
     self.view.frame = rect;
-    self.view.backgroundColor=clearColor;
+    self.view.backgroundColor = clearColor;
     self.view.clipsToBounds=YES;
-    [self.parent addSubview:self.view];
     UIViewAutoresizing defViewAutoresizing = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-    CGRect cFrame = CGRectMake(0, 0, rect.size.width, rect.size.height);
-    self.shadow=[[UIView alloc] initWithFrame:cFrame];
+    self.shadow=[[UIView alloc] initWithFrame:self.view.bounds];
     self.shadow.backgroundColor=self.shadowColor;
     self.shadow.alpha=0.5;
     self.shadow.autoresizesSubviews=YES;
     self.shadow.autoresizingMask=defViewAutoresizing;
     [self.view addSubview:self.shadow];
-    self.hkViewContainer=[[UIView alloc] initWithFrame:cFrame];
+    self.hkViewContainer=[[UIView alloc] initWithFrame:self.view.bounds];
     self.hkViewContainer.backgroundColor = self.shadowColor;
     self.hkViewContainer.autoresizingMask=defViewAutoresizing;
     self.hkViewContainer.clipsToBounds=YES;
     self.hkViewContainer.backgroundColor=clearColor;
     self.hkViewContainer.clearsContextBeforeDrawing=YES;
     [self.view addSubview:self.hkViewContainer];
-    self.view.hidden=YES;
-}
-
--(void)buildPosition{
-    self.view.frame = self.parent.bounds;
 }
 
 -(void)changeShadowColor:(UIColor *)shadowColor{
@@ -150,8 +146,6 @@
     if ([self.viewControllers count]>0) {
         UIViewController<HKShadowCtrlDelegate>* root = [self.viewControllers lastObject];
         return [self hkPopToViewController:root animation:animation onComplete:completeBlock];
-        //        NSRange range=NSMakeRange(0, [self.viewControllers count]-1);
-        //        return [self arrayForRemoved:range];
     }
     return nil;
 }
@@ -297,22 +291,14 @@
 
 -(void)showViewController:(UIViewController*)viewController animation:(CAAnimation*)animation onComplete:(void (^)(void))completeBlock{
     if (animation) {
-        animation.delegate = self;
-        animation.removedOnCompletion = YES;
         [animation setValue:completeBlock forKey:kBlockKey];
-        [self.hkViewContainer.layer addAnimation:animation forKey:nil];
         [self showView:viewController.view];
+        [self.hkViewContainer.layer addAnimation:animation forKey:@"ani"];
     }
     else{
         [self showView:viewController.view];
-        animating = NO;
+        [self finishProcessing];
     }
-}
-
--(void)show{
-    [self buildPosition];
-    self.view.hidden=NO;
-    [self.parent bringSubviewToFront:self.view];
 }
 
 /*
@@ -341,14 +327,13 @@
     CAAnimation* tr = [info valueForKey:kAnimationKey];
     void (^block)(void) = [info valueForKey:kBlockKey];
     if (tr) {
-        tr.delegate = self;
-        tr.removedOnCompletion = YES;
         if (block) {
             [tr setValue:block forKey:kBlockKey];
         }
-        [self.view.layer addAnimation:tr forKey:nil];
+        
         self.view.hidden = YES;
         [self clearAll];
+        [self.view.layer addAnimation:tr forKey:@"ani"];
     }
     else{
         self.view.hidden = YES;
@@ -356,7 +341,7 @@
         if (block) {
             block();
         }
-        animating=NO;
+        [self finishProcessing];
     }
 }
 
@@ -402,15 +387,15 @@
     CATransition *transition = [CATransition animation];
     transition.duration = self.animationTime;
     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    transition.type=type;
-    transition.subtype=subType;
-    transition.delegate=self;
+    transition.type = type;
+    transition.subtype = subType;
+    transition.delegate = self;
     transition.removedOnCompletion = YES;
     return transition;
 }
 
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
-    animating = NO;
+    [self finishProcessing];
     NSNumber* n_closeAni = [anim valueForKey:kCloseAni];
     if (n_closeAni) {
         self.view.hidden = YES;
@@ -432,12 +417,21 @@
     if (animating) {
         return NO;
     }
-    animating=YES;
+    animating = YES;
     return YES;
 }
 
+-(void)finishProcessing{
+    animating = NO;
+}
+
 -(void)showView:(UIView*)view{
-    [self show];
+    self.view.frame = self.parent.bounds;
+    self.view.hidden=NO;
+    if (!self.view.superview) {
+        [self.parent addSubview:self.view];
+    }
+    [self.parent bringSubviewToFront:self.view];
     CGPoint centerP=self.hkViewContainer.center;
     centerP = [self.hkViewContainer convertPoint:centerP fromView:self.hkViewContainer.superview];
     view.center=centerP;
