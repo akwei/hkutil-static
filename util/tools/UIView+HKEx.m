@@ -79,6 +79,7 @@
     CGPoint center = self.center;
     center = [self convertPoint:center fromView:self.superview];
     view.center = center;
+    [self addSubview:view];
 }
 
 -(void)addSubview:(UIView *)view animation:(CAAnimation *)animation toCenter:(BOOL)toCenter onCompleteBlock:(void (^)(void))onCompleteBlock{
@@ -310,6 +311,14 @@
     oview.frame = self.bounds;
     oview.backgroundColor = [UIColor clearColor];
     return oview;
+}
+
+-(void)fitSizeToSubviewsSize{
+    CGFloat width = [self getContentWidth];
+    CGFloat height = [self getContentHeight];
+    CGRect frame = self.frame;
+    frame.size = CGSizeMake(width, height);
+    self.frame = frame;
 }
 
 @end

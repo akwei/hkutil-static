@@ -185,4 +185,9 @@
  */
 -(UIView*)createViewFromSelf;
 
+/**
+ 调整自身frame，来适配子视图的完整显示
+ */
+-(void)fitSizeToSubviewsSize;
+
 @end
