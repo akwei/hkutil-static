@@ -291,9 +291,11 @@
 
 -(void)showViewController:(UIViewController*)viewController animation:(CAAnimation*)animation onComplete:(void (^)(void))completeBlock{
     if (animation) {
+        animation.delegate = self;
         [animation setValue:completeBlock forKey:kBlockKey];
         [self showView:viewController.view];
         [self.hkViewContainer.layer addAnimation:animation forKey:@"ani"];
+//        [self finishProcessing];
     }
     else{
         [self showView:viewController.view];
