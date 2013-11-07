@@ -25,6 +25,8 @@
 		9BA56D501820AB3A006A73FB /* UIImage+HKEx.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BA56D4D1820AADD006A73FB /* UIImage+HKEx.h */; };
 		9BC8BD3917ED818100DF9423 /* HKGridTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC8BD3717ED818100DF9423 /* HKGridTableView.m */; };
 		9BC8BD3A17ED819300DF9423 /* HKGridTableView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BC8BD3817ED818100DF9423 /* HKGridTableView.h */; };
+		9BCA99BA182BB37400A81788 /* HKTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA99B9182BB37400A81788 /* HKTableViewCell.m */; };
+		9BCA99BB182BB4EF00A81788 /* HKTableViewCell.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BCA99B8182BB37400A81788 /* HKTableViewCell.h */; };
 		9BE0B89E17E80AC700B96412 /* HKAnimationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE0B89D17E80AC700B96412 /* HKAnimationUtil.m */; };
 		9BFFA94617E48D7400F353A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFFA94517E48D7400F353A5 /* Foundation.framework */; };
 		9BFFA94D17E48D7400F353A5 /* hkutil_static.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA94C17E48D7400F353A5 /* hkutil_static.m */; };
@@ -147,6 +149,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				9BCA99BB182BB4EF00A81788 /* HKTableViewCell.h in CopyFiles */,
 				9BA56D501820AB3A006A73FB /* UIImage+HKEx.h in CopyFiles */,
 				9B6E21ED181CC10700BF154D /* NSArray+HKEx.h in CopyFiles */,
 				9B6E21EE181CC10700BF154D /* NSMutableArray+HKEx.h in CopyFiles */,
@@ -233,6 +236,8 @@
 		9BA56D4E1820AADD006A73FB /* UIImage+HKEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HKEx.m"; sourceTree = "<group>"; };
 		9BC8BD3717ED818100DF9423 /* HKGridTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKGridTableView.m; sourceTree = "<group>"; };
 		9BC8BD3817ED818100DF9423 /* HKGridTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKGridTableView.h; sourceTree = "<group>"; };
+		9BCA99B8182BB37400A81788 /* HKTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKTableViewCell.h; sourceTree = "<group>"; };
+		9BCA99B9182BB37400A81788 /* HKTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKTableViewCell.m; sourceTree = "<group>"; };
 		9BE0B89C17E80AC600B96412 /* HKAnimationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKAnimationUtil.h; sourceTree = "<group>"; };
 		9BE0B89D17E80AC700B96412 /* HKAnimationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKAnimationUtil.m; sourceTree = "<group>"; };
 		9BFFA94217E48D7400F353A5 /* libhkutil-static.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libhkutil-static.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -629,6 +634,8 @@
 				9B6E21EB181CBE4B00BF154D /* NSMutableArray+HKEx.m */,
 				9BA56D4D1820AADD006A73FB /* UIImage+HKEx.h */,
 				9BA56D4E1820AADD006A73FB /* UIImage+HKEx.m */,
+				9BCA99B8182BB37400A81788 /* HKTableViewCell.h */,
+				9BCA99B9182BB37400A81788 /* HKTableViewCell.m */,
 			);
 			path = tools;
 			sourceTree = "<group>";
@@ -719,6 +726,7 @@
 				9BFFA9E317E48DE500F353A5 /* HKDeviceUtil.m in Sources */,
 				9BFFA9E417E48DE500F353A5 /* HKDownloader.m in Sources */,
 				9BFFA9E517E48DE500F353A5 /* HKEncUtil.m in Sources */,
+				9BCA99BA182BB37400A81788 /* HKTableViewCell.m in Sources */,
 				9BFFA9E617E48DE500F353A5 /* HKFileUtil.m in Sources */,
 				9BFFA9E717E48DE500F353A5 /* HKKeyboardNotice.m in Sources */,
 				9BFFA9E817E48DE500F353A5 /* HKKVEncoder.m in Sources */,
