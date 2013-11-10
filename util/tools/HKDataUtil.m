@@ -90,6 +90,7 @@
 +(NSString *)formatNumber:(NSNumber *)n format:(NSString *)format{
     NSNumberFormatter* fmt = [[NSNumberFormatter alloc] init];
     fmt.positiveFormat = format;
+    fmt.roundingMode = NSNumberFormatterRoundFloor;
     return [fmt stringFromNumber:n];
 }
 
