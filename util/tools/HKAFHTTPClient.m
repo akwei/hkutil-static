@@ -36,6 +36,7 @@
         self.cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
         [self.cookieStorage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
         self.forText = YES;
+        self.debug = NO;
         condition = [[NSCondition alloc] init];
         NSString* qname = [[NSString alloc] initWithFormat:@"HKAFHTTPClient._asyncQueue.name.%@",[self description]];
         _asyncQueue = dispatch_queue_create([qname UTF8String], DISPATCH_QUEUE_CONCURRENT);
@@ -71,14 +72,16 @@
     operation.successCallbackQueue = _asyncQueue;
     operation.failureCallbackQueue = _asyncQueue;
     [self.client enqueueHTTPRequestOperation:operation];
-#if DEBUG_HKAFHTTPClient
-    NSLog(@"url:%@",[[NSURL URLWithString:self.subUrl relativeToURL:[NSURL URLWithString:self.baseUrl]] absoluteString]);
-    NSLog(@"http request %@",[request description]);
-    NSLog(@"request data :\n");
-    [self.params enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        NSLog(@"%@=%@",key,obj);
-    }];
-#endif
+
+    if (self.debug) {
+        NSLog(@"url:%@",[[NSURL URLWithString:self.subUrl relativeToURL:[NSURL URLWithString:self.baseUrl]] absoluteString]);
+        NSLog(@"http request %@",[request description]);
+        NSLog(@"request data :\n");
+        [self.params enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            NSLog(@"%@=%@",key,obj);
+        }];
+    }
+
     while (!_done) {
         [condition wait];
     }
@@ -126,16 +129,18 @@
     if (self.forText && self.responseData) {
         self.responseString = [[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding];
     }
-#if DEBUG_HKAFHTTPClient
-    NSLog(@"responseStatusCode:%d",self.responseStatusCode);
-    NSLog(@"responseStatusText:%@",self.responseStatusText);
-    if (self.forText) {
-        NSLog(@"responseString:%@",self.responseString);
+    
+    if (self.debug) {
+        NSLog(@"responseStatusCode:%d",self.responseStatusCode);
+        NSLog(@"responseStatusText:%@",self.responseStatusText);
+        if (self.forText) {
+            NSLog(@"responseString:%@",self.responseString);
+        }
+        if (error) {
+            NSLog(@"http error:%@",[error description]);
+        }
     }
-    if (error) {
-        NSLog(@"http error:%@",[error description]);
-    }
-#endif
+    
     _done = YES;
     [condition signal];
     [condition unlock];
@@ -296,20 +301,6 @@ void myRunLoopObserver(CFRunLoopObserverRef observer, CFRunLoopActivity activity
 
 -(void)addCookie:(NSHTTPCookie *)cookie{
     [self.cookieStorage setCookie:cookie];
-}
-
-#pragma mark - common method
-
-- (NSString*)encodeURL:(NSString *)string
-{
-    NSString *encodedString = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
-                                                                                                    NULL,
-                                                                                                    (__bridge CFStringRef)string,
-                                                                                                    NULL,
-                                                                                                    //                                                                                  (CFStringRef)@"!*'();:@&=+$,/?%#[]",
-                                                                                                    (CFStringRef)@":/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`",
-                                                                                                    kCFStringEncodingUTF8 ));
-    return encodedString;
 }
 
 #pragma mark - override

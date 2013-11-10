@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#define DEBUG_HKAFHTTPClient 1
-
 @interface HKAFHTTPClient : NSObject
 @property(nonatomic,copy) NSString* baseUrl;
 @property(nonatomic,copy) NSString* subUrl;
@@ -23,6 +21,7 @@
 @property(nonatomic,copy)NSString* responseStatusText;
 @property(nonatomic,strong) NSArray* responseCookies;
 @property(nonatomic,strong) NSMutableDictionary* params;
+@property(nonatomic,assign)BOOL debug;
 
 -(void)addString:(NSString*)value forKey:(NSString *)key;
 -(void)addInteger:(NSInteger)value forKey:(NSString*)key;
