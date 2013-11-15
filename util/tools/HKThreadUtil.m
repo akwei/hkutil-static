@@ -44,6 +44,10 @@ static HKThreadUtil* _sharedHKThreadUtil;
     });
 }
 
+-(void)async:(void (^)(void))block{
+    [self asyncBlock:block];
+}
+
 -(void)asyncBlockToMainThread:(void (^)(void))block{
     dispatch_async(dispatch_get_main_queue(), ^{
         @autoreleasepool {
@@ -52,16 +56,16 @@ static HKThreadUtil* _sharedHKThreadUtil;
     });
 }
 
--(void)syncBlockToMainThread:(void (^)(void))block{
-    dispatch_sync(dispatch_get_main_queue(),  ^{
-        @autoreleasepool {
-            block();
-        }
-    });
+-(void)asyncToMainThread:(void (^)(void))block{
+    [self asyncBlockToMainThread:block];
 }
 
 -(void)asyncBlock:(void (^)(void))block toGroup:(dispatch_group_t)group{
     dispatch_group_async(group, _asyncQueue, block);
+}
+
+-(void)async:(void (^)(void))block toGroup:(dispatch_group_t)group{
+    [self asyncBlock:block toGroup:group];
 }
 
 @end
