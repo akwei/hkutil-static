@@ -8,6 +8,7 @@
 
 #import "HKGridTableView.h"
 #import "HKPageHelper.h"
+#import "UIView+HKEx.h"
 
 @interface HKGridTableViewCell ()
 //单元格view数组,当UITableViewCell重用时,数组中的view也可以重用
@@ -106,19 +107,44 @@
         UIView* view = [self.gridTableViewDelegate gridTableView:self viewForCell:cell section:indexPath.section indexInRow:k dataIndex:i];
         [list addObject:view];
     }
+    //new
+    __weak UIView* last = nil;
+    for (UIView* view in list) {
+        [cell.gridViewList removeObject:view];
+        if (!view.superview) {
+            if (last) {
+                [cell.contentView addSubview:view right:last distance:0 top:0 bottom:0];
+            }
+            else{
+                CGRect frame = view.frame;
+                frame.origin = CGPointMake(0, 0);
+                view.frame = frame;
+                [cell.contentView addSubview:view];
+            }
+        }
+        last = view;
+    }
     for (UIView* view in cell.gridViewList) {
         [view removeFromSuperview];
     }
     [cell.gridViewList removeAllObjects];
-    CGFloat x = 0;
-    for (UIView* view in list) {
-        CGRect frame = view.frame;
-        frame.origin.x = x;
-        view.frame = frame;
-        [cell addSubview:view];
-        [cell.gridViewList addObject:view];
-        x = x + frame.size.width;
-    }
+    [cell.gridViewList addObjectsFromArray:list];
+    //new end
+    // old
+//    for (UIView* view in cell.gridViewList) {
+//        [view removeFromSuperview];
+//    }
+//    [cell.gridViewList removeAllObjects];
+//    CGFloat x = 0;
+//    for (UIView* view in list) {
+//        CGRect frame = view.frame;
+//        frame.origin.x = x;
+//        view.frame = frame;
+//        [cell.contentView addSubview:view];
+//        [cell.gridViewList addObject:view];
+//        x = x + frame.size.width;
+//    }
+    // old end
     return cell;
 }
 

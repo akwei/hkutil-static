@@ -88,7 +88,7 @@
         center = [self convertPoint:center fromView:self.superview];
         view.center = center;
     }
-    [self addSubview:view];
+    
     if (animation) {
         animation.delegate = self;
         animation.removedOnCompletion = YES;
@@ -96,8 +96,10 @@
             [animation setValue:onCompleteBlock forKey:@"onCompleteBlock"];
         }
         [self.layer addAnimation:animation forKey:nil];
+        [self addSubview:view];
     }
     else{
+        [self addSubview:view];
         if (onCompleteBlock) {
             onCompleteBlock();
         }
@@ -108,7 +110,7 @@
     CATransition *transition = nil;
     if (animated) {
         transition = [CATransition animation];
-        transition.duration = .4;
+        transition.duration = .25;
         transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         transition.type=kCATransitionFade;
     }
@@ -197,7 +199,7 @@
     void (^onCompleteBlock) (void) = [info valueForKey:@"onCompleteBlock"];
     if (animated) {
         CATransition *transition = [CATransition animation];
-        transition.duration = .4;
+        transition.duration = .25;
         transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         transition.type=kCATransitionFade;
         transition.delegate = self;
