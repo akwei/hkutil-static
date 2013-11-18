@@ -12,7 +12,6 @@
 #define kBlockKey @"block"
 #define kAnimationKey @"animation"
 #define kCloseAni @"closeAni"
-#define HKShaodCtrlDebug 0
 
 @interface HKShadowCtrl ()
 @property(nonatomic,strong)NSMutableArray* viewControllers;
@@ -36,6 +35,7 @@
     self = [super init];
     if (self) {
         animating = NO;
+        self.debug = NO;
         self.viewControllers=[[NSMutableArray alloc] init];
         self.parent=parent;
         self.viewFrame = self.parent.bounds;
@@ -114,9 +114,9 @@
     viewController.shadowCtrl=self;
     [self.viewControllers insertObject:viewController atIndex:0];
     [self showViewController:viewController animation:animation onComplete:completeBlock];
-#if HKShaodCtrlDebug
-    NSLog(@"current viewControllers count:%i",[self.viewControllers count]);
-#endif
+    if (self.debug) {
+        NSLog(@"current viewControllers count:%i",[self.viewControllers count]);
+    }
 }
 
 #pragma mark - popToRoot
@@ -315,9 +315,9 @@
         [arr addObject:[self.viewControllers objectAtIndex:i]];
     }
     [self.viewControllers removeObjectsInRange:range];
-#if HKShaodCtrlDebug
-    NSLog(@"current viewControllers count:%i",[self.viewControllers count]);
-#endif
+    if (self.debug) {
+        NSLog(@"current viewControllers count:%i",[self.viewControllers count]);
+    }
     return arr;
 }
 

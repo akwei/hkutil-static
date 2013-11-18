@@ -72,7 +72,6 @@
 		9BFFA9EC17E48DE500F353A5 /* HKRSAUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA9AE17E48DE500F353A5 /* HKRSAUtil.m */; };
 		9BFFA9ED17E48DE500F353A5 /* HKRunLoopObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA9B017E48DE500F353A5 /* HKRunLoopObj.m */; };
 		9BFFA9EE17E48DE500F353A5 /* HKShadowCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA9B217E48DE500F353A5 /* HKShadowCtrl.m */; };
-		9BFFA9EF17E48DE500F353A5 /* HKShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA9B417E48DE500F353A5 /* HKShadowView.m */; };
 		9BFFA9F017E48DE500F353A5 /* HKSQLQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA9B617E48DE500F353A5 /* HKSQLQuery.m */; };
 		9BFFA9F117E48DE500F353A5 /* HKThreadUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA9B817E48DE500F353A5 /* HKThreadUtil.m */; };
 		9BFFA9F217E48DE500F353A5 /* HKTimerInvoker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA9BA17E48DE500F353A5 /* HKTimerInvoker.m */; };
@@ -131,7 +130,6 @@
 		9BFFAD1A17E4B1B600F353A5 /* HKRSAUtil.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA9AD17E48DE500F353A5 /* HKRSAUtil.h */; };
 		9BFFAD1C17E4B1B600F353A5 /* HKRunLoopObj.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA9AF17E48DE500F353A5 /* HKRunLoopObj.h */; };
 		9BFFAD1E17E4B1B600F353A5 /* HKShadowCtrl.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA9B117E48DE500F353A5 /* HKShadowCtrl.h */; };
-		9BFFAD2017E4B1B600F353A5 /* HKShadowView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA9B317E48DE500F353A5 /* HKShadowView.h */; };
 		9BFFAD2217E4B1B600F353A5 /* HKSQLQuery.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA9B517E48DE500F353A5 /* HKSQLQuery.h */; };
 		9BFFAD2417E4B1B600F353A5 /* HKThreadUtil.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA9B717E48DE500F353A5 /* HKThreadUtil.h */; };
 		9BFFAD2617E4B1B600F353A5 /* HKTimerInvoker.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA9B917E48DE500F353A5 /* HKTimerInvoker.h */; };
@@ -202,7 +200,6 @@
 				9BFFAD1A17E4B1B600F353A5 /* HKRSAUtil.h in CopyFiles */,
 				9BFFAD1C17E4B1B600F353A5 /* HKRunLoopObj.h in CopyFiles */,
 				9BFFAD1E17E4B1B600F353A5 /* HKShadowCtrl.h in CopyFiles */,
-				9BFFAD2017E4B1B600F353A5 /* HKShadowView.h in CopyFiles */,
 				9BFFAD2217E4B1B600F353A5 /* HKSQLQuery.h in CopyFiles */,
 				9BFFAD2417E4B1B600F353A5 /* HKThreadUtil.h in CopyFiles */,
 				9BFFAD2617E4B1B600F353A5 /* HKTimerInvoker.h in CopyFiles */,
@@ -331,8 +328,6 @@
 		9BFFA9B017E48DE500F353A5 /* HKRunLoopObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKRunLoopObj.m; sourceTree = "<group>"; };
 		9BFFA9B117E48DE500F353A5 /* HKShadowCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKShadowCtrl.h; sourceTree = "<group>"; };
 		9BFFA9B217E48DE500F353A5 /* HKShadowCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKShadowCtrl.m; sourceTree = "<group>"; };
-		9BFFA9B317E48DE500F353A5 /* HKShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKShadowView.h; sourceTree = "<group>"; };
-		9BFFA9B417E48DE500F353A5 /* HKShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKShadowView.m; sourceTree = "<group>"; };
 		9BFFA9B517E48DE500F353A5 /* HKSQLQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKSQLQuery.h; sourceTree = "<group>"; };
 		9BFFA9B617E48DE500F353A5 /* HKSQLQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKSQLQuery.m; sourceTree = "<group>"; };
 		9BFFA9B717E48DE500F353A5 /* HKThreadUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKThreadUtil.h; sourceTree = "<group>"; };
@@ -607,8 +602,6 @@
 				9BFFA9B017E48DE500F353A5 /* HKRunLoopObj.m */,
 				9BFFA9B117E48DE500F353A5 /* HKShadowCtrl.h */,
 				9BFFA9B217E48DE500F353A5 /* HKShadowCtrl.m */,
-				9BFFA9B317E48DE500F353A5 /* HKShadowView.h */,
-				9BFFA9B417E48DE500F353A5 /* HKShadowView.m */,
 				9BFFA9B517E48DE500F353A5 /* HKSQLQuery.h */,
 				9BFFA9B617E48DE500F353A5 /* HKSQLQuery.m */,
 				9BFFA9B717E48DE500F353A5 /* HKThreadUtil.h */,
@@ -743,7 +736,6 @@
 				9BFFA9EC17E48DE500F353A5 /* HKRSAUtil.m in Sources */,
 				9BFFA9ED17E48DE500F353A5 /* HKRunLoopObj.m in Sources */,
 				9BFFA9EE17E48DE500F353A5 /* HKShadowCtrl.m in Sources */,
-				9BFFA9EF17E48DE500F353A5 /* HKShadowView.m in Sources */,
 				9BFFA9F017E48DE500F353A5 /* HKSQLQuery.m in Sources */,
 				9BFFA9F117E48DE500F353A5 /* HKThreadUtil.m in Sources */,
 				9BFFA9F217E48DE500F353A5 /* HKTimerInvoker.m in Sources */,
