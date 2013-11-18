@@ -20,6 +20,7 @@
 
 @interface HKShadowCtrl : UIViewController
 @property(nonatomic,copy)NSString* closeType;
+@property(nonatomic,assign)BOOL debug;
 
 -(void)changeShadowColor:(UIColor *)shadowColor;
 
