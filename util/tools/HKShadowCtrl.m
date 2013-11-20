@@ -60,7 +60,7 @@
 -(void)viewDidLoad{
     UIColor* clearColor = [UIColor clearColor];
     if (!self.shadowColor) {
-        self.shadowColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:7];
+        self.shadowColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:.7];
     }
     CGRect rect = self.viewFrame;
     self.view.hidden=YES;
