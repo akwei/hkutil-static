@@ -60,7 +60,7 @@
 -(void)viewDidLoad{
     UIColor* clearColor = [UIColor clearColor];
     if (!self.shadowColor) {
-        self.shadowColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:.8];
+        self.shadowColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:.7];
     }
     CGRect rect = self.viewFrame;
     self.view.hidden=YES;
@@ -70,7 +70,6 @@
     UIViewAutoresizing defViewAutoresizing = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     self.shadow=[[UIView alloc] initWithFrame:self.view.bounds];
     self.shadow.backgroundColor=self.shadowColor;
-    self.shadow.alpha=0.5;
     self.shadow.autoresizesSubviews=YES;
     self.shadow.autoresizingMask=defViewAutoresizing;
     [self.view addSubview:self.shadow];
