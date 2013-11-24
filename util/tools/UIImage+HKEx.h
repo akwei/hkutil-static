@@ -16,4 +16,16 @@
  */
 +(UIImage*)imageWithColor:(UIColor*)color;
 
+/**
+ 缩放到最宽边
+ @param maxWidth 最宽边
+ */
+-(UIImage*)toMaxWidth:(CGFloat)maxWidth;
+
+/**
+ 缩放到最宽边像素
+ @param maxWidth 最宽边像素
+ */
+-(UIImage*)toMaxWidthPixel:(CGFloat)maxWidthPixel;
+
 @end

@@ -190,4 +190,9 @@
  */
 -(void)fitSizeToSubviewsSize;
 
+/**
+ 获得子视图的中心点
+ */
+-(CGPoint)getSubViewCenter;
+
 @end

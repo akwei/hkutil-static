@@ -324,4 +324,10 @@
     self.frame = frame;
 }
 
+-(CGPoint)getSubViewCenter{
+    CGPoint center = self.center;
+    center = [self convertPoint:center fromView:self.superview];
+    return center;
+}
+
 @end
