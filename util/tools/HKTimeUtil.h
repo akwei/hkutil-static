@@ -15,6 +15,12 @@
 @property(nonatomic,assign)NSInteger hour;
 @property(nonatomic,assign)NSInteger minute;
 @property(nonatomic,assign)NSInteger second;
+@property(nonatomic,assign)NSInteger weekDay;
+
+/**
+ 获得星期的中文表示
+ */
+-(NSString*)getWeekDayChinese;
 
 @end
 
@@ -24,11 +30,19 @@
 
 +(NSString*)stringWithDoubleDate:(double)doubleDate format:(NSString*)format;
 
+/**
+ 获得日期信息
+ @param date
+ */
 +(HKTimeInfo*)timeInfoWithDoubleDate:(double)date;
 
+/**
+ 获得日期信息
+ @param date
+ */
 +(HKTimeInfo*)timeInfoWithDate:(NSDate*)date;
 
-+(HKTimeInfo*)timeInfoWithDoubleDate:(double)date toDoubleDate:(double)toDate;
+//+(HKTimeInfo*)timeInfoWithDoubleDate:(double)date toDoubleDate:(double)toDate;
 
 +(double)nowDoubleDate;
 

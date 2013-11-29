@@ -10,6 +10,31 @@
 
 @implementation HKTimeInfo
 
+-(NSString *)getWeekDayChinese{
+    if (self.weekDay == 1) {
+        return @"星期日";
+    }
+    if (self.weekDay == 2) {
+        return @"星期一";
+    }
+    if (self.weekDay == 3) {
+        return @"星期二";
+    }
+    if (self.weekDay == 4) {
+        return @"星期三";
+    }
+    if (self.weekDay == 5) {
+        return @"星期四";
+    }
+    if (self.weekDay == 6) {
+        return @"星期五";
+    }
+    if (self.weekDay == 7) {
+        return @"星期六";
+    }
+    return @"";
+}
+
 @end
 
 @implementation HKTimeUtil
@@ -41,7 +66,7 @@
 
 +(HKTimeInfo *)timeInfoWithDate:(NSDate *)date{
     NSCalendar* cal=[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSUInteger unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit;
+    NSUInteger unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit | NSWeekdayCalendarUnit;
     NSDateComponents* cps=[cal components:unitFlags fromDate:date];
     if (!cps) {
         return nil;
@@ -53,6 +78,7 @@
     info.hour=[cps hour];
     info.minute=[cps minute];
     info.second=[cps second];
+    info.weekDay = [cps weekday];
     return info;
 }
 
@@ -77,6 +103,7 @@
     info.hour=[cps hour];
     info.minute=[cps minute];
     info.second=[cps second];
+    info.weekDay = 0;
     return info;
 }
 
@@ -139,6 +166,14 @@
     tinfo.second = 59;
     NSDate* d = [self buildDateWithYear:tinfo.year month:tinfo.month day:tinfo.day hour:tinfo.hour minute:tinfo.minute second:tinfo.second];
     return d;
+}
+
++(NSString *)getWeekDayChineseWithDate:(NSDate *)date{
+    
+}
+
++(NSString *)getWeekDayChineseWithDouble:(double)doubleValue{
+    
 }
 
 @end
