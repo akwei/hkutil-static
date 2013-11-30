@@ -168,12 +168,4 @@
     return d;
 }
 
-+(NSString *)getWeekDayChineseWithDate:(NSDate *)date{
-    
-}
-
-+(NSString *)getWeekDayChineseWithDouble:(double)doubleValue{
-    
-}
-
 @end

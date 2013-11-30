@@ -9,5 +9,4 @@
 #import "NSString+HKEx.h"
 
 @implementation NSString (HKEx)
-
 @end
