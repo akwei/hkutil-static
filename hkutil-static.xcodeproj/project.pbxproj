@@ -12,6 +12,7 @@
 		9B1F435217F9909F009E7E4F /* HKPrinterCfg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1F435117F9909F009E7E4F /* HKPrinterCfg.m */; };
 		9B1F435317F99242009E7E4F /* HKPrinterCfg.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B1F435017F9909F009E7E4F /* HKPrinterCfg.h */; };
 		9B1F435417F99242009E7E4F /* HKCommonPrinter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B0F63D217F9581B0093797C /* HKCommonPrinter.h */; };
+		9B51D086184B861C009E6E09 /* UILabel+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B51D085184B861C009E6E09 /* UILabel+HKEx.m */; };
 		9B68FFBB17FBE1C1006F98A2 /* HKSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B68FFBA17FBE1C1006F98A2 /* HKSocket.m */; };
 		9B6E21DF181BA71C00BF154D /* NSDictionary+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E21DE181BA71C00BF154D /* NSDictionary+HKEx.m */; };
 		9B6E21E2181BA80600BF154D /* NSMutableDictionary+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E21E1181BA80600BF154D /* NSMutableDictionary+HKEx.m */; };
@@ -219,6 +220,8 @@
 		9B0F63D317F9581B0093797C /* HKCommonPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKCommonPrinter.m; sourceTree = "<group>"; };
 		9B1F435017F9909F009E7E4F /* HKPrinterCfg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKPrinterCfg.h; sourceTree = "<group>"; };
 		9B1F435117F9909F009E7E4F /* HKPrinterCfg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKPrinterCfg.m; sourceTree = "<group>"; };
+		9B51D084184B861C009E6E09 /* UILabel+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+HKEx.h"; sourceTree = "<group>"; };
+		9B51D085184B861C009E6E09 /* UILabel+HKEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+HKEx.m"; sourceTree = "<group>"; };
 		9B68FFB917FBE1C1006F98A2 /* HKSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKSocket.h; sourceTree = "<group>"; };
 		9B68FFBA17FBE1C1006F98A2 /* HKSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKSocket.m; sourceTree = "<group>"; };
 		9B6E21DD181BA71C00BF154D /* NSDictionary+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+HKEx.h"; sourceTree = "<group>"; };
@@ -634,6 +637,8 @@
 				9BCA99B9182BB37400A81788 /* HKTableViewCell.m */,
 				9B8102CA182F40120019E0B4 /* NSString+HKEx.h */,
 				9B8102CB182F40130019E0B4 /* NSString+HKEx.m */,
+				9B51D084184B861C009E6E09 /* UILabel+HKEx.h */,
+				9B51D085184B861C009E6E09 /* UILabel+HKEx.m */,
 			);
 			path = tools;
 			sourceTree = "<group>";
@@ -699,6 +704,7 @@
 				9BFFA9CD17E48DE500F353A5 /* HKTextImage.m in Sources */,
 				9BFFA9CE17E48DE500F353A5 /* RasterDocument.m in Sources */,
 				9BFFA9CF17E48DE500F353A5 /* StarBitmap.m in Sources */,
+				9B51D086184B861C009E6E09 /* UILabel+HKEx.m in Sources */,
 				9BFFA9D017E48DE500F353A5 /* AFHTTPClient.m in Sources */,
 				9BFFA9D117E48DE500F353A5 /* AFHTTPRequestOperation.m in Sources */,
 				9BFFA9D217E48DE500F353A5 /* AFImageRequestOperation.m in Sources */,
