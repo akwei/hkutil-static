@@ -9,4 +9,13 @@
 #import "NSString+HKEx.h"
 
 @implementation NSString (HKEx)
+
+-(NSInteger)indexOf:(NSString *)str{
+    NSRange range = [self rangeOfString:str];
+    if (range.length > 0) {
+        return range.location;
+    }
+    return -1;
+}
+
 @end

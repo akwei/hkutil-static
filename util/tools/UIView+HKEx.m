@@ -330,4 +330,23 @@
     return center;
 }
 
+-(BOOL)canShowView:(UIView *)view left:(UIView *)refView distance:(CGFloat)distance{
+    if (refView.frame.origin.x - distance - view.frame.size.width >= 0) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL)canShowView:(UIView *)view right:(UIView *)refView distance:(CGFloat)distance{
+    if (self.frame.origin.x + self.frame.size.width >= refView.frame.origin.x + refView.frame.size.width + distance + view.frame.size.width) {
+        return YES;
+    }
+    return NO;
+}
+
+//-(void)removeAllSubviews{
+//    NSMutableArray* list = [[NSMutableArray alloc] init];
+//    
+//}
+
 @end

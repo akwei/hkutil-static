@@ -195,4 +195,25 @@
  */
 -(CGPoint)getSubViewCenter;
 
+/**
+ 是否能完全显示需要添加的视图，view将在当前子视图的左边出现
+ @param view 将要添加的视图
+ @para refView 已经添加的子视图
+ @param distance 距离reView左边的距离，正数向左，负数向右
+ */
+-(BOOL)canShowView:(UIView*)view left:(UIView*)refView distance:(CGFloat)distance;
+
+/**
+ 是否能完全显示需要添加的视图，view将在当前子视图的右边出现
+ @param view 将要添加的视图
+ @para refView 已经添加的子视图
+ @param distance 距离reView右边的距离，正数向右，负数向左
+ */
+-(BOOL)canShowView:(UIView*)view right:(UIView*)refView distance:(CGFloat)distance;
+
+/**
+ 把所有子视图从当前视图中移除
+ */
+//-(void)removeAllSubviews;
+
 @end
