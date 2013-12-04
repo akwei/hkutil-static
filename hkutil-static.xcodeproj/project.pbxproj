@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9B00540E17E80D9400231190 /* HKAnimationUtil.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BE0B89C17E80AC600B96412 /* HKAnimationUtil.h */; };
+		9B0E1067184EB9DD00C5D429 /* HKArrayMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0E1066184EB9DD00C5D429 /* HKArrayMap.m */; };
+		9B0E1068184EBB7400C5D429 /* HKArrayMap.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B0E1065184EB9DD00C5D429 /* HKArrayMap.h */; };
 		9B0F63D417F9581B0093797C /* HKCommonPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0F63D317F9581B0093797C /* HKCommonPrinter.m */; };
 		9B1F435217F9909F009E7E4F /* HKPrinterCfg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1F435117F9909F009E7E4F /* HKPrinterCfg.m */; };
 		9B1F435317F99242009E7E4F /* HKPrinterCfg.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B1F435017F9909F009E7E4F /* HKPrinterCfg.h */; };
@@ -149,6 +151,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				9B0E1068184EBB7400C5D429 /* HKArrayMap.h in CopyFiles */,
 				9BCA99BB182BB4EF00A81788 /* HKTableViewCell.h in CopyFiles */,
 				9BA56D501820AB3A006A73FB /* UIImage+HKEx.h in CopyFiles */,
 				9B6E21ED181CC10700BF154D /* NSArray+HKEx.h in CopyFiles */,
@@ -216,6 +219,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9B0E1065184EB9DD00C5D429 /* HKArrayMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKArrayMap.h; sourceTree = "<group>"; };
+		9B0E1066184EB9DD00C5D429 /* HKArrayMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKArrayMap.m; sourceTree = "<group>"; };
 		9B0F63D217F9581B0093797C /* HKCommonPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKCommonPrinter.h; sourceTree = "<group>"; };
 		9B0F63D317F9581B0093797C /* HKCommonPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKCommonPrinter.m; sourceTree = "<group>"; };
 		9B1F435017F9909F009E7E4F /* HKPrinterCfg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKPrinterCfg.h; sourceTree = "<group>"; };
@@ -639,6 +644,8 @@
 				9B8102CB182F40130019E0B4 /* NSString+HKEx.m */,
 				9B51D084184B861C009E6E09 /* UILabel+HKEx.h */,
 				9B51D085184B861C009E6E09 /* UILabel+HKEx.m */,
+				9B0E1065184EB9DD00C5D429 /* HKArrayMap.h */,
+				9B0E1066184EB9DD00C5D429 /* HKArrayMap.m */,
 			);
 			path = tools;
 			sourceTree = "<group>";
@@ -696,6 +703,7 @@
 			files = (
 				9BFFA94D17E48D7400F353A5 /* hkutil_static.m in Sources */,
 				9BFFA9C517E48DE500F353A5 /* HKPOSTable.m in Sources */,
+				9B0E1067184EB9DD00C5D429 /* HKArrayMap.m in Sources */,
 				9BFFA9C617E48DE500F353A5 /* HKPrinter.m in Sources */,
 				9BFFA9C717E48DE500F353A5 /* HKPrinterBitmap.m in Sources */,
 				9BFFA9C817E48DE500F353A5 /* HKRFPrinter.m in Sources */,
