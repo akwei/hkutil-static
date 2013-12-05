@@ -39,4 +39,10 @@
 
 +(BOOL)isDictionary:(id)obj;
 
+/**
+ 获得字节数据指定位的数据
+ @param bitIndex
+ */
++(NSInteger)getBit:(NSInteger)bitIndex fromByte:(char)byte;
+
 @end

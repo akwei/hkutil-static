@@ -125,4 +125,8 @@
     return NO;
 }
 
++(NSInteger)getBit:(NSInteger)bitIndex fromByte:(char)byte{
+    return (byte >> bitIndex) & 1;
+}
+
 @end

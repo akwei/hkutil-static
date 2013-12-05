@@ -19,7 +19,7 @@
     if (self) {
         self.host = host;
         self.port = port;
-        self.timeoutMillis = 5000;
+        self.timeout = 5;
         _commandData = [[NSMutableData alloc] init];
     }
     return self;
@@ -40,7 +40,7 @@
 }
 
 -(void)connect{
-    _socket = [[HKSocket alloc] initWithHost:self.host port:self.port timeout:self.timeoutMillis/1000];
+    _socket = [[HKSocket alloc] initWithHost:self.host port:self.port timeout:self.timeout];
     @try {
         [_socket open];
     }
@@ -52,6 +52,10 @@
     }
 }
 
+-(void)send{
+    [self sendWithBlockSize:16];
+}
+
 -(void)sendWithBlockSize:(NSUInteger)blockSize{
     @try {
         [_socket writeData:self.commandData blockSize:blockSize];
@@ -59,6 +63,16 @@
         _commandData = [[NSMutableData alloc] init];
     }
     @catch (HKSocketException* e) {
+        HKPrinterException* ex = (HKPrinterException*)[HKPrinterException exceptionWithName:@"printer io err" reason:e.reason userInfo:nil];
+        @throw ex;
+    }
+}
+
+-(NSData *)read{
+    @try {
+        return [_socket readData];
+    }
+    @catch (HKSocketException *e) {
         HKPrinterException* ex = (HKPrinterException*)[HKPrinterException exceptionWithName:@"printer io err" reason:e.reason userInfo:nil];
         @throw ex;
     }

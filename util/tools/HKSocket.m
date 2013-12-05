@@ -206,15 +206,22 @@
         if (![self.socket connectToHost:self.host onPort:self.port withTimeout:self.timeout error:&err]) // Asynchronous!
         {
             // If there was an error, it's likely something like "already connected" or "no delegate set"
-            ex = [HKSocketConnectionException exceptionWithName:@"connect error" reason:[err description] userInfo:nil];
+            NSString* name = [NSString stringWithFormat:@"connect to [%@:%llu] error",self.host,(unsigned long long)self.port];
+            NSString* reason = [NSString stringWithFormat:@"%@ | %@",err.description,name];
+            ex = [HKSocketConnectionException exceptionWithName:name reason:reason userInfo:nil];
+            name = nil;
+            reason = nil;
             @throw ex;
         }
         while (!self.done) {
             [self.con_cond wait];
         }
         if (self.error) {
-            NSString* reason = self.error.description;
-            ex = [HKSocketConnectionException exceptionWithName:@"connect error" reason:reason userInfo:nil];
+            NSString* name = [NSString stringWithFormat:@"connect to [%@:%llu] error",self.host,(unsigned long long)self.port];
+            NSString* reason = [NSString stringWithFormat:@"%@ | %@",self.error.description,name];
+            ex = [HKSocketConnectionException exceptionWithName:name reason:reason userInfo:nil];
+            name = nil;
+            reason = nil;
             @throw ex;
         }
     }

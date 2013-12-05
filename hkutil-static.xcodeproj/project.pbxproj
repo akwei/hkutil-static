@@ -24,9 +24,15 @@
 		9B6E21EC181CBE4B00BF154D /* NSMutableArray+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E21EB181CBE4B00BF154D /* NSMutableArray+HKEx.m */; };
 		9B6E21ED181CC10700BF154D /* NSArray+HKEx.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B6E21E7181CBE3D00BF154D /* NSArray+HKEx.h */; };
 		9B6E21EE181CC10700BF154D /* NSMutableArray+HKEx.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B6E21EA181CBE4B00BF154D /* NSMutableArray+HKEx.h */; };
+		9B80CF561850614D0080C567 /* HKXPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBDED51185057D000994DAB /* HKXPrinter.m */; };
 		9B8102CC182F40130019E0B4 /* NSString+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8102CB182F40130019E0B4 /* NSString+HKEx.m */; };
 		9BA56D4F1820AADD006A73FB /* UIImage+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA56D4E1820AADD006A73FB /* UIImage+HKEx.m */; };
 		9BA56D501820AB3A006A73FB /* UIImage+HKEx.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BA56D4D1820AADD006A73FB /* UIImage+HKEx.h */; };
+		9BBDED05184F7FC900994DAB /* NSData+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBDED04184F7FC900994DAB /* NSData+HKEx.m */; };
+		9BBDED06184F844B00994DAB /* NSData+HKEx.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BBDED03184F7FC900994DAB /* NSData+HKEx.h */; };
+		9BBDED53185057EB00994DAB /* HKXPrinter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BBDED50185057D000994DAB /* HKXPrinter.h */; };
+		9BBDED561850596B00994DAB /* HKTimerInvoker2.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBDED551850596B00994DAB /* HKTimerInvoker2.m */; };
+		9BBDED5718505A5800994DAB /* HKTimerInvoker2.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BBDED541850596B00994DAB /* HKTimerInvoker2.h */; };
 		9BC8BD3917ED818100DF9423 /* HKGridTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC8BD3717ED818100DF9423 /* HKGridTableView.m */; };
 		9BC8BD3A17ED819300DF9423 /* HKGridTableView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BC8BD3817ED818100DF9423 /* HKGridTableView.h */; };
 		9BCA99BA182BB37400A81788 /* HKTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA99B9182BB37400A81788 /* HKTableViewCell.m */; };
@@ -39,11 +45,6 @@
 		9BFFA9C717E48DE500F353A5 /* HKPrinterBitmap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA95A17E48DE500F353A5 /* HKPrinterBitmap.m */; };
 		9BFFA9C817E48DE500F353A5 /* HKRFPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA95D17E48DE500F353A5 /* HKRFPrinter.m */; };
 		9BFFA9CA17E48DE500F353A5 /* StarIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFFA96017E48DE500F353A5 /* StarIO.framework */; };
-		9BFFA9CB17E48DE500F353A5 /* HKStarPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA96317E48DE500F353A5 /* HKStarPrinter.m */; };
-		9BFFA9CC17E48DE500F353A5 /* HKTableText.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA96517E48DE500F353A5 /* HKTableText.m */; };
-		9BFFA9CD17E48DE500F353A5 /* HKTextImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA96717E48DE500F353A5 /* HKTextImage.m */; };
-		9BFFA9CE17E48DE500F353A5 /* RasterDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA96917E48DE500F353A5 /* RasterDocument.m */; };
-		9BFFA9CF17E48DE500F353A5 /* StarBitmap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA96B17E48DE500F353A5 /* StarBitmap.m */; };
 		9BFFA9D017E48DE500F353A5 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA96F17E48DE500F353A5 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9BFFA9D117E48DE500F353A5 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA97117E48DE500F353A5 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9BFFA9D217E48DE500F353A5 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA97317E48DE500F353A5 /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -95,11 +96,6 @@
 		9BFFACCE17E4B1B500F353A5 /* HKPrinter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA95717E48DE500F353A5 /* HKPrinter.h */; };
 		9BFFACD017E4B1B500F353A5 /* HKPrinterBitmap.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA95917E48DE500F353A5 /* HKPrinterBitmap.h */; };
 		9BFFACD217E4B1B500F353A5 /* HKRFPrinter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA95C17E48DE500F353A5 /* HKRFPrinter.h */; };
-		9BFFACD617E4B1B500F353A5 /* HKStarPrinter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA96217E48DE500F353A5 /* HKStarPrinter.h */; };
-		9BFFACD817E4B1B500F353A5 /* HKTableText.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA96417E48DE500F353A5 /* HKTableText.h */; };
-		9BFFACDA17E4B1B500F353A5 /* HKTextImage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA96617E48DE500F353A5 /* HKTextImage.h */; };
-		9BFFACDC17E4B1B500F353A5 /* RasterDocument.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA96817E48DE500F353A5 /* RasterDocument.h */; };
-		9BFFACDE17E4B1B500F353A5 /* StarBitmap.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA96A17E48DE500F353A5 /* StarBitmap.h */; };
 		9BFFACE017E4B1B500F353A5 /* AFHTTPClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA96E17E48DE500F353A5 /* AFHTTPClient.h */; };
 		9BFFACE217E4B1B500F353A5 /* AFHTTPRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA97017E48DE500F353A5 /* AFHTTPRequestOperation.h */; };
 		9BFFACE417E4B1B500F353A5 /* AFImageRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA97217E48DE500F353A5 /* AFImageRequestOperation.h */; };
@@ -151,6 +147,9 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				9BBDED5718505A5800994DAB /* HKTimerInvoker2.h in CopyFiles */,
+				9BBDED53185057EB00994DAB /* HKXPrinter.h in CopyFiles */,
+				9BBDED06184F844B00994DAB /* NSData+HKEx.h in CopyFiles */,
 				9B0E1068184EBB7400C5D429 /* HKArrayMap.h in CopyFiles */,
 				9BCA99BB182BB4EF00A81788 /* HKTableViewCell.h in CopyFiles */,
 				9BA56D501820AB3A006A73FB /* UIImage+HKEx.h in CopyFiles */,
@@ -166,11 +165,6 @@
 				9BFFACCE17E4B1B500F353A5 /* HKPrinter.h in CopyFiles */,
 				9BFFACD017E4B1B500F353A5 /* HKPrinterBitmap.h in CopyFiles */,
 				9BFFACD217E4B1B500F353A5 /* HKRFPrinter.h in CopyFiles */,
-				9BFFACD617E4B1B500F353A5 /* HKStarPrinter.h in CopyFiles */,
-				9BFFACD817E4B1B500F353A5 /* HKTableText.h in CopyFiles */,
-				9BFFACDA17E4B1B500F353A5 /* HKTextImage.h in CopyFiles */,
-				9BFFACDC17E4B1B500F353A5 /* RasterDocument.h in CopyFiles */,
-				9BFFACDE17E4B1B500F353A5 /* StarBitmap.h in CopyFiles */,
 				9BFFACE017E4B1B500F353A5 /* AFHTTPClient.h in CopyFiles */,
 				9BFFACE217E4B1B500F353A5 /* AFHTTPRequestOperation.h in CopyFiles */,
 				9BFFACE417E4B1B500F353A5 /* AFImageRequestOperation.h in CopyFiles */,
@@ -242,6 +236,12 @@
 		9B8102CB182F40130019E0B4 /* NSString+HKEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HKEx.m"; sourceTree = "<group>"; };
 		9BA56D4D1820AADD006A73FB /* UIImage+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HKEx.h"; sourceTree = "<group>"; };
 		9BA56D4E1820AADD006A73FB /* UIImage+HKEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HKEx.m"; sourceTree = "<group>"; };
+		9BBDED03184F7FC900994DAB /* NSData+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+HKEx.h"; sourceTree = "<group>"; };
+		9BBDED04184F7FC900994DAB /* NSData+HKEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+HKEx.m"; sourceTree = "<group>"; };
+		9BBDED50185057D000994DAB /* HKXPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKXPrinter.h; sourceTree = "<group>"; };
+		9BBDED51185057D000994DAB /* HKXPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKXPrinter.m; sourceTree = "<group>"; };
+		9BBDED541850596B00994DAB /* HKTimerInvoker2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKTimerInvoker2.h; sourceTree = "<group>"; };
+		9BBDED551850596B00994DAB /* HKTimerInvoker2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKTimerInvoker2.m; sourceTree = "<group>"; };
 		9BC8BD3717ED818100DF9423 /* HKGridTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKGridTableView.m; sourceTree = "<group>"; };
 		9BC8BD3817ED818100DF9423 /* HKGridTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKGridTableView.h; sourceTree = "<group>"; };
 		9BCA99B8182BB37400A81788 /* HKTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKTableViewCell.h; sourceTree = "<group>"; };
@@ -262,16 +262,6 @@
 		9BFFA95C17E48DE500F353A5 /* HKRFPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKRFPrinter.h; sourceTree = "<group>"; };
 		9BFFA95D17E48DE500F353A5 /* HKRFPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKRFPrinter.m; sourceTree = "<group>"; };
 		9BFFA96017E48DE500F353A5 /* StarIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StarIO.framework; path = util/printer/StarIO.framework; sourceTree = "<group>"; };
-		9BFFA96217E48DE500F353A5 /* HKStarPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKStarPrinter.h; sourceTree = "<group>"; };
-		9BFFA96317E48DE500F353A5 /* HKStarPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKStarPrinter.m; sourceTree = "<group>"; };
-		9BFFA96417E48DE500F353A5 /* HKTableText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKTableText.h; sourceTree = "<group>"; };
-		9BFFA96517E48DE500F353A5 /* HKTableText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKTableText.m; sourceTree = "<group>"; };
-		9BFFA96617E48DE500F353A5 /* HKTextImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKTextImage.h; sourceTree = "<group>"; };
-		9BFFA96717E48DE500F353A5 /* HKTextImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKTextImage.m; sourceTree = "<group>"; };
-		9BFFA96817E48DE500F353A5 /* RasterDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RasterDocument.h; sourceTree = "<group>"; };
-		9BFFA96917E48DE500F353A5 /* RasterDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RasterDocument.m; sourceTree = "<group>"; };
-		9BFFA96A17E48DE500F353A5 /* StarBitmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarBitmap.h; sourceTree = "<group>"; };
-		9BFFA96B17E48DE500F353A5 /* StarBitmap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarBitmap.m; sourceTree = "<group>"; };
 		9BFFA96E17E48DE500F353A5 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		9BFFA96F17E48DE500F353A5 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		9BFFA97017E48DE500F353A5 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -383,6 +373,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9BBDED4F185057D000994DAB /* xprinter */ = {
+			isa = PBXGroup;
+			children = (
+				9BBDED50185057D000994DAB /* HKXPrinter.h */,
+				9BBDED51185057D000994DAB /* HKXPrinter.m */,
+			);
+			path = xprinter;
+			sourceTree = "<group>";
+		};
 		9BFFA93917E48D7400F353A5 = {
 			isa = PBXGroup;
 			children = (
@@ -459,8 +458,8 @@
 				9BFFA95817E48DE500F353A5 /* HKPrinter.m */,
 				9BFFA95917E48DE500F353A5 /* HKPrinterBitmap.h */,
 				9BFFA95A17E48DE500F353A5 /* HKPrinterBitmap.m */,
+				9BBDED4F185057D000994DAB /* xprinter */,
 				9BFFA95B17E48DE500F353A5 /* runfaprinter */,
-				9BFFA96117E48DE500F353A5 /* starprinter */,
 			);
 			path = printer;
 			sourceTree = "<group>";
@@ -472,23 +471,6 @@
 				9BFFA95D17E48DE500F353A5 /* HKRFPrinter.m */,
 			);
 			path = runfaprinter;
-			sourceTree = "<group>";
-		};
-		9BFFA96117E48DE500F353A5 /* starprinter */ = {
-			isa = PBXGroup;
-			children = (
-				9BFFA96217E48DE500F353A5 /* HKStarPrinter.h */,
-				9BFFA96317E48DE500F353A5 /* HKStarPrinter.m */,
-				9BFFA96417E48DE500F353A5 /* HKTableText.h */,
-				9BFFA96517E48DE500F353A5 /* HKTableText.m */,
-				9BFFA96617E48DE500F353A5 /* HKTextImage.h */,
-				9BFFA96717E48DE500F353A5 /* HKTextImage.m */,
-				9BFFA96817E48DE500F353A5 /* RasterDocument.h */,
-				9BFFA96917E48DE500F353A5 /* RasterDocument.m */,
-				9BFFA96A17E48DE500F353A5 /* StarBitmap.h */,
-				9BFFA96B17E48DE500F353A5 /* StarBitmap.m */,
-			);
-			path = starprinter;
 			sourceTree = "<group>";
 		};
 		9BFFA96C17E48DE500F353A5 /* thirdtools */ = {
@@ -616,6 +598,8 @@
 				9BFFA9B817E48DE500F353A5 /* HKThreadUtil.m */,
 				9BFFA9B917E48DE500F353A5 /* HKTimerInvoker.h */,
 				9BFFA9BA17E48DE500F353A5 /* HKTimerInvoker.m */,
+				9BBDED541850596B00994DAB /* HKTimerInvoker2.h */,
+				9BBDED551850596B00994DAB /* HKTimerInvoker2.m */,
 				9BFFA9BB17E48DE500F353A5 /* HKTimeUtil.h */,
 				9BFFA9BC17E48DE500F353A5 /* HKTimeUtil.m */,
 				9BFFA9BD17E48DE500F353A5 /* HKURLImageView.h */,
@@ -644,6 +628,8 @@
 				9B8102CB182F40130019E0B4 /* NSString+HKEx.m */,
 				9B51D084184B861C009E6E09 /* UILabel+HKEx.h */,
 				9B51D085184B861C009E6E09 /* UILabel+HKEx.m */,
+				9BBDED03184F7FC900994DAB /* NSData+HKEx.h */,
+				9BBDED04184F7FC900994DAB /* NSData+HKEx.m */,
 				9B0E1065184EB9DD00C5D429 /* HKArrayMap.h */,
 				9B0E1066184EB9DD00C5D429 /* HKArrayMap.m */,
 			);
@@ -701,17 +687,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B80CF561850614D0080C567 /* HKXPrinter.m in Sources */,
 				9BFFA94D17E48D7400F353A5 /* hkutil_static.m in Sources */,
 				9BFFA9C517E48DE500F353A5 /* HKPOSTable.m in Sources */,
 				9B0E1067184EB9DD00C5D429 /* HKArrayMap.m in Sources */,
 				9BFFA9C617E48DE500F353A5 /* HKPrinter.m in Sources */,
 				9BFFA9C717E48DE500F353A5 /* HKPrinterBitmap.m in Sources */,
 				9BFFA9C817E48DE500F353A5 /* HKRFPrinter.m in Sources */,
-				9BFFA9CB17E48DE500F353A5 /* HKStarPrinter.m in Sources */,
-				9BFFA9CC17E48DE500F353A5 /* HKTableText.m in Sources */,
-				9BFFA9CD17E48DE500F353A5 /* HKTextImage.m in Sources */,
-				9BFFA9CE17E48DE500F353A5 /* RasterDocument.m in Sources */,
-				9BFFA9CF17E48DE500F353A5 /* StarBitmap.m in Sources */,
 				9B51D086184B861C009E6E09 /* UILabel+HKEx.m in Sources */,
 				9BFFA9D017E48DE500F353A5 /* AFHTTPClient.m in Sources */,
 				9BFFA9D117E48DE500F353A5 /* AFHTTPRequestOperation.m in Sources */,
@@ -724,6 +706,7 @@
 				9BFFA9D717E48DE500F353A5 /* AFURLConnectionOperation.m in Sources */,
 				9BFFA9D817E48DE500F353A5 /* AFXMLRequestOperation.m in Sources */,
 				9BFFA9D917E48DE500F353A5 /* UIImageView+AFNetworking.m in Sources */,
+				9BBDED561850596B00994DAB /* HKTimerInvoker2.m in Sources */,
 				9B6E21E2181BA80600BF154D /* NSMutableDictionary+HKEx.m in Sources */,
 				9BFFA9DA17E48DE500F353A5 /* GCDAsyncSocket.m in Sources */,
 				9BFFA9DB17E48DE500F353A5 /* JSONKit.m in Sources */,
@@ -763,6 +746,7 @@
 				9B0F63D417F9581B0093797C /* HKCommonPrinter.m in Sources */,
 				9BA56D4F1820AADD006A73FB /* UIImage+HKEx.m in Sources */,
 				9B1F435217F9909F009E7E4F /* HKPrinterCfg.m in Sources */,
+				9BBDED05184F7FC900994DAB /* NSData+HKEx.m in Sources */,
 				9B68FFBB17FBE1C1006F98A2 /* HKSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -794,6 +778,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -817,6 +802,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
