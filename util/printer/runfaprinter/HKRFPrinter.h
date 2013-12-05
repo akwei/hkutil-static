@@ -8,14 +8,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HKPrinter.h"
 
-@interface HKRFPrinter : HKPrinter
-@property(nonatomic,copy)NSString* host;
-@property(nonatomic,assign)NSUInteger port;
-
--(void)printText:(NSString*)text;
-
--(void)addTextCommand:(NSString*)text;
+@interface HKRFPrinter : NSObject
+//@property(nonatomic,copy)NSString* host;
+//@property(nonatomic,assign)NSUInteger port;
+//
+//-(void)printText:(NSString*)text;
+//
+//-(void)addTextCommand:(NSString*)text;
 
 @end
