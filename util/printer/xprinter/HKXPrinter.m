@@ -14,7 +14,8 @@
 @end
 
 @interface HKXPrinter ()
-@property(nonatomic,strong)HKCommonPrinter* cprinter;
+@property(nonatomic,strong)HKCommonPrinter* cStatusprinter;
+@property(nonatomic,strong)HKCommonPrinter* printer;
 @end
 
 @implementation HKXPrinter
@@ -22,8 +23,10 @@
 -(id)initWithHost:(NSString *)host timeout:(NSTimeInterval)timeout {
     self = [super init];
     if (self) {
-        self.cprinter = [[HKCommonPrinter alloc] initWithHost:host port:4000];
-        self.cprinter.timeout = 5;
+        self.cStatusprinter = [[HKCommonPrinter alloc] initWithHost:host port:4000];
+        self.cStatusprinter.timeout = 5;
+        self.printer = [[HKCommonPrinter alloc] initWithHost:host port:9100];
+        self.printer.timeout = 10;
     }
     return self;
 }
@@ -31,11 +34,11 @@
 -(HKXPrinterStatus *)getStatus{
     HKXPrinterStatus* ps = [[HKXPrinterStatus alloc] init];
     @try {
-        [self.cprinter connect];
+        [self.cStatusprinter connect];
         unsigned char cmd[] = {0x1b,0x76};
-        [self.cprinter addBytesCommand:cmd length:2];
-        [self.cprinter send];
-        NSData* data = [self.cprinter read];
+        [self.cStatusprinter addBytesCommand:cmd length:2];
+        [self.cStatusprinter send];
+        NSData* data = [self.cStatusprinter read];
         ps.canConnect = YES;
         //打印机信息
         int byte_cashbox = [data getByte:0 bitIndex:2];
@@ -116,8 +119,93 @@
         return ps;
     }
     @finally {
-        [self.cprinter disconnect];
+        [self.cStatusprinter disconnect];
     }
+}
+
+-(void)addCut:(enum HKXPrinterCutType)cutType{
+    
+    unsigned char cmd[] = {0x1d,0x56,0x41,0};
+    if (cutType == HKXPrinterCutTypePart) {
+        cmd[2] = 0x41;
+    }
+    else if (cutType == HKXPrinterCutTypeFull){
+        cmd[2] = 0x42;
+    }
+    [self.printer addBytesCommand:cmd length:4];
+}
+
+-(void)addTweetCmd{
+    unsigned char cmd[] = {0x1b,0x70,0,50,7};
+    [self.printer addBytesCommand:cmd length:5];
+}
+
+-(void)addInitCmd{
+    unsigned char cmd[] = {0x1b,0x40};
+    [self.printer addBytesCommand:cmd length:2];
+}
+
+-(void)addSizeCmd:(NSInteger)size{
+    unsigned char cmd[] = {0x1d,0x21,0x00};
+    if (size == 1) {
+        cmd[2] = 0x00;
+    }
+    else if (size == 2){
+        cmd[2] = 0x11;
+    }
+    else if (size == 3){
+        cmd[2] = 0x22;
+    }
+    [self.printer addBytesCommand:cmd length:3];
+}
+
+-(void)addAlignmentCmd:(enum HKXPrinterTextAlignment)align{
+    unsigned char cmd[] = {0x1b,0x61,0};
+    if (align == HKXPrinterTextAlignmentLeft) {
+        cmd[2] = 0;
+    }
+    else if (align == HKXPrinterTextAlignmentCenter) {
+        cmd[2] = 1;
+    }
+    else if (align == HKXPrinterTextAlignmentRight) {
+        cmd[2] = 2;
+    }
+    [self.printer addBytesCommand:cmd length:3];
+}
+
+-(void)addDoPrintCmd:(NSUInteger)n{
+    unsigned char cmd[] = {0x1b,0x64,n};
+    [self.printer addBytesCommand:cmd length:3];
+}
+
+//-(void)addTableCmd{
+//    unsigned char cmd0[] = {0x1b,0x44,10,20,0x00};
+//    [self.printer addBytesCommand:cmd0 length:5];
+//}
+
+-(void)addTableCmd:(NSArray *)list{
+    NSMutableData* mdata = [[NSMutableData alloc] init];
+    unsigned char cmd_begin[] = {0x1b,0x44};
+    [mdata appendBytes:cmd_begin length:2];
+    for (NSNumber* n in list) {
+        unsigned char cmd_n[] = {[n charValue]};
+        [mdata appendBytes:cmd_n length:1];
+    }
+    unsigned char cmd_end[] = {0x00};
+    [mdata appendBytes:cmd_end length:1];
+    [self.printer addCommand:mdata];
+}
+
+-(void)addMoveTabCmd:(NSInteger)num{
+    for (int i = 0; i < num; i++) {
+        unsigned char cmd[] = {0x09};
+        [self.printer addBytesCommand:cmd length:1];
+    }
+}
+
+-(HKXPrinterStatus *)doPrint{
+    [self.printer executeWithBlockSize:16];
+    return nil;
 }
 
 @end
