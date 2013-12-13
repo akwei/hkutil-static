@@ -12,7 +12,6 @@
  */
 @interface NSDictionary (HKEx)
 -(NSInteger)integerValueForKey:(NSString*)key;
--(NSUInteger)unsignedIntegerValueForKey:(NSString*)key;
 -(long long)longLongValueForKey:(NSString*)key;
 -(unsigned long long)unsignedLongLongValueForKey:(NSString*)key;
 -(BOOL)boolValueForKey:(NSString*)key;

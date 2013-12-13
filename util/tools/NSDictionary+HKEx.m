@@ -18,14 +18,6 @@
     return 0;
 }
 
--(NSUInteger)unsignedIntegerValueForKey:(NSString *)key{
-    id obj = [self valueForKey:key];
-    if (obj) {
-        return [obj unsignedIntegerValue];
-    }
-    return 0;
-}
-
 -(long long)longLongValueForKey:(NSString *)key{
     id obj = [self valueForKey:key];
     if (obj) {

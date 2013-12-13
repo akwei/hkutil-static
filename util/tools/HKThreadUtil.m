@@ -60,6 +60,10 @@ static HKThreadUtil* _sharedHKThreadUtil;
     [self asyncBlockToMainThread:block];
 }
 
+-(void)toMain:(void (^)(void))block{
+    [self asyncBlockToMainThread:block];
+}
+
 -(void)asyncBlock:(void (^)(void))block toGroup:(dispatch_group_t)group{
     dispatch_group_async(group, _asyncQueue, block);
 }

@@ -28,10 +28,15 @@
  异步提交到主线程中
  */
 -(void)asyncBlockToMainThread:(void(^)(void))block;
-/*
+/**
  同-(void)asyncBlockToMainThread:(void(^)(void))block;
  */
 -(void)asyncToMainThread:(void(^)(void))block;
+
+/**
+ 到主线程中执行
+ */
+-(void)toMain:(void(^)(void))block;
 
 /**
  并发线程组的操作，当一组线程执行完毕，才能继续下面的操作
