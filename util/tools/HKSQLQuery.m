@@ -36,6 +36,7 @@ static NSMutableDictionary* objQueryDic=nil;
 
 @implementation HKDbConn{
     dispatch_queue_t syncQueue;
+    dispatch_queue_t trSyncQueue;
 }
 
 
@@ -82,6 +83,8 @@ static NSMutableDictionary* objQueryDic=nil;
     if (self) {
         NSString* queue_name = [[NSString alloc] initWithFormat:@"hk_simpleorm_dbconn_syncqueue_%@",name];
         syncQueue = dispatch_queue_create([queue_name UTF8String], DISPATCH_QUEUE_SERIAL);
+        NSString* tr_queue_name = [[NSString alloc] initWithFormat:@"%@_tr",queue_name];
+        trSyncQueue = dispatch_queue_create([tr_queue_name UTF8String], DISPATCH_QUEUE_SERIAL);
         self.dbName=name;
         hasTranscation=NO;
         dbOpen=NO;
@@ -130,20 +133,21 @@ static NSMutableDictionary* objQueryDic=nil;
 }
 
 -(void)open{
+    __weak HKDbConn* me = self;
     dispatch_sync(syncQueue, ^{
         @autoreleasepool {
             if (dbOpen) {
                 return ;
             }
-            NSString* dbPath=[HKDbConn getFilePath:self.dbName];
+            NSString* dbPath=[HKDbConn getFilePath:me.dbName];
 #if DbConnDebug
             NSLog(@"%@",dbPath);
 #endif
             if (![HKDbConn isFileExist:dbPath]) {
-                BOOL result = [HKDbConn copyFromResource:self.dbName absFileName:dbPath];
+                BOOL result = [HKDbConn copyFromResource:me.dbName absFileName:dbPath];
                 if (!result) {
-                    NSString* exname=[NSString stringWithFormat:@"create db file %@ err",self.dbName];
-                    [self throwException:0 exName:exname reason:@""];
+                    NSString* exname=[NSString stringWithFormat:@"create db file %@ err",me.dbName];
+                    [me throwException:0 exName:exname reason:@""];
                 }
             }
             NSInteger stat=sqlite3_open([dbPath UTF8String], &dbhandle);
@@ -152,13 +156,14 @@ static NSMutableDictionary* objQueryDic=nil;
                 return ;
             }
             NSString* reason=[NSString stringWithUTF8String:sqlite3_errmsg(dbhandle)];
-            NSString* exname=[NSString stringWithFormat:@"close db %@ err",self.dbName];
-            [self throwException:stat exName:exname reason:reason];
+            NSString* exname=[NSString stringWithFormat:@"close db %@ err",me.dbName];
+            [me throwException:stat exName:exname reason:reason];
         } 
     });
 }
 
 -(void)beginTranscation{
+    __weak HKDbConn* me = self;
     dispatch_sync(syncQueue, ^{
         transcationInvokeCount++;
         if (hasTranscation) {
@@ -167,12 +172,13 @@ static NSMutableDictionary* objQueryDic=nil;
         hasTranscation=YES;
         int status=sqlite3_exec(dbhandle, "begin", 0, 0, NULL);
         if (status!=SQLITE_OK) {
-            [self throwException:status exName:@"beginTranscation err" reason:@"beginTranscation err"];
+            [me throwException:status exName:@"beginTranscation err" reason:@"beginTranscation err"];
         }
     });
 }
 
 -(void)commit{
+    __weak HKDbConn* me = self;
     dispatch_sync(syncQueue, ^{
         transcationInvokeCount--;
 #if DbConnTrDebug
@@ -181,35 +187,34 @@ static NSMutableDictionary* objQueryDic=nil;
         if (transcationInvokeCount>0) {
             return ;
         }
-        hasTranscation=NO;
+        hasTranscation = NO;
         int status=sqlite3_exec(dbhandle, "commit", 0, 0, NULL);
 #if DbConnTrDebug
         NSLog(@"transcation commit");
 #endif
         if (status!=SQLITE_OK) {
-            [self throwException:status exName:@"commit err" reason:@"commit err"];
+            [me throwException:status exName:@"commit err" reason:@"commit err"];
         }
     });
 }
 
 -(void)rollback{
+    __weak HKDbConn* me = self;
     dispatch_sync(syncQueue, ^{
-        transcationInvokeCount--;
+        transcationInvokeCount = 0;
 #if DbConnTrDebug
         NSLog(@"transcationInvokeCount-- from rollback: %d",transcationInvokeCount);
 #endif
-        if (transcationInvokeCount>0) {
-            return ;
-        }
-        hasTranscation=NO;
-        int status=sqlite3_exec(dbhandle, "rollback", 0, 0, NULL);
-        if (status!=SQLITE_OK) {
-            [self throwException:status exName:@"rollback err" reason:@"rollback err"];
+        hasTranscation = NO;
+        int status = sqlite3_exec(dbhandle, "rollback", 0, 0, NULL);
+        if (status != SQLITE_OK) {
+            [me throwException:status exName:@"rollback err" reason:@"rollback err"];
         }
     });
 }
 
 -(void)close{
+    __weak HKDbConn* me = self;
     dispatch_sync(syncQueue, ^{
         @autoreleasepool {
             if (hasTranscation) {
@@ -218,25 +223,25 @@ static NSMutableDictionary* objQueryDic=nil;
 #if DbConnDebug
             NSLog(@"connection close");
 #endif
-            dbOpen=NO;
+            dbOpen = NO;
             int status;
-            BOOL retry=NO;
-            int retryMaxCount=3;
-            int retryCount=0;
+            BOOL retry = NO;
+            int retryMaxCount = 3;
+            int retryCount = 0;
             do {
-                status=sqlite3_close(dbhandle);
-                if (status!=SQLITE_OK) {
-                    retryCount++;
-                    if (retryCount>retryMaxCount) {
-                        NSString* reason=[[NSString alloc] initWithUTF8String:sqlite3_errmsg(dbhandle)];
-                        NSString* exname=[NSString stringWithFormat:@"close db %@ err",self.dbName];
-                        [self throwException:status exName:exname reason:reason];
+                status = sqlite3_close(dbhandle);
+                if (status != SQLITE_OK) {
+                    retryCount ++;
+                    if (retryCount > retryMaxCount) {
+                        NSString* reason = [[NSString alloc] initWithUTF8String:sqlite3_errmsg(dbhandle)];
+                        NSString* exname = [NSString stringWithFormat:@"close db %@ err",me.dbName];
+                        [me throwException:status exName:exname reason:reason];
                         return;
                     }
-                    if (status==SQLITE_BUSY || status==SQLITE_LOCKED) {
+                    if (status == SQLITE_BUSY || status == SQLITE_LOCKED) {
                         usleep(20);
-                        retry=YES;
-                        NSLog(@"retry close db %@",self.dbName);
+                        retry = YES;
+                        NSLog(@"retry close db %@",me.dbName);
                     }
                 }
             } while (retry);
@@ -245,30 +250,33 @@ static NSMutableDictionary* objQueryDic=nil;
 }
 
 -(void)doTranscationWithBlock:(void (^)(void))block{
-    @try {
-        [self open];
-        [self beginTranscation];
-        block();
-        [self commit];
-    }
-    @catch (NSException *exception) {
-        if ([HKDbConn hasRollbackIgnoreException:exception]) {
-            [self commit];
+    __weak HKDbConn* me = self;
+    dispatch_sync(trSyncQueue, ^{
+        @try {
+            [me open];
+            [me beginTranscation];
+            block();
+            [me commit];
         }
-        else{
-            [self rollback];
+        @catch (NSException *exception) {
+            if ([HKDbConn hasRollbackIgnoreException:exception]) {
+                [me commit];
+            }
+            else{
+                [me rollback];
+            }
+            @throw exception;
         }
-        @throw exception;
-    }
-    @finally {
-        [self close];
-    }
+        @finally {
+            [me close];
+        }
+    });
 }
 
 -(void)throwException:(NSInteger)status exName:(NSString*)exName reason:(NSString*)reason{
-    NSString* errStatus=[NSString stringWithFormat:@"%i : %@",status,reason];
-    HKSQLException* ex=[[HKSQLException alloc] initWithName:exName reason:errStatus userInfo:nil];
-    ex.status=status;
+    NSString* errStatus = [NSString stringWithFormat:@"%i : %@",status,reason];
+    HKSQLException* ex = [[HKSQLException alloc] initWithName:exName reason:errStatus userInfo:nil];
+    ex.status = status;
     NSLog(@"%@",[ex description]);
     @throw ex;
 }
