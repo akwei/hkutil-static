@@ -51,7 +51,7 @@
     sqlite3* dbhandle;
     BOOL hasTranscation;
     BOOL dbOpen;
-    NSInteger transcationInvokeCount;
+    int transcationInvokeCount;
 }
 
 @property(nonatomic,copy)NSString* dbName;
