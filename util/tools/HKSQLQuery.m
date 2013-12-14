@@ -97,6 +97,7 @@ static NSMutableDictionary* objQueryDic=nil;
 -(void)dealloc{
 #if NEEDS_DISPATCH_RETAIN_RELEASE
 	if (syncQueue) dispatch_release(syncQueue);
+    if (trSyncQueue) dispatch_release(trSyncQueue);
 #endif
 }
 
