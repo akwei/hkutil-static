@@ -393,6 +393,7 @@
     transition.subtype = subType;
     transition.delegate = self;
     transition.removedOnCompletion = YES;
+    transition.fillMode = kCAFillModeBoth;
     return transition;
 }
 

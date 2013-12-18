@@ -113,6 +113,7 @@
         transition.duration = .25;
         transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         transition.type=kCATransitionFade;
+        transition.fillMode = kCAFillModeBoth;
         transition.removedOnCompletion = YES;
     }
     [self addSubview:view animation:transition toCenter:toCenter onCompleteBlock:onCompleteBlock];
