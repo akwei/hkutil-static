@@ -22,7 +22,7 @@
 @property(nonatomic,copy)NSString* closeType;
 @property(nonatomic,assign)BOOL debug;
 
--(void)changeShadowColor:(UIColor *)shadowColor;
+//-(void)changeShadowColor:(UIColor *)shadowColor;
 
 -(id)initWithParentView:(UIView*)parent;
 -(void)hkPushViewController:(UIViewController<HKShadowCtrlDelegate>*)viewController animated:(BOOL)animated;

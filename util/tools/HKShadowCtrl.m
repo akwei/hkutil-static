@@ -65,11 +65,12 @@
     CGRect rect = self.viewFrame;
     self.view.hidden=YES;
     self.view.frame = rect;
-    self.view.backgroundColor = clearColor;
+    self.view.backgroundColor = nil;
     self.view.clipsToBounds=YES;
     UIViewAutoresizing defViewAutoresizing = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     self.shadow=[[UIView alloc] initWithFrame:self.view.bounds];
-    self.shadow.backgroundColor=self.shadowColor;
+//    self.shadow.backgroundColor=self.shadowColor;
+    self.shadow.backgroundColor = nil;
     self.shadow.autoresizesSubviews=YES;
     self.shadow.autoresizingMask=defViewAutoresizing;
     [self.view addSubview:self.shadow];
