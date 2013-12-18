@@ -206,6 +206,7 @@
         transition.type=kCATransitionFade;
         transition.delegate = self;
         transition.removedOnCompletion = YES;
+        transition.fillMode = kCAFillModeBoth;
         if (onCompleteBlock) {
             [transition setValue:onCompleteBlock forKey:@"onCompleteBlock"];
         }
