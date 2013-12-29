@@ -39,7 +39,7 @@
         self.viewControllers=[[NSMutableArray alloc] init];
         self.parent=parent;
         self.viewFrame = self.parent.bounds;
-        self.animationTime=.4;
+        self.animationTime = .35;
         self.forwardType = kCATransitionPush;
         self.forwardSubType = kCATransitionFromRight;
         self.backwardType = kCATransitionPush;
