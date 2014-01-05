@@ -15,6 +15,7 @@
 @property(nonatomic,assign)NSInteger dataCount;
 @property(nonatomic,assign)NSInteger page;
 @property(nonatomic,assign)NSInteger totalPage;
+@property(nonatomic,strong)NSArray* list;
 
 -(void)buildWithDataCount:(NSInteger)dataCount size:(NSInteger)size;
 -(void)changePage:(NSInteger)page;

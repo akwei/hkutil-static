@@ -110,7 +110,7 @@
     CATransition *transition = nil;
     if (animated) {
         transition = [CATransition animation];
-        transition.duration = .25;
+        transition.duration = .15;
         transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         transition.type=kCATransitionFade;
         transition.fillMode = kCAFillModeBoth;
@@ -201,7 +201,7 @@
     void (^onCompleteBlock) (void) = [info valueForKey:@"onCompleteBlock"];
     if (animated) {
         CATransition *transition = [CATransition animation];
-        transition.duration = .25;
+        transition.duration = .15;
         transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         transition.type=kCATransitionFade;
         transition.delegate = self;
