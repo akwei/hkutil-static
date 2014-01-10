@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface HKTableViewCell : UITableViewCell
+@property(nonatomic,strong)void (^onSelectedCall)(UITableView* tableView,NSIndexPath* indexPath);
 
 /**
  set一个对象到dictionary中

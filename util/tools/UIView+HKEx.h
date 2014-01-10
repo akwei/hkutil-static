@@ -211,6 +211,8 @@
  */
 -(BOOL)canShowView:(UIView*)view right:(UIView*)refView distance:(CGFloat)distance;
 
+-(id)viewWithTagEx:(NSInteger)tag;
+
 /**
  把所有子视图从当前视图中移除
  */

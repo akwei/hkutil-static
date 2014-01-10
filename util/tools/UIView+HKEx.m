@@ -346,6 +346,10 @@
     return NO;
 }
 
+-(id)viewWithTagEx:(NSInteger)tag{
+    UIView* view = (UIView*)[self viewWithTag:tag];
+    return view;
+}
 //-(void)removeAllSubviews{
 //    NSMutableArray* list = [[NSMutableArray alloc] init];
 //    
