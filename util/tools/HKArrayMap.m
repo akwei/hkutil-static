@@ -28,8 +28,11 @@
 }
 
 -(void)setValue:(id)value forKey:(NSString *)key{
+    id obj = [_dic valueForKey:key];
+    if (obj) {
+        [_array removeObject:obj];
+    }
     [_dic setValue:value forKey:key];
-    [_array removeObject:value];
     [_array addObject:value];
 }
 
