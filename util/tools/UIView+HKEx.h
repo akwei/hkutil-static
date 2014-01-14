@@ -30,6 +30,20 @@
 /**
  添加子视图，并显示在最前
  @param animated 是否需要默认动画
+ @param onCompleteBlock 添加完成后执行的block
+ */
+-(void)addSubview:(UIView *)view animated:(BOOL)animated onCompleteBlock:(void(^)(void))onCompleteBlock;
+
+/**
+ 添加子视图，并显示在最前
+ @param animated 是否需要默认动画
+ @param onCompleteBlock 添加完成后执行的block
+ */
+-(void)addSubview:(UIView *)view animated:(BOOL)animated;
+
+/**
+ 添加子视图，并显示在最前
+ @param animated 是否需要默认动画
  @param toCenter 是否添加到视图的中间位置
  @param onCompleteBlock 添加完成后执行的block
  */

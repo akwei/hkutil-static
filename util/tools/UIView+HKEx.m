@@ -82,6 +82,23 @@
     [self addSubview:view];
 }
 
+-(void)addSubview:(UIView *)view animated:(BOOL)animated onCompleteBlock:(void (^)(void))onCompleteBlock{
+    CATransition *transition = nil;
+    if (animated) {
+        transition = [CATransition animation];
+        transition.duration = .15;
+        transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        transition.type=kCATransitionFade;
+        transition.fillMode = kCAFillModeBoth;
+        transition.removedOnCompletion = YES;
+    }
+    [self addSubview:view animation:transition toCenter:NO onCompleteBlock:onCompleteBlock];
+}
+
+-(void)addSubview:(UIView *)view animated:(BOOL)animated{
+    [self addSubview:view animated:animated onCompleteBlock:nil];
+}
+
 -(void)addSubview:(UIView *)view animation:(CAAnimation *)animation toCenter:(BOOL)toCenter onCompleteBlock:(void (^)(void))onCompleteBlock{
     if (toCenter) {
         CGPoint center = self.center;
