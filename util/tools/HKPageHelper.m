@@ -10,6 +10,26 @@
 
 @implementation HKPageHelper
 
+-(id)initWithDataCount:(NSInteger)dataCount size:(NSInteger)size page:(NSInteger)page list:(NSArray *)list{
+    self = [super init];
+    if (self) {
+        self.dataCount = dataCount;
+        self.size = size;
+        self.totalPage = (self.dataCount + self.size - 1) / self.size;
+        self.page = page;
+        self.list = list;
+        if (self.page < 0) {
+            NSLog(@"HKPageHelper page %d < 0",self.page);
+        }
+        self.begin = self.size * (page - 1);
+        self.end = self.begin + self.size - 1;
+        if (self.end >= self.dataCount) {
+            self.end = self.dataCount - 1;
+        }
+    }
+    return self;
+}
+
 -(id)init{
     self = [super init];
     if (self) {
@@ -42,6 +62,9 @@
 }
 
 -(BOOL)hasMorePage{
+    if (self.totalPage == 0) {
+        return NO;
+    }
     if (self.page < self.totalPage) {
         return YES;
     }

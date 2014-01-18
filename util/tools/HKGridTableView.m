@@ -90,6 +90,7 @@
     HKGridTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cid];
     if (!cell) {
         cell = [[HKGridTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cid];
+        cell.contentView.opaque = YES;
         cell.gridViewList = [[NSMutableArray alloc] init];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -107,44 +108,31 @@
         UIView* view = [self.gridTableViewDelegate gridTableView:self viewForCell:cell section:indexPath.section indexInRow:k dataIndex:i];
         [list addObject:view];
     }
-    //new
-    __weak UIView* last = nil;
-    for (UIView* view in list) {
-        [cell.gridViewList removeObject:view];
-        if (!view.superview) {
-            if (last) {
-                [cell.contentView addSubview:view right:last distance:0 top:0 bottom:0];
-            }
-            else{
-                CGRect frame = view.frame;
-                frame.origin = CGPointMake(0, 0);
-                view.frame = frame;
-                [cell.contentView addSubview:view];
-            }
+    NSInteger res = [cell.gridViewList count] - [list count];
+    if (res > 0) {
+        for (int i = 0; i < res; i++) {
+            UIView* view = [cell.gridViewList lastObject];
+            [view removeFromSuperview];
+            [cell.gridViewList removeLastObject];
         }
-        last = view;
     }
-    for (UIView* view in cell.gridViewList) {
-        [view removeFromSuperview];
+    else if (res < 0){
+        __weak UIView* last = nil;
+        for (UIView* view in list) {
+            if (!view.superview) {
+                if (last) {
+                    [cell.contentView addSubview:view right:last distance:0 top:0 bottom:0];
+                }
+                else{
+                    [view changeFrameOrigin:CGPointMake(0, 0)];
+                    [cell.contentView addSubview:view];
+                }
+            }
+            last = view;
+        }
     }
     [cell.gridViewList removeAllObjects];
     [cell.gridViewList addObjectsFromArray:list];
-    //new end
-    // old
-//    for (UIView* view in cell.gridViewList) {
-//        [view removeFromSuperview];
-//    }
-//    [cell.gridViewList removeAllObjects];
-//    CGFloat x = 0;
-//    for (UIView* view in list) {
-//        CGRect frame = view.frame;
-//        frame.origin.x = x;
-//        view.frame = frame;
-//        [cell.contentView addSubview:view];
-//        [cell.gridViewList addObject:view];
-//        x = x + frame.size.width;
-//    }
-    // old end
     return cell;
 }
 

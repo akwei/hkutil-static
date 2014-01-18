@@ -17,7 +17,11 @@
 @property(nonatomic,assign)NSInteger totalPage;
 @property(nonatomic,strong)NSArray* list;
 
+-(id)initWithDataCount:(NSInteger)dataCount size:(NSInteger)size page:(NSInteger)page list:(NSArray*)list;
+
+//不建议使用了
 -(void)buildWithDataCount:(NSInteger)dataCount size:(NSInteger)size;
+//不建议使用了
 -(void)changePage:(NSInteger)page;
 -(BOOL)hasMorePage;
 @end
