@@ -58,7 +58,6 @@
 }
 
 -(void)viewDidLoad{
-    UIColor* clearColor = [UIColor clearColor];
     if (!self.shadowColor) {
         self.shadowColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:.7];
     }
@@ -75,10 +74,9 @@
     self.shadow.autoresizingMask=defViewAutoresizing;
     [self.view addSubview:self.shadow];
     self.hkViewContainer=[[UIView alloc] initWithFrame:self.view.bounds];
-    self.hkViewContainer.backgroundColor = self.shadowColor;
     self.hkViewContainer.autoresizingMask=defViewAutoresizing;
     self.hkViewContainer.clipsToBounds=YES;
-    self.hkViewContainer.backgroundColor=clearColor;
+    self.hkViewContainer.backgroundColor=nil;
     self.hkViewContainer.clearsContextBeforeDrawing=YES;
     [self.view addSubview:self.hkViewContainer];
 }
