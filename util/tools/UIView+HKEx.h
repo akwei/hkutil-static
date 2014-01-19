@@ -122,6 +122,8 @@
  */
 -(void)addSubview:(UIView*)view paddingRight:(CGFloat)paddingRight paddingBottom:(CGFloat)paddingBottom;
 
+-(void)removeFromSuperviewAnimated;
+
 /**
  从父级视图中删除
  @param animated 是否需要默认动画

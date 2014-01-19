@@ -201,6 +201,10 @@
     [self addSubview:view];
 }
 
+-(void)removeFromSuperviewAnimated{
+    [self removeFromSuperviewWithAnimated:YES delay:0 onCompleteBlock:nil];
+}
+
 -(void)removeFromSuperviewWithAnimated:(BOOL)animated delay:(NSTimeInterval)delay onCompleteBlock:(void (^)(void))onCompleteBlock{
     NSMutableDictionary* info = [[NSMutableDictionary alloc] init];
     [info setValue:[NSNumber numberWithBool:animated] forKey:@"animated"];
