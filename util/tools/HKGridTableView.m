@@ -16,6 +16,17 @@
 @end
 
 @implementation HKGridTableViewCell
+
+-(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        self.contentView.opaque = YES;
+        self.contentView.backgroundColor = nil;
+        self.backgroundColor = nil;
+    }
+    return self;
+}
+
 -(id)viewForIndex:(NSInteger)index{
     if (index>-1 && index < [self.gridViewList count]) {
         return [self.gridViewList objectAtIndex:index];
