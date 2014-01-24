@@ -67,7 +67,7 @@
     self.running=YES;
     stopFlag=NO;
     __weak HKTimerInvoker* me = self;
-    [_threadUtil asyncBlock:^{
+    [_threadUtil async:^{
         [condition lock];
         if (t>0) {
 #if TimerInvokeDebug
@@ -106,7 +106,7 @@
     __weak HKTimerInvoker* me = self;
     if (canCallback) {
         if (self.callbackBlock) {
-            [_threadUtil asyncBlockToMainThread:^{
+            [_threadUtil toMain:^{
                 me.callbackBlock();
             }];
         }

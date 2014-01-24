@@ -47,7 +47,7 @@ void RunLoopSourceCancelRoutine (void *info, CFRunLoopRef rl, CFStringRef mode)
     NSLog(@"doSth %@",[[NSThread currentThread] description]);
     _rls = [[RunLoopSourceObj alloc] init];
     CFRunLoopRef runloopRef = [[NSRunLoop currentRunLoop] getCFRunLoop];
-    [[HKThreadUtil shareInstance] asyncBlock:^{
+    [[HKThreadUtil shareInstance] async:^{
         NSLog(@"doAsync begin %@",[[NSThread currentThread] description]);
         [NSThread sleepForTimeInterval:5];
         [_rls fireAllCommandsOnRunLoop:runloopRef];

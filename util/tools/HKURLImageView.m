@@ -95,7 +95,7 @@ static HKCache* _cache = nil;
     //    _imageData = nil;
     _oimage = nil;
     __weak HKURLImageView* me = self;
-    [[HKThreadUtil shareInstance] asyncBlock:^{
+    [[HKThreadUtil shareInstance] async:^{
         HKCacheData* cd = [_cache objectForKey:_imageUrl];
         if (cd) {
             if ([_imageUrl isEqualToString:url]) {
@@ -143,7 +143,7 @@ static HKCache* _cache = nil;
 
 -(void)showImage{
     __weak HKURLImageView* me = self;
-    [[HKThreadUtil shareInstance] asyncBlockToMainThread:^{
+    [[HKThreadUtil shareInstance] toMain:^{
         if (_indicatorView.superview == self) {
             [_indicatorView removeFromSuperview];
         }

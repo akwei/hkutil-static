@@ -25,17 +25,17 @@
 
 -(void)workWithBlock:(BOOL (^)(void))block onErrorMainBlock:(void (^)(NSException* exception))onErrorMainBlock{
     [self.info removeAllObjects];
-    [[HKThreadUtil shareInstance] asyncBlock:^{
+    [[HKThreadUtil shareInstance] async:^{
         @try {
             if (block() && onErrorMainBlock) {
-                [[HKThreadUtil shareInstance] asyncBlockToMainThread:^{
+                [[HKThreadUtil shareInstance] toMain:^{
                     onErrorMainBlock(nil);
                 }];
             }
         }
         @catch (NSException *exception) {
             if (onErrorMainBlock) {
-                [[HKThreadUtil shareInstance] asyncBlockToMainThread:^{
+                [[HKThreadUtil shareInstance] toMain:^{
                     onErrorMainBlock(exception);
                 }];
             }
@@ -46,17 +46,17 @@
 
 +(void)workWithBlock:(BOOL (^)(NSMutableDictionary *))block onErrorMainBlock:(void (^)(NSMutableDictionary *, NSException *))onErrorMainBlock{
     __block NSMutableDictionary* info = [[NSMutableDictionary alloc] init];
-    [[HKThreadUtil shareInstance] asyncBlock:^{
+    [[HKThreadUtil shareInstance] async:^{
         @try {
             if (block(info) && onErrorMainBlock) {
-                [[HKThreadUtil shareInstance] asyncBlockToMainThread:^{
+                [[HKThreadUtil shareInstance] toMain:^{
                     onErrorMainBlock(info,nil);
                 }];
             }
         }
         @catch (NSException *exception) {
             if (onErrorMainBlock) {
-                [[HKThreadUtil shareInstance] asyncBlockToMainThread:^{
+                [[HKThreadUtil shareInstance] toMain:^{
                     onErrorMainBlock(info,exception);
                 }];
             }
