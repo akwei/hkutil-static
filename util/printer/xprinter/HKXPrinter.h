@@ -46,6 +46,7 @@ enum HKXPrinterCutType {
 @end
 
 @interface HKXPrinter : NSObject
+@property(nonatomic,assign)BOOL textDebug;
 
 -(id)initWithHost:(NSString*)host timeout:(NSTimeInterval)timeout;
 
@@ -99,6 +100,12 @@ enum HKXPrinterCutType {
  @param num 移动制表符数量
  */
 -(void)addMoveTabCmd:(NSInteger)num;
+
+/**
+ 添加要打印的文本信息
+ @param text 文本信息
+ */
+-(void)addText:(NSString*)text;
 
 /**
  打印添加的命令

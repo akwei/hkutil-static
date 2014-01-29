@@ -16,6 +16,8 @@
 @interface HKXPrinter ()
 @property(nonatomic,strong)HKCommonPrinter* cStatusprinter;
 @property(nonatomic,strong)HKCommonPrinter* printer;
+//开启文本调试模式时，文本内容都存储到此变量中
+@property(nonatomic,strong)NSMutableString* debugBuf;
 @end
 
 @implementation HKXPrinter
@@ -27,12 +29,18 @@
         self.cStatusprinter.timeout = 5;
         self.printer = [[HKCommonPrinter alloc] initWithHost:host port:9100];
         self.printer.timeout = 10;
+        self.textDebug = NO;
+        self.debugBuf = [[NSMutableString alloc] init];
     }
     return self;
 }
 
 -(HKXPrinterStatus *)getStatus{
     HKXPrinterStatus* ps = [[HKXPrinterStatus alloc] init];
+    if (self.textDebug) {
+        ps.online = YES;
+        return ps;
+    }
     @try {
         [self.cStatusprinter connect];
         unsigned char cmd[] = {0x1b,0x76};
@@ -124,7 +132,10 @@
 }
 
 -(void)addCut:(enum HKXPrinterCutType)cutType{
-    
+    if (self.textDebug) {
+        [self.debugBuf appendString:@"\n------- 剪切 -------\n"];
+        return;
+    }
     unsigned char cmd[] = {0x1d,0x56,0x41,0};
     if (cutType == HKXPrinterCutTypePart) {
         cmd[2] = 0x41;
@@ -136,16 +147,27 @@
 }
 
 -(void)addTweetCmd{
+    if (self.textDebug) {
+        [self.debugBuf appendString:@"\n------- 蜂鸣 -------\n"];
+        return;
+    }
     unsigned char cmd[] = {0x1b,0x70,0,50,7};
     [self.printer addBytesCommand:cmd length:5];
 }
 
 -(void)addInitCmd{
+    if (self.textDebug) {
+        [self.debugBuf appendString:@"\n------- 初始化 -------\n"];
+        return;
+    }
     unsigned char cmd[] = {0x1b,0x40};
     [self.printer addBytesCommand:cmd length:2];
 }
 
 -(void)addSizeCmd:(NSInteger)size{
+    if (self.textDebug) {
+        return;
+    }
     unsigned char cmd[] = {0x1d,0x21,0x00};
     if (size == 1) {
         cmd[2] = 0x00;
@@ -160,6 +182,9 @@
 }
 
 -(void)addAlignmentCmd:(enum HKXPrinterTextAlignment)align{
+    if (self.textDebug) {
+        return;
+    }
     unsigned char cmd[] = {0x1b,0x61,0};
     if (align == HKXPrinterTextAlignmentLeft) {
         cmd[2] = 0;
@@ -174,6 +199,9 @@
 }
 
 -(void)addDoPrintCmd:(NSUInteger)n{
+    if (self.textDebug) {
+        return;
+    }
     unsigned char cmd[] = {0x1b,0x64,n};
     [self.printer addBytesCommand:cmd length:3];
 }
@@ -184,6 +212,9 @@
 //}
 
 -(void)addTableCmd:(NSArray *)list{
+    if (self.textDebug) {
+        return;
+    }
     NSMutableData* mdata = [[NSMutableData alloc] init];
     unsigned char cmd_begin[] = {0x1b,0x44};
     [mdata appendBytes:cmd_begin length:2];
@@ -197,13 +228,31 @@
 }
 
 -(void)addMoveTabCmd:(NSInteger)num{
+    if (self.textDebug) {
+        for (int i = 0; i < num; i++) {
+            [self.debugBuf appendString:@"  "];
+        }
+        return;
+    }
     for (int i = 0; i < num; i++) {
         unsigned char cmd[] = {0x09};
         [self.printer addBytesCommand:cmd length:1];
     }
 }
 
+-(void)addText:(NSString *)text{
+    if (self.textDebug) {
+        [self.debugBuf appendString:text];
+        return;
+    }
+    [self.printer addTextCommand:text];
+}
+
 -(HKXPrinterStatus *)doPrint{
+    if (self.textDebug) {
+        NSLog(@"\n== printer text ==\n%@",self.debugBuf);
+        return nil;
+    }
     [self.printer executeWithBlockSize:16];
     return nil;
 }

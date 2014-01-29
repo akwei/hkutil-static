@@ -7,6 +7,7 @@
 //
 
 #import "HKShadowCtrl.h"
+#import "UIView+HKEx.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define kBlockKey @"block"
@@ -25,6 +26,10 @@
 @property(nonatomic,copy)NSString* forwardSubType;
 @property(nonatomic,copy)NSString* backwardSubType;
 @property(nonatomic,strong)UIColor* shadowColor;
+//动画未完成时，需要执行的block放入此中，当动画完成，并且动画结束的block完成后，从数组中取出需要执行的block来执行，并删除已经执行过的block
+@property(nonatomic,strong)NSMutableArray* stackBlockArray;
+//一个透明遮挡view
+@property(nonatomic,strong)UIView* bgView;
 @end
 
 @implementation HKShadowCtrl{
@@ -39,12 +44,18 @@
         self.viewControllers=[[NSMutableArray alloc] init];
         self.parent=parent;
         self.viewFrame = self.parent.bounds;
-        self.animationTime = .35;
+        self.animationTime = .4;
         self.forwardType = kCATransitionPush;
         self.forwardSubType = kCATransitionFromRight;
         self.backwardType = kCATransitionPush;
         self.backwardSubType = kCATransitionFromLeft;
         self.closeType = kCATransitionFade;
+        self.stackBlockArray = [[NSMutableArray alloc] init];
+        self.bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+        self.bgView.backgroundColor = nil;
+//        [UIColor colorWithRed:0 green:0 blue:0 alpha:.8];
+        self.bgView.clipsToBounds = NO;
+        self.bgView.hidden = YES;
     }
     return self;
 }
@@ -55,6 +66,19 @@
 
 -(void)loadView{
     self.view = [[UIView alloc] initWithFrame:self.parent.bounds];
+}
+
+-(void (^)(void))popFromStackBlockArray{
+    void(^block)(void) = [self.stackBlockArray firstObject];
+    if (block) {
+        [self.stackBlockArray removeObjectAtIndex:0];
+        return block;
+    }
+    return nil;
+}
+
+-(void)pushToStack:(void (^)(void))block{
+    [self.stackBlockArray insertObject:block atIndex:0];
 }
 
 -(void)viewDidLoad{
@@ -79,6 +103,7 @@
     self.hkViewContainer.backgroundColor=nil;
     self.hkViewContainer.clearsContextBeforeDrawing=YES;
     [self.view addSubview:self.hkViewContainer];
+    [self.view addSubview:self.bgView];
 }
 
 -(void)changeShadowColor:(UIColor *)shadowColor{
@@ -88,17 +113,17 @@
 
 #pragma mark - push
 -(void)hkPushViewController:(UIViewController<HKShadowCtrlDelegate> *)viewController animated:(BOOL)animated{
-    if (![self canProcess]) {
-        return;
-    }
+//    if (![self canProcess]) {
+//        return;
+//    }
     [self hkPushViewController:viewController animated:animated onComplete:nil];
 }
 
 -(void)hkPushViewController:(UIViewController<HKShadowCtrlDelegate> *)viewController animated:(BOOL)animated onComplete:(void (^)(void))completeBlock{
+//    if (![self canProcess]) {
+//        return;
+//    }
     CAAnimation* tr;
-    if (![self canProcess]) {
-        return;
-    }
     if (animated) {
         tr = [self createAnimationWithtype:self.forwardType subType:self.forwardSubType];
     }
@@ -107,6 +132,10 @@
 
 -(void)hkPushViewController:(UIViewController<HKShadowCtrlDelegate> *)viewController animation:(CAAnimation *)animation onComplete:(void (^)(void))completeBlock{
     if (![self doProcessing]) {
+        __weak HKShadowCtrl* me = self;
+        [self pushToStack:^{
+            [me hkPushViewController:viewController animation:animation onComplete:completeBlock];
+        }];
         return;
     }
     viewController.shadowCtrl=self;
@@ -127,10 +156,10 @@
 }
 
 -(NSArray *)hkPopToRootViewControllerAnimated:(BOOL)animated onComplete:(void (^)(void))completeBlock{
+//    if (![self canProcess]) {
+//        return nil;
+//    }
     CAAnimation* tr;
-    if (![self canProcess]) {
-        return nil;
-    }
     if (animated) {
         tr = [self createAnimationWithtype:self.backwardType subType:self.backwardSubType];
     }
@@ -138,9 +167,9 @@
 }
 
 -(NSArray *)hkPopToRootViewControllerAnimation:(CAAnimation *)animation onComplete:(void (^)(void))completeBlock{
-    if (![self canProcess]) {
-        return nil;
-    }
+//    if (![self canProcess]) {
+//        return nil;
+//    }
     if ([self.viewControllers count]>0) {
         UIViewController<HKShadowCtrlDelegate>* root = [self.viewControllers lastObject];
         return [self hkPopToViewController:root animation:animation onComplete:completeBlock];
@@ -152,9 +181,9 @@
 
 -(NSArray *)hkPopAllAndCloseAnimated:(BOOL)animated{
     CAAnimation* tr;
-    if (![self canProcess]) {
-        return nil;
-    }
+//    if (![self canProcess]) {
+//        return nil;
+//    }
     if (animated) {
         tr = [self createAnimationWithtype:self.closeType subType:nil];
     }
@@ -162,9 +191,9 @@
 }
 
 -(NSArray *)hkPopAllAndCloseWithBlock:(void (^)(void))block delay:(NSTimeInterval)delay animation:(CAAnimation *)animation{
-    if (![self canProcess]) {
-        return nil;
-    }
+//    if (![self canProcess]) {
+//        return nil;
+//    }
     if ([self.viewControllers count]>0) {
         [self closeWithBlock:block delay:delay animation:animation];
         return [NSArray arrayWithArray:self.viewControllers];
@@ -174,17 +203,17 @@
 
 #pragma mark - popToView
 -(NSArray *)hkPopToViewController:(UIViewController<HKShadowCtrlDelegate> *)viewController animated:(BOOL)animated{
-    if (![self canProcess]) {
-        return nil;
-    }
+//    if (![self canProcess]) {
+//        return nil;
+//    }
     return [self hkPopToViewController:viewController animated:animated onComplete:nil];
 }
 
 -(NSArray *)hkPopToViewController:(UIViewController<HKShadowCtrlDelegate> *)viewController animated:(BOOL)animated onComplete:(void (^)(void))completeBlock{
+//    if (![self canProcess]) {
+//        return nil;
+//    }
     CAAnimation* tr;
-    if (![self canProcess]) {
-        return nil;
-    }
     if (animated) {
         tr = [self createAnimationWithtype:self.backwardType subType:self.backwardSubType];
     }
@@ -193,6 +222,10 @@
 
 -(NSArray *)hkPopToViewController:(UIViewController<HKShadowCtrlDelegate> *)viewController animation:(CAAnimation *)animation onComplete:(void (^)(void))completeBlock{
     if (![self doProcessing]) {
+        __weak HKShadowCtrl* me = self;
+        [me pushToStack:^{
+            [me hkPopToViewController:viewController animation:animation onComplete:completeBlock];
+        }];
         return nil;
     }
     [self showViewController:viewController animation:animation onComplete:completeBlock];
@@ -202,17 +235,17 @@
 
 #pragma mark - popView
 -(UIViewController<HKShadowCtrlDelegate> *)hkPopViewControllerAnimated:(BOOL)animated{
-    if (![self canProcess]) {
-        return nil;
-    }
+//    if (![self canProcess]) {
+//        return nil;
+//    }
     return [self hkPopViewControllerAnimated:animated onComplete:nil];
 }
 
 -(UIViewController<HKShadowCtrlDelegate> *)hkPopViewControllerAnimated:(BOOL)animated onComplete:(void (^)(void))completeBlock{
     CAAnimation* tr;
-    if (![self canProcess]) {
-        return nil;
-    }
+//    if (![self canProcess]) {
+//        return nil;
+//    }
     if (animated) {
         tr = [self createAnimationWithtype:self.backwardType subType:self.backwardSubType];
     }
@@ -291,13 +324,16 @@
     if (animation) {
         animation.delegate = self;
         [animation setValue:completeBlock forKey:kBlockKey];
+        [self showBgView];
         [self showView:viewController.view];
         [self.hkViewContainer.layer addAnimation:animation forKey:@"ani"];
 //        [self finishProcessing];
     }
     else{
+        [self showBgView];
         [self showView:viewController.view];
         [self finishProcessing];
+        [self hideBgView];
     }
 }
 
@@ -397,6 +433,7 @@
 
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
     [self finishProcessing];
+    [self hideBgView];
     NSNumber* n_closeAni = [anim valueForKey:kCloseAni];
     if (n_closeAni) {
         self.view.hidden = YES;
@@ -404,6 +441,10 @@
     void(^block)(void) = [anim valueForKey:kBlockKey];
     if (block) {
         block();
+    }
+    void (^stackBlock) (void) = [self popFromStackBlockArray];
+    if (stackBlock) {
+        stackBlock();
     }
 }
 
@@ -424,11 +465,12 @@
 
 -(void)finishProcessing{
     animating = NO;
+    self.bgView.hidden = YES;
 }
 
 -(void)showView:(UIView*)view{
     self.view.frame = self.parent.bounds;
-    self.view.hidden=NO;
+    self.view.hidden = NO;
     if (!self.view.superview) {
         [self.parent addSubview:self.view];
     }
@@ -441,6 +483,16 @@
         [sview removeFromSuperview];
     }
     [self.hkViewContainer addSubview:view];
+}
+
+-(void)showBgView{
+    self.bgView.frame = self.view.bounds;
+    self.bgView.hidden = NO;
+    [self.view bringSubviewToFront:self.bgView];
+}
+
+-(void)hideBgView{
+    self.bgView.hidden = YES;
 }
 
 -(void)clearControllers{
