@@ -248,7 +248,16 @@
     [self.printer addTextCommand:text];
 }
 
--(HKXPrinterStatus *)doPrint{
+-(void)printWithNum:(NSInteger)n{
+    if (self.textDebug) {
+        return ;
+    }
+    unsigned char cmd[] = {0x1b,0x64,n};
+    [self.printer addBytesCommand:cmd length:3];
+    
+}
+
+-(HKXPrinterStatus *)doCmd{
     if (self.textDebug) {
         NSLog(@"\n== printer text ==\n%@",self.debugBuf);
         return nil;

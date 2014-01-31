@@ -108,9 +108,15 @@ enum HKXPrinterCutType {
 -(void)addText:(NSString*)text;
 
 /**
- 打印添加的命令
+ 打印添加的命令，并走纸n行
+ @param n 走纸行数
+ */
+-(void)printWithNum:(NSInteger)n;
+
+/**
+ 执行打印机命令
  @return 返回打印机当前状态(如果开启了打印状态返回模式，没有开启时，返回nil)
  */
--(HKXPrinterStatus*)doPrint;
+-(HKXPrinterStatus*)doCmd;
 
 @end
