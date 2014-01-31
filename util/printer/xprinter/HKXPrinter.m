@@ -133,7 +133,7 @@
 
 -(void)addCut:(enum HKXPrinterCutType)cutType{
     if (self.textDebug) {
-        [self.debugBuf appendString:@"\n------- 剪切 -------\n"];
+        [self.debugBuf appendString:@"\n>>>>>>> 剪切 >>>>>>>\n"];
         return;
     }
     unsigned char cmd[] = {0x1d,0x56,0x41,0};
@@ -148,7 +148,7 @@
 
 -(void)addTweetCmd{
     if (self.textDebug) {
-        [self.debugBuf appendString:@"\n------- 蜂鸣 -------\n"];
+        [self.debugBuf appendString:@"\n+++++++ 蜂鸣 +++++++\n"];
         return;
     }
     unsigned char cmd[] = {0x1b,0x70,0,50,7};
@@ -157,7 +157,7 @@
 
 -(void)addInitCmd{
     if (self.textDebug) {
-        [self.debugBuf appendString:@"\n------- 初始化 -------\n"];
+        [self.debugBuf appendString:@"\n....... 初始化 .......\n"];
         return;
     }
     unsigned char cmd[] = {0x1b,0x40};
@@ -259,7 +259,9 @@
 
 -(HKXPrinterStatus *)doCmd{
     if (self.textDebug) {
-        NSLog(@"\n== printer text ==\n%@",self.debugBuf);
+        NSLog(@"\n======= printer text =======\n%@",[self.debugBuf copy]);
+        self.debugBuf = nil;
+        self.debugBuf = [[NSMutableString alloc] init];
         return nil;
     }
     [self.printer executeWithBlockSize:16];
