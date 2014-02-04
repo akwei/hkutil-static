@@ -39,6 +39,7 @@
     HKXPrinterStatus* ps = [[HKXPrinterStatus alloc] init];
     if (self.textDebug) {
         ps.online = YES;
+        ps.canConnect = YES;
         return ps;
     }
     @try {

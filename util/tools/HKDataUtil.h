@@ -16,9 +16,9 @@
 
 +(NSString *)decodeURL: (NSString *) input;
 
-+(NSString*)integerToStringValue:(NSInteger)n;
++(NSString *)integerToString:(NSInteger)n;
 
-+(NSString*)integerAddString:(NSString*)str :(NSInteger)n;
++(NSString *)uintegerToString:(NSUInteger)n;
 
 +(NSInteger)randNSInteger;
 

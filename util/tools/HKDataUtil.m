@@ -39,12 +39,12 @@
     return [outputStr stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
-+(NSString *)integerToStringValue:(NSInteger)n{
-    return [[NSNumber numberWithLongLong:n] stringValue];
++(NSString *)integerToString:(NSInteger)n{
+    return [[NSNumber numberWithInteger:n] stringValue];
 }
 
-+(NSString *)integerAddString:(NSString *)str :(NSInteger)n{
-    return [NSString stringWithFormat:@"%@%i",str,n];
++(NSString *)uintegerToString:(NSUInteger)n{
+    return [[NSNumber numberWithUnsignedInteger:n] stringValue];
 }
 
 
