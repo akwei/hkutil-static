@@ -229,6 +229,10 @@
 
 -(id)viewWithTagEx:(NSInteger)tag;
 
+-(CGFloat)getBottomY;
+
+-(CGFloat)getRightX;
+
 /**
  把所有子视图从当前视图中移除
  */

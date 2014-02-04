@@ -113,6 +113,8 @@ enum HKXPrinterCutType {
  */
 -(void)printWithNum:(NSInteger)n;
 
+-(void)addOpenCashBoxCmd;
+
 /**
  执行打印机命令
  @return 返回打印机当前状态(如果开启了打印状态返回模式，没有开启时，返回nil)

@@ -257,11 +257,21 @@
     
 }
 
+-(void)addOpenCashBoxCmd{
+    if (self.textDebug) {
+        return;
+    }
+    unsigned char cmd[] = {0x1b,0x70,0,50,7};
+    [self.printer addBytesCommand:cmd length:5];
+}
+
 -(HKXPrinterStatus *)doCmd{
     if (self.textDebug) {
-        NSLog(@"\n======= printer text =======\n%@",[self.debugBuf copy]);
+        NSString* text = [self.debugBuf copy];
         self.debugBuf = nil;
         self.debugBuf = [[NSMutableString alloc] init];
+        const char* ch = [text UTF8String];
+        printf("%s",ch);
         return nil;
     }
     [self.printer executeWithBlockSize:16];

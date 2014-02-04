@@ -371,9 +371,13 @@
     UIView* view = (UIView*)[self viewWithTag:tag];
     return view;
 }
-//-(void)removeAllSubviews{
-//    NSMutableArray* list = [[NSMutableArray alloc] init];
-//    
-//}
+
+-(CGFloat)getBottomY{
+    return self.frame.origin.y + self.frame.size.height;
+}
+
+-(CGFloat)getRightX{
+    return self.frame.origin.x + self.frame.size.width;
+}
 
 @end
