@@ -290,9 +290,7 @@
         printf("%s",ch);
         return nil;
     }
-    NSLog(@"do print");
     [self.printer executeWithBlockSize:16];
-    NSLog(@"end print");
     return nil;
 }
 
