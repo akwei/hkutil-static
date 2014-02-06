@@ -25,8 +25,8 @@
 -(id)initWithHost:(NSString *)host timeout:(NSTimeInterval)timeout {
     self = [super init];
     if (self) {
-        self.cStatusprinter = [[HKCommonPrinter alloc] initWithHost:host port:4000];
-        self.cStatusprinter.timeout = 5;
+//        self.cStatusprinter = [[HKCommonPrinter alloc] initWithHost:host port:4000];
+//        self.cStatusprinter.timeout = 5;
         self.printer = [[HKCommonPrinter alloc] initWithHost:host port:9100];
         self.printer.timeout = 10;
         self.textDebug = NO;
@@ -35,101 +35,116 @@
     return self;
 }
 
--(HKXPrinterStatus *)getStatus{
-    HKXPrinterStatus* ps = [[HKXPrinterStatus alloc] init];
-    if (self.textDebug) {
-        ps.online = YES;
-        ps.canConnect = YES;
-        return ps;
-    }
+//-(HKXPrinterStatus *)getStatus{
+//    HKXPrinterStatus* ps = [[HKXPrinterStatus alloc] init];
+//    if (self.textDebug) {
+//        ps.online = YES;
+//        ps.canConnect = YES;
+//        return ps;
+//    }
+//    @try {
+//        [self.cStatusprinter connect];
+//        unsigned char cmd[] = {0x1b,0x76};
+//        [self.cStatusprinter addBytesCommand:cmd length:2];
+//        [self.cStatusprinter send];
+//        NSData* data = [self.cStatusprinter read];
+//        ps.canConnect = YES;
+//        //打印机信息
+//        int byte_cashbox = [data getByte:0 bitIndex:2];
+//        int byte_online = [data getByte:0 bitIndex:3];
+//        int byte_cover = [data getByte:0 bitIndex:5];
+//        int byte_feed = [data getByte:0 bitIndex:6];
+//        
+//        //打印机信息
+//        int byte_cut = [data getByte:1 bitIndex:3];
+//        int byte_unrecoverable_err = [data getByte:1 bitIndex:5];
+//        int byte_recoverable_err = [data getByte:1 bitIndex:6];
+//        
+//        //纸传感器信息
+//        int byte_page_will_user_up0 = [data getByte:2 bitIndex:0];
+//        int byte_page_will_user_up1 = [data getByte:2 bitIndex:1];
+//        int byte_page_empty2 = [data getByte:2 bitIndex:2];
+//        int byte_page_empty3 = [data getByte:2 bitIndex:3];
+//        
+//        if (byte_cashbox == 0) {
+//            ps.cashBoxHighLevel = NO;
+//        }
+//        else{
+//            ps.cashBoxHighLevel = YES;
+//        }
+//        if (byte_online == 0) {
+//            ps.online = YES;
+//        }
+//        else{
+//            ps.online = NO;
+//        }
+//        if (byte_cover == 0) {
+//            ps.coverOpen = NO;
+//        }
+//        else{
+//            ps.coverOpen = YES;
+//        }
+//        if (byte_feed == 0) {
+//            ps.runPageWithFeed = NO;
+//        }
+//        else{
+//            ps.runPageWithFeed = YES;
+//        }
+//        if (byte_cut == 0) {
+//            ps.cutError = NO;
+//        }
+//        else{
+//            ps.cutError = YES;
+//        }
+//        if (byte_unrecoverable_err == 0) {
+//            ps.unrecoverableError = NO;
+//        }
+//        else{
+//            ps.unrecoverableError = YES;
+//        }
+//        if (byte_recoverable_err == 0) {
+//            ps.recoverableError = NO;
+//        }
+//        else{
+//            ps.recoverableError = YES;
+//        }
+//        if (byte_page_will_user_up0 == 0 && byte_page_will_user_up1 == 0) {
+//            ps.pageWillUseUp = NO;
+//        }
+//        else{
+//            ps.pageWillUseUp = YES;
+//        }
+//        if (byte_page_empty2 == 0 && byte_page_empty3 == 0) {
+//            ps.pageEmpty = NO;
+//        }
+//        else{
+//            ps.pageEmpty = YES;
+//        }
+//        return ps;
+//    }
+//    @catch (NSException* ex) {
+//        ps.canConnect = NO;
+//        ps.online = NO;
+//        return ps;
+//    }
+//    @finally {
+//        [self.cStatusprinter disconnect];
+//    }
+//}
+
+-(BOOL)canConnect{
+    BOOL can = NO;
     @try {
-        [self.cStatusprinter connect];
-        unsigned char cmd[] = {0x1b,0x76};
-        [self.cStatusprinter addBytesCommand:cmd length:2];
-        [self.cStatusprinter send];
-        NSData* data = [self.cStatusprinter read];
-        ps.canConnect = YES;
-        //打印机信息
-        int byte_cashbox = [data getByte:0 bitIndex:2];
-        int byte_online = [data getByte:0 bitIndex:3];
-        int byte_cover = [data getByte:0 bitIndex:5];
-        int byte_feed = [data getByte:0 bitIndex:6];
-        
-        //打印机信息
-        int byte_cut = [data getByte:1 bitIndex:3];
-        int byte_unrecoverable_err = [data getByte:1 bitIndex:5];
-        int byte_recoverable_err = [data getByte:1 bitIndex:6];
-        
-        //纸传感器信息
-        int byte_page_will_user_up0 = [data getByte:2 bitIndex:0];
-        int byte_page_will_user_up1 = [data getByte:2 bitIndex:1];
-        int byte_page_empty2 = [data getByte:2 bitIndex:2];
-        int byte_page_empty3 = [data getByte:2 bitIndex:3];
-        
-        if (byte_cashbox == 0) {
-            ps.cashBoxHighLevel = NO;
-        }
-        else{
-            ps.cashBoxHighLevel = YES;
-        }
-        if (byte_online == 0) {
-            ps.online = YES;
-        }
-        else{
-            ps.online = NO;
-        }
-        if (byte_cover == 0) {
-            ps.coverOpen = NO;
-        }
-        else{
-            ps.coverOpen = YES;
-        }
-        if (byte_feed == 0) {
-            ps.runPageWithFeed = NO;
-        }
-        else{
-            ps.runPageWithFeed = YES;
-        }
-        if (byte_cut == 0) {
-            ps.cutError = NO;
-        }
-        else{
-            ps.cutError = YES;
-        }
-        if (byte_unrecoverable_err == 0) {
-            ps.unrecoverableError = NO;
-        }
-        else{
-            ps.unrecoverableError = YES;
-        }
-        if (byte_recoverable_err == 0) {
-            ps.recoverableError = NO;
-        }
-        else{
-            ps.recoverableError = YES;
-        }
-        if (byte_page_will_user_up0 == 0 && byte_page_will_user_up1 == 0) {
-            ps.pageWillUseUp = NO;
-        }
-        else{
-            ps.pageWillUseUp = YES;
-        }
-        if (byte_page_empty2 == 0 && byte_page_empty3 == 0) {
-            ps.pageEmpty = NO;
-        }
-        else{
-            ps.pageEmpty = YES;
-        }
-        return ps;
+        [self.printer connect];
+        can = YES;
     }
-    @catch (NSException* ex) {
-        ps.canConnect = NO;
-        ps.online = NO;
-        return ps;
+    @catch (NSException* exception) {
+        can = NO;
     }
     @finally {
-        [self.cStatusprinter disconnect];
+        [self.printer disconnect];
     }
+    return can;
 }
 
 -(void)addCut:(enum HKXPrinterCutType)cutType{
@@ -275,7 +290,9 @@
         printf("%s",ch);
         return nil;
     }
+    NSLog(@"do print");
     [self.printer executeWithBlockSize:16];
+    NSLog(@"end print");
     return nil;
 }
 

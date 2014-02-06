@@ -53,7 +53,13 @@ enum HKXPrinterCutType {
 /**
  获得打印机当前状态
  */
--(HKXPrinterStatus*)getStatus;
+//-(HKXPrinterStatus*)getStatus;
+
+/**
+ 打印机是否可连接
+ @returns YES: 正常连接 NO: 不可连接
+ */
+-(BOOL)canConnect;
 
 /**
  添加切纸命令
