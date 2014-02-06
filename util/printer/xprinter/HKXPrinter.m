@@ -291,6 +291,7 @@
         return nil;
     }
     [self.printer executeWithBlockSize:16];
+    [NSThread sleepForTimeInterval:1];
     return nil;
 }
 

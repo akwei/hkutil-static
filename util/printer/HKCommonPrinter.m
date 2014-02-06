@@ -80,7 +80,6 @@
 
 -(void)disconnect{
     [_socket close];
-    [NSThread sleepForTimeInterval:.5];
     _socket = nil;
 }
 
