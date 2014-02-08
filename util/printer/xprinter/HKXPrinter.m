@@ -133,6 +133,9 @@
 //}
 
 -(BOOL)canConnect{
+    if (self.textDebug) {
+        return YES;
+    }
     BOOL can = NO;
     @try {
         [self.printer connect];
