@@ -42,8 +42,6 @@
 		9BFFA94D17E48D7400F353A5 /* hkutil_static.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA94C17E48D7400F353A5 /* hkutil_static.m */; };
 		9BFFA9C517E48DE500F353A5 /* HKPOSTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA95617E48DE500F353A5 /* HKPOSTable.m */; };
 		9BFFA9C717E48DE500F353A5 /* HKPrinterBitmap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA95A17E48DE500F353A5 /* HKPrinterBitmap.m */; };
-		9BFFA9C817E48DE500F353A5 /* HKRFPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA95D17E48DE500F353A5 /* HKRFPrinter.m */; };
-		9BFFA9CA17E48DE500F353A5 /* StarIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFFA96017E48DE500F353A5 /* StarIO.framework */; };
 		9BFFA9D017E48DE500F353A5 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA96F17E48DE500F353A5 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9BFFA9D117E48DE500F353A5 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA97117E48DE500F353A5 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9BFFA9D217E48DE500F353A5 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA97317E48DE500F353A5 /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -93,7 +91,6 @@
 		9BFFAA0D17E48EDF00F353A5 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFFAA0C17E48EDF00F353A5 /* ExternalAccessory.framework */; };
 		9BFFACCC17E4B1B500F353A5 /* HKPOSTable.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA95517E48DE500F353A5 /* HKPOSTable.h */; };
 		9BFFACD017E4B1B500F353A5 /* HKPrinterBitmap.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA95917E48DE500F353A5 /* HKPrinterBitmap.h */; };
-		9BFFACD217E4B1B500F353A5 /* HKRFPrinter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA95C17E48DE500F353A5 /* HKRFPrinter.h */; };
 		9BFFACE017E4B1B500F353A5 /* AFHTTPClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA96E17E48DE500F353A5 /* AFHTTPClient.h */; };
 		9BFFACE217E4B1B500F353A5 /* AFHTTPRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA97017E48DE500F353A5 /* AFHTTPRequestOperation.h */; };
 		9BFFACE417E4B1B500F353A5 /* AFImageRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA97217E48DE500F353A5 /* AFImageRequestOperation.h */; };
@@ -161,7 +158,6 @@
 				9B00540E17E80D9400231190 /* HKAnimationUtil.h in CopyFiles */,
 				9BFFACCC17E4B1B500F353A5 /* HKPOSTable.h in CopyFiles */,
 				9BFFACD017E4B1B500F353A5 /* HKPrinterBitmap.h in CopyFiles */,
-				9BFFACD217E4B1B500F353A5 /* HKRFPrinter.h in CopyFiles */,
 				9BFFACE017E4B1B500F353A5 /* AFHTTPClient.h in CopyFiles */,
 				9BFFACE217E4B1B500F353A5 /* AFHTTPRequestOperation.h in CopyFiles */,
 				9BFFACE417E4B1B500F353A5 /* AFImageRequestOperation.h in CopyFiles */,
@@ -254,9 +250,6 @@
 		9BFFA95617E48DE500F353A5 /* HKPOSTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKPOSTable.m; sourceTree = "<group>"; };
 		9BFFA95917E48DE500F353A5 /* HKPrinterBitmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKPrinterBitmap.h; sourceTree = "<group>"; };
 		9BFFA95A17E48DE500F353A5 /* HKPrinterBitmap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKPrinterBitmap.m; sourceTree = "<group>"; };
-		9BFFA95C17E48DE500F353A5 /* HKRFPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKRFPrinter.h; sourceTree = "<group>"; };
-		9BFFA95D17E48DE500F353A5 /* HKRFPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKRFPrinter.m; sourceTree = "<group>"; };
-		9BFFA96017E48DE500F353A5 /* StarIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StarIO.framework; path = util/printer/StarIO.framework; sourceTree = "<group>"; };
 		9BFFA96E17E48DE500F353A5 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		9BFFA96F17E48DE500F353A5 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		9BFFA97017E48DE500F353A5 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -361,7 +354,6 @@
 				9BFFA9FB17E48E2800F353A5 /* libsqlite3.dylib in Frameworks */,
 				9BFFA9F917E48E2300F353A5 /* Security.framework in Frameworks */,
 				9BFFA94617E48D7400F353A5 /* Foundation.framework in Frameworks */,
-				9BFFA9CA17E48DE500F353A5 /* StarIO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,7 +390,6 @@
 		9BFFA94417E48D7400F353A5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9BFFA96017E48DE500F353A5 /* StarIO.framework */,
 				9BFFAA0C17E48EDF00F353A5 /* ExternalAccessory.framework */,
 				9BFFAA0A17E48E6100F353A5 /* CoreGraphics.framework */,
 				9BFFAA0817E48E5200F353A5 /* UIKit.framework */,
@@ -452,18 +443,8 @@
 				9BFFA95917E48DE500F353A5 /* HKPrinterBitmap.h */,
 				9BFFA95A17E48DE500F353A5 /* HKPrinterBitmap.m */,
 				9BBDED4F185057D000994DAB /* xprinter */,
-				9BFFA95B17E48DE500F353A5 /* runfaprinter */,
 			);
 			path = printer;
-			sourceTree = "<group>";
-		};
-		9BFFA95B17E48DE500F353A5 /* runfaprinter */ = {
-			isa = PBXGroup;
-			children = (
-				9BFFA95C17E48DE500F353A5 /* HKRFPrinter.h */,
-				9BFFA95D17E48DE500F353A5 /* HKRFPrinter.m */,
-			);
-			path = runfaprinter;
 			sourceTree = "<group>";
 		};
 		9BFFA96C17E48DE500F353A5 /* thirdtools */ = {
@@ -685,7 +666,6 @@
 				9BFFA9C517E48DE500F353A5 /* HKPOSTable.m in Sources */,
 				9B0E1067184EB9DD00C5D429 /* HKArrayMap.m in Sources */,
 				9BFFA9C717E48DE500F353A5 /* HKPrinterBitmap.m in Sources */,
-				9BFFA9C817E48DE500F353A5 /* HKRFPrinter.m in Sources */,
 				9B51D086184B861C009E6E09 /* UILabel+HKEx.m in Sources */,
 				9BFFA9D017E48DE500F353A5 /* AFHTTPClient.m in Sources */,
 				9BFFA9D117E48DE500F353A5 /* AFHTTPRequestOperation.m in Sources */,
