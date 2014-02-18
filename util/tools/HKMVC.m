@@ -33,6 +33,16 @@
     return [self.info valueForKey:key];
 }
 
+-(void)async:(NSString *(^)(void))block{
+    [self.info removeAllObjects];
+    [super async:block];
+}
+
+-(void)asyncWithBlockArrayToGroup:(NSArray *)blockArray{
+    [self.info removeAllObjects];
+    [super asyncWithBlockArrayToGroup:blockArray];
+}
+
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     if ([keyPath isEqualToString:@"result"]) {
         __weak HKKVO* me = self;
