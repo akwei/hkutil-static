@@ -48,7 +48,6 @@ static BOOL _sharedEnableTestMode = NO;
 }
 
 -(void)async:(NSString *(^)(void))block{
-    self.result = nil;
     if ([HKKVO isEnableTestMode]) {
         self.result = block();
         return;
@@ -60,7 +59,6 @@ static BOOL _sharedEnableTestMode = NO;
 }
 
 -(void)asyncWithBlockArrayToGroup:(NSArray *)blockArray{
-    self.result = nil;
     if ([HKKVO isEnableTestMode]) {
         for (NSString* (^block)(void)  in blockArray) {
             self.result = block();
