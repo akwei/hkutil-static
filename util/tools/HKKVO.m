@@ -48,6 +48,7 @@ static BOOL _sharedEnableTestMode = NO;
 }
 
 -(void)async:(NSString *(^)(void))block{
+    self.result = nil;
     if ([HKKVO isEnableTestMode]) {
         self.result = block();
         return;
@@ -59,6 +60,7 @@ static BOOL _sharedEnableTestMode = NO;
 }
 
 -(void)asyncWithBlockArrayToGroup:(NSArray *)blockArray{
+    self.result = nil;
     if ([HKKVO isEnableTestMode]) {
         for (NSString* (^block)(void)  in blockArray) {
             self.result = block();
@@ -68,7 +70,6 @@ static BOOL _sharedEnableTestMode = NO;
     dispatch_group_t group = dispatch_group_create();
     __weak HKKVO* me = self;
     for (NSString* (^block)(void)  in blockArray) {
-        self.result = block();
         dispatch_group_async(group, _asyncQueue, ^{
             me.result = block();
         });

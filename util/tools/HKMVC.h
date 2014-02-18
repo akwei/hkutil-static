@@ -8,6 +8,10 @@
 
 #import "HKKVO.h"
 
-@interface HKMVC : HKKVO
+@interface HKMVC : HKKVO<HKKVODelegate>
+@property(nonatomic,assign)id mvcDelegate;
+
+-(void)setInfoValue:(id)value forKey:(NSString*)key;
+-(id)infoValueForKey:(NSString *)key;
 
 @end
