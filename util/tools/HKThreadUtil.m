@@ -79,4 +79,20 @@ static BOOL _sharedenableTestMode = NO;
     dispatch_group_async(group, _asyncQueue, block);
 }
 
+-(void)asyncWithBlockArrayToGroup:(NSArray *)blockArray{
+    if ([HKThreadUtil isEnableTestMode]) {
+        for (NSString* (^block)(void)  in blockArray) {
+            block();
+        }
+        return;
+    }
+    dispatch_group_t group = dispatch_group_create();
+    for (NSString* (^block)(void)  in blockArray) {
+        dispatch_group_async(group, _asyncQueue, ^{
+            block();
+        });
+    }
+    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+}
+
 @end

@@ -48,4 +48,11 @@
  */
 -(void)async:(void (^)(void))block toGroup:(dispatch_group_t)group;
 
+/**
+ 添加一组异步执行的blok到特定的组中，此方法为阻塞方法，只有执行完所有线程之后，才能继续运行
+ @param blockArray 需要异步执行的block 形式: (NSString* (^)(void))block
+ @param group 线程组
+ */
+-(void)asyncWithBlockArrayToGroup:(NSArray*)blockArray;
+
 @end

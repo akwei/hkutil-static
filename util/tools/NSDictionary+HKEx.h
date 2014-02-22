@@ -12,8 +12,13 @@
  */
 @interface NSDictionary (HKEx)
 -(NSInteger)integerValueForKey:(NSString*)key;
+-(NSInteger)integerValueForKey:(NSString*)key def:(NSInteger)defValue;
 -(long long)longLongValueForKey:(NSString*)key;
+-(long long)longLongValueForKey:(NSString*)key def:(long long)defValue;
 -(unsigned long long)unsignedLongLongValueForKey:(NSString*)key;
+-(unsigned long long)unsignedLongLongValueForKey:(NSString*)key def:(unsigned long long)defValue;
 -(BOOL)boolValueForKey:(NSString*)key;
+-(BOOL)boolValueForKey:(NSString*)key def:(BOOL)defValue;
 -(double)doubleValueForKey:(NSString*)key;
+-(double)doubleValueForKey:(NSString*)key def:(double)defValue;
 @end

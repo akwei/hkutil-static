@@ -25,6 +25,16 @@
     return self;
 }
 
+-(id)initWithMvcDelegate:(id)mvcDelegate{
+    self = [super init];
+    if (self) {
+        self.hkKVODelegate = self;
+        self.info = [[NSMutableDictionary alloc] init];
+        self.mvcDelegate = mvcDelegate;
+    }
+    return self;
+}
+
 -(void)setInfoValue:(id)value forKey:(NSString *)key{
     [self.info setValue:value forKey:key];
 }

@@ -11,6 +11,7 @@
 @interface HKMVC : HKKVO<HKKVODelegate>
 @property(nonatomic,assign)id mvcDelegate;
 
+-(id)initWithMvcDelegate:(id)mvcDelegate;
 -(void)setInfoValue:(id)value forKey:(NSString*)key;
 -(id)infoValueForKey:(NSString *)key;
 
