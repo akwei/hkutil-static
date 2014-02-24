@@ -18,8 +18,6 @@
 @property(nonatomic,assign)id mvcDelegate;
 @property(nonatomic,copy)NSString* result;
 
-+(void)setInjectBlock:(void (^)(void))injectBlock;
-
 -(id)initWithMvcDelegate:(id)mvcDelegate;
 
 
@@ -50,7 +48,6 @@
 
 -(void)setInfoValue:(id)value forKey:(NSString*)key;
 -(id)infoValueForKey:(NSString *)key;
--(void)noticeMvc;
 
 
 

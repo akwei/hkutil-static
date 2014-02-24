@@ -17,13 +17,7 @@ static BOOL _sharedEnableTestMode = NO;
 @property(nonatomic,assign)dispatch_queue_t asyncQueue;
 @end
 
-static void (^__injectBlock)(void) = nil;
-
 @implementation HKMVC
-
-+(void)setInjectBlock:(void (^)(void))injectBlock{
-    __injectBlock = injectBlock;
-}
 
 +(void)setEnableTestMode:(BOOL)enable{
     _sharedEnableTestMode = enable;
@@ -104,10 +98,5 @@ static void (^__injectBlock)(void) = nil;
     }
 }
 
--(void)noticeMvc{
-    if (__injectBlock) {
-        __injectBlock();
-    }
-}
 
 @end
