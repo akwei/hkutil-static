@@ -8,67 +8,95 @@
 
 #import "HKTimer.h"
 
+@interface HKTimer ()
+@property(nonatomic,assign)BOOL stopFlag;
+@property(nonatomic,assign)BOOL doing;
+@property(nonatomic,strong)NSCondition* cdn;
+@end
+
 @implementation HKTimer{
-    BOOL _stop;
-    BOOL _jobFinish;
     dispatch_queue_t _queue;
 }
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        _stop = NO;
-        _jobFinish = NO;
-        _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0);
-    }
-    return self;
-}
-
--(void)dealloc{
-#if NEEDS_DISPATCH_RETAIN_RELEASE
-	if (_queue) dispatch_release(_queue);
-#endif
-}
-
--(void)addJobToTimer{
-    if (_stop) {
-        return;
-    }
-    __weak HKTimer* me = self;
-    double delayInSeconds = me.delay;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, _queue, ^(void){
-        _jobFinish = NO;
-        me.jobBlock();
-        _jobFinish = YES;
-        if (!_stop) {
-            [me schedue];
-        }
-    });
-    BOOL done = NO;
-    do{
-        SInt32    result = CFRunLoopRunInMode(kCFRunLoopDefaultMode, 10, YES);
-        if ((result == kCFRunLoopRunStopped) || (result == kCFRunLoopRunFinished))
-            done = YES;
-        
-        // Check for any other exit conditions here and set the
-        // done variable as needed.
-        if (_stop && _jobFinish) {
-            done = YES;
-        }
-    }while (!done);
-}
-
--(void)schedue{
-    __weak HKTimer* me = self;
-    dispatch_async(_queue, ^{
-        [me addJobToTimer];
-    });
-}
-
--(void)stop{
-    _stop = YES;
-}
+//- (id)init
+//{
+//    self = [super init];
+//    if (self) {
+//        self.stopFlag = YES;
+//        self.doing= NO;
+//        self.repeat = NO;
+//        self.cdn = [[NSCondition alloc] init];
+//        _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    }
+//    return self;
+//}
+//
+//-(void)dealloc{
+//    [self stop];
+//#if NEEDS_DISPATCH_RETAIN_RELEASE
+//	if (_queue) dispatch_release(_queue);
+//#endif
+//}
+//
+//-(void)schedue{
+//    if (self.doing) {
+//        return;
+//    }
+//    self.doing = YES;
+//    [self asyncDo];
+//}
+//
+//-(void)asyncDo{
+//    __weak HKTimer* me = self;
+//    dispatch_async(_queue, ^{
+//        [me asyncJob];
+//        BOOL done = NO;
+//        do{
+//            SInt32    result = CFRunLoopRunInMode(kCFRunLoopDefaultMode, 10, YES);
+//            if ((result == kCFRunLoopRunStopped) || (result == kCFRunLoopRunFinished))
+//                done = YES;
+//            
+//            // Check for any other exit conditions here and set the
+//            // done variable as needed.
+//            if (me.stopFlag) {
+//                done = YES;
+//            }
+//        }while (!done);
+//        self.doing = NO;
+//    });
+//}
+//
+//-(void)asyncJob{
+//    __weak HKTimer* me = self;
+//    double delayInSeconds = me.delay;
+//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+//    void (^block)(void) = self.jobBlock;
+//    dispatch_after(popTime, _queue, ^{
+//        if (me.stopFlag) {
+//            return ;
+//        }
+//        [me.cdn lock];
+//        me.jobFinish = NO;
+//        block();
+//        me.jobFinish = YES;
+//        [me.cdn signal];
+//        [me.cdn unlock];
+//        if (!me.stopFlag && me.repeat) {
+//            [me asyncJob];
+//        }
+//        else{
+//            me.stopFlag = YES;
+//        }
+//    });
+//}
+//
+//-(void)stop{
+//    [self.cdn lock];
+//    self.stopFlag = YES;
+//    while (!self.jobFinish) {
+//        [self.cdn wait];
+//    }
+//    [self.cdn unlock];
+//}
 
 @end

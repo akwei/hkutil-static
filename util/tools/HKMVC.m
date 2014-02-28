@@ -31,9 +31,9 @@ static BOOL _sharedEnableTestMode = NO;
     self = [super init];
     if (self) {
         _asyncQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        [self addObserver:self forKeyPath:@"result" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
         self.info = [[NSMutableDictionary alloc] init];
         self.mvcDelegate = mvcDelegate;
+        [self addObserver:self forKeyPath:@"result" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     }
     return self;
 }
@@ -45,7 +45,6 @@ static BOOL _sharedEnableTestMode = NO;
 #endif
 }
 
-
 -(void)setInfoValue:(id)value forKey:(NSString *)key{
     [self.info setValue:value forKey:key];
 }
@@ -56,6 +55,8 @@ static BOOL _sharedEnableTestMode = NO;
 
 -(void)async:(NSString *(^)(void))block{
     [self.info removeAllObjects];
+    self.result = nil;
+    
     if ([HKMVC isEnableTestMode]) {
         self.result = block();
         return;
@@ -68,33 +69,33 @@ static BOOL _sharedEnableTestMode = NO;
 
 -(void)asyncWithBlockArrayToGroup:(NSArray *)blockArray{
     [self.info removeAllObjects];
+    self.result = nil;
     if ([HKMVC isEnableTestMode]) {
-        for (NSString* (^block)(void)  in blockArray) {
-            self.result = block();
+        for (void (^block)(void)  in blockArray) {
+            block();
         }
         return;
     }
     dispatch_group_t group = dispatch_group_create();
-    __weak HKMVC* me = self;
-    for (NSString* (^block)(void)  in blockArray) {
+    for (void (^block)(void)  in blockArray) {
         dispatch_group_async(group, _asyncQueue, ^{
-            me.result = block();
+            block();
         });
     }
     dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-    if ([keyPath isEqualToString:@"result"]) {
-        __weak HKMVC* me = self;
-        SEL selector = NSSelectorFromString(self.result);
-        if (!selector) {
-            return;
-        }
-        if ([me.mvcDelegate respondsToSelector:selector]) {
-            [me.mvcDelegate performSelectorOnMainThread:selector withObject:nil waitUntilDone:YES];
-        }
-        
+    if (!self.result) {
+        return;
+    }
+    __weak HKMVC* me = self;
+    SEL selector = NSSelectorFromString(self.result);
+    if (!selector) {
+        return;
+    }
+    if ([me.mvcDelegate respondsToSelector:selector]) {
+        [me.mvcDelegate performSelectorOnMainThread:selector withObject:nil waitUntilDone:YES];
     }
 }
 

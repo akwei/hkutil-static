@@ -140,6 +140,8 @@
 -(void)changeFrameOriginY:(CGFloat)y;
 -(void)changeFrameSizeWidth:(CGFloat)width;
 -(void)changeFrameSizeHeight:(CGFloat)height;
+-(void)addFrameSizeWidth:(CGFloat)add;
+-(void)addFrameSizeHeight:(CGFloat)add;
 
 /**
  更改view的位置在refView上边

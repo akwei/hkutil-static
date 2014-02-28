@@ -9,7 +9,16 @@
 #import "HKViewUtil.h"
 #import <QuartzCore/QuartzCore.h>
 
+static HKViewUtil* _sharedViewUtil = nil;
+@interface HKViewUtil ()
+@property(nonatomic,strong) void (^onClickButtonBlock)(UIAlertView *alertView, NSUInteger buttonIndex);
+@end
+
 @implementation HKViewUtil
+
++(void)initialize{
+    _sharedViewUtil = [[HKViewUtil alloc] init];
+}
 
 + (UIImage*)imageFromView:(UIView*)view
 {
@@ -58,6 +67,21 @@
 + (void)endImageContext
 {
     UIGraphicsEndImageContext();
+}
+
++(void)showAlertWithTitle:(NSString *)title message:(NSString *)message buttonTitles:(NSArray *)buttonTitles onClickButtonBlock:(void (^)(UIAlertView *, NSUInteger))onClickButtonBlock{
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:_sharedViewUtil cancelButtonTitle:nil otherButtonTitles: nil];
+    _sharedViewUtil.onClickButtonBlock = onClickButtonBlock;
+    for (int i = 0; i < [buttonTitles count]; i ++ ) {
+        [alertView addButtonWithTitle:[buttonTitles objectAtIndex:i]];
+    }
+    [alertView show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (self.onClickButtonBlock) {
+        self.onClickButtonBlock(alertView,buttonIndex);
+    }
 }
 
 @end

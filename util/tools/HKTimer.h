@@ -11,6 +11,7 @@
 @interface HKTimer : NSObject
 //间隔执行任务时间
 @property(nonatomic,assign)NSTimeInterval delay;
+@property(nonatomic,assign)BOOL repeat;
 @property(nonatomic,strong)void (^jobBlock)(void);
 @property(nonatomic,strong)NSDate* startDate;
 

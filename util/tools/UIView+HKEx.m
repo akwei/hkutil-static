@@ -278,6 +278,26 @@
     self.frame = frame;
 }
 
+-(void)addFrameSizeWidth:(CGFloat)add{
+    CGRect frame = self.frame;
+    CGFloat height = frame.size.height;
+    height = height + add;
+    if (height < 0) {
+        height = 0;
+    }
+    [self changeFrameSizeHeight:height];
+}
+
+-(void)addFrameSizeHeight:(CGFloat)add{
+    CGRect frame = self.frame;
+    CGFloat width = frame.size.width;
+    width = width + add;
+    if (width < 0) {
+        width = 0;
+    }
+    [self changeFrameSizeWidth:width];
+}
+
 -(void)changePositionAbove:(UIView *)refView distance:(CGFloat)distance left:(CGFloat)left right:(CGFloat)right{
     CGRect refFrame = refView.frame;
     CGFloat x = refFrame.origin.x;
