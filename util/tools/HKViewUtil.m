@@ -78,6 +78,16 @@ static HKViewUtil* _sharedViewUtil = nil;
     [alertView show];
 }
 
++(void)disableDelayTouchInCell:(UITableViewCell *)cell{
+    for (id obj in cell.subviews){
+        if ([NSStringFromClass([obj class]) isEqualToString:@"UITableViewCellScrollView"]){
+            UIScrollView *scroll = (UIScrollView *) obj;
+            scroll.delaysContentTouches = NO;
+            break;
+        }
+    }
+}
+
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (self.onClickButtonBlock) {
         self.onClickButtonBlock(alertView,buttonIndex);

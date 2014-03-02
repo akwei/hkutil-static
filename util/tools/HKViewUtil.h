@@ -20,4 +20,10 @@
  */
 + (void)showAlertWithTitle:(NSString *)title message:(NSString *)message buttonTitles:(NSArray*)buttonTitles onClickButtonBlock:(void (^)(UIAlertView* alertView,NSUInteger buttonIndex))onClickButtonBlock;
 
+/**
+ 去除UITableViewCell中点击延迟效果
+ @param cell UITableViewCell
+ */
++(void)disableDelayTouchInCell:(UITableViewCell*)cell;
+
 @end
