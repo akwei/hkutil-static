@@ -33,7 +33,6 @@ static BOOL _sharedEnableTestMode = NO;
         _asyncQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         self.info = [[NSMutableDictionary alloc] init];
         self.mvcDelegate = mvcDelegate;
-        [self addObserver:self forKeyPath:@"result" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     }
     return self;
 }
@@ -56,7 +55,7 @@ static BOOL _sharedEnableTestMode = NO;
 -(void)async:(NSString *(^)(void))block{
     [self.info removeAllObjects];
     self.result = nil;
-    
+    [self addObserver:self forKeyPath:@"result" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     if ([HKMVC isEnableTestMode]) {
         self.result = block();
         return;
