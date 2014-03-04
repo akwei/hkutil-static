@@ -15,11 +15,11 @@
 @property(nonatomic,strong)void (^jobBlock)(void);
 @property(nonatomic,strong)NSDate* startDate;
 
-/**
- 安排任务计划
- */
--(void)schedue;
-
--(void)stop;
+///**
+// 安排任务计划
+// */
+//-(void)schedue;
+//
+//-(void)stop;
 
 @end
