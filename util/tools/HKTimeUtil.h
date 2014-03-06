@@ -42,7 +42,21 @@
  */
 +(HKTimeInfo*)timeInfoWithDate:(NSDate*)date;
 
-//+(HKTimeInfo*)timeInfoWithDoubleDate:(double)date toDoubleDate:(double)toDate;
+/**
+ 获得时间差信息
+ @param date 开始时间
+ @param toDate 结束时间
+ @returns 时间差信息
+ */
++(HKTimeInfo*)timeInfoWithDate:(NSDate*)date toDate:(NSDate*)toDate;
+
+/**
+ 获得时间差信息
+ @param doubleDate 开始时间
+ @param toDoubleDate 结束时间
+ @returns 时间差信息
+ */
++(HKTimeInfo*)timeInfoWithDoubleDate:(double)doubleDate toDoubleDate:(double)toDoubleDate;
 
 +(double)nowDoubleDate;
 

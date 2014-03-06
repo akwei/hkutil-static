@@ -16,9 +16,9 @@
 @property(nonatomic,strong)NSDate* startDate;
 
 /**
- 安排任务计划
+ 运行定时
  */
--(void)schedue;
+-(void)start;
 
 /**
  设置任务停止标记为YES

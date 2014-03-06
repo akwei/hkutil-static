@@ -87,9 +87,27 @@
     return [self timeInfoWithDate:ndate];
 }
 
-+(HKTimeInfo *)timeInfoWithDoubleDate:(double)date toDoubleDate:(double)toDate{
-    NSDate* ndate=[NSDate dateWithTimeIntervalSince1970:date];
-    NSDate* nToDate=[NSDate dateWithTimeIntervalSince1970:toDate];
++(HKTimeInfo *)timeInfoWithDate:(NSDate *)date toDate:(NSDate *)toDate{
+    NSCalendar* cal=[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSUInteger unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit;
+    NSDateComponents* cps=[cal components:unitFlags fromDate:date toDate:toDate options:0];
+    if (!cps) {
+        return nil;
+    }
+    HKTimeInfo* info=[[HKTimeInfo alloc] init];
+    info.year=[cps year];
+    info.month=[cps month];
+    info.day=[cps day];
+    info.hour=[cps hour];
+    info.minute=[cps minute];
+    info.second=[cps second];
+    info.weekDay = 0;
+    return info;
+}
+
++(HKTimeInfo *)timeInfoWithDoubleDate:(double)doubleDate toDoubleDate:(double)toDoubleDate{
+    NSDate* ndate=[NSDate dateWithTimeIntervalSince1970:doubleDate];
+    NSDate* nToDate=[NSDate dateWithTimeIntervalSince1970:toDoubleDate];
     NSCalendar* cal=[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSUInteger unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit;
     NSDateComponents* cps=[cal components:unitFlags fromDate:ndate toDate:nToDate options:0];

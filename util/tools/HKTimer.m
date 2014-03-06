@@ -36,7 +36,7 @@
 #endif
 }
 
--(void)schedue{
+-(void)start{
     if (self.end == NO) {
         return;
     }
