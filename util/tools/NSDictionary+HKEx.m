@@ -11,11 +11,7 @@
 @implementation NSDictionary (HKEx)
 
 -(NSInteger)integerValueForKey:(NSString *)key{
-    id obj = [self valueForKey:key];
-    if (obj) {
-        return [obj integerValue];
-    }
-    return 0;
+    return [self integerValueForKey:key def:0];
 }
 
 -(NSInteger)integerValueForKey:(NSString *)key def:(NSInteger)defValue{
@@ -30,11 +26,7 @@
 }
 
 -(long long)longLongValueForKey:(NSString *)key{
-    id obj = [self valueForKey:key];
-    if (obj) {
-        return [obj longLongValue];
-    }
-    return 0;
+    return [self longLongValueForKey:key def:0];
 }
 
 -(long long)longLongValueForKey:(NSString *)key def:(long long)defValue{
@@ -49,11 +41,7 @@
 }
 
 -(unsigned long long)unsignedLongLongValueForKey:(NSString *)key{
-    id obj = [self valueForKey:key];
-    if (obj) {
-        return [obj unsignedLongLongValue];
-    }
-    return 0;
+    return [self unsignedLongLongValueForKey:key def:0];
 }
 
 -(unsigned long long)unsignedLongLongValueForKey:(NSString *)key def:(unsigned long long)defValue{
@@ -68,11 +56,7 @@
 }
 
 -(BOOL)boolValueForKey:(NSString *)key{
-    id obj = [self valueForKey:key];
-    if (obj) {
-        return [obj boolValue];
-    }
-    return NO;
+    return [self boolValueForKey:key def:NO];
 }
 
 -(BOOL)boolValueForKey:(NSString *)key def:(BOOL)defValue{
@@ -87,11 +71,7 @@
 }
 
 -(double)doubleValueForKey:(NSString *)key{
-    id obj = [self valueForKey:key];
-    if (obj) {
-        return [obj doubleValue];
-    }
-    return 0;
+    return [self doubleValueForKey:key def:0];
 }
 
 -(double)doubleValueForKey:(NSString *)key def:(double)defValue{
