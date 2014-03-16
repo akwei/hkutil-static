@@ -29,6 +29,7 @@
 		9B80CF561850614D0080C567 /* HKXPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBDED51185057D000994DAB /* HKXPrinter.m */; };
 		9B8102CC182F40130019E0B4 /* NSString+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8102CB182F40130019E0B4 /* NSString+HKEx.m */; };
 		9B8BCA9618B327F500480C89 /* HKMVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8BCA9518B327F500480C89 /* HKMVC.m */; };
+		9B97C42C18D54AA000CF412F /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B97C42B18D54AA000CF412F /* CoreText.framework */; };
 		9BA56D4F1820AADD006A73FB /* UIImage+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA56D4E1820AADD006A73FB /* UIImage+HKEx.m */; };
 		9BA56D501820AB3A006A73FB /* UIImage+HKEx.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BA56D4D1820AADD006A73FB /* UIImage+HKEx.h */; };
 		9BBDED05184F7FC900994DAB /* NSData+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBDED04184F7FC900994DAB /* NSData+HKEx.m */; };
@@ -236,6 +237,7 @@
 		9B8102CB182F40130019E0B4 /* NSString+HKEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HKEx.m"; sourceTree = "<group>"; };
 		9B8BCA9418B327F500480C89 /* HKMVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKMVC.h; sourceTree = "<group>"; };
 		9B8BCA9518B327F500480C89 /* HKMVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKMVC.m; sourceTree = "<group>"; };
+		9B97C42B18D54AA000CF412F /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		9BA56D4D1820AADD006A73FB /* UIImage+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HKEx.h"; sourceTree = "<group>"; };
 		9BA56D4E1820AADD006A73FB /* UIImage+HKEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HKEx.m"; sourceTree = "<group>"; };
 		9BBDED03184F7FC900994DAB /* NSData+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+HKEx.h"; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B97C42C18D54AA000CF412F /* CoreText.framework in Frameworks */,
 				9BFFAA0D17E48EDF00F353A5 /* ExternalAccessory.framework in Frameworks */,
 				9BFFAA0B17E48E6100F353A5 /* CoreGraphics.framework in Frameworks */,
 				9BFFAA0917E48E5200F353A5 /* UIKit.framework in Frameworks */,
@@ -399,6 +402,7 @@
 		9BFFA94417E48D7400F353A5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9B97C42B18D54AA000CF412F /* CoreText.framework */,
 				9BFFAA0C17E48EDF00F353A5 /* ExternalAccessory.framework */,
 				9BFFAA0A17E48E6100F353A5 /* CoreGraphics.framework */,
 				9BFFAA0817E48E5200F353A5 /* UIKit.framework */,

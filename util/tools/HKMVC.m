@@ -96,6 +96,10 @@ static BOOL _sharedEnableTestMode = NO;
     if ([me.mvcDelegate respondsToSelector:selector]) {
         [me.mvcDelegate performSelectorOnMainThread:selector withObject:nil waitUntilDone:YES];
     }
+    else{
+        NSString* className=[NSString stringWithCString:class_getName([me.mvcDelegate class]) encoding:NSUTF8StringEncoding];
+        NSLog(@"can not find [%@ %@]",className,self.result);
+    }
 }
 
 

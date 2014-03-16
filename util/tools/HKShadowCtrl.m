@@ -142,7 +142,7 @@
     [self.viewControllers insertObject:viewController atIndex:0];
     [self showViewController:viewController animation:animation onComplete:completeBlock];
     if (self.debug) {
-        NSLog(@"current viewControllers count:%i",[self.viewControllers count]);
+        NSLog(@"current viewControllers count:%llu",(unsigned long long)[self.viewControllers count]);
     }
 }
 
@@ -350,7 +350,7 @@
     }
     [self.viewControllers removeObjectsInRange:range];
     if (self.debug) {
-        NSLog(@"current viewControllers count:%i",[self.viewControllers count]);
+        NSLog(@"current viewControllers count:%llu",(unsigned long long)[self.viewControllers count]);
     }
     return arr;
 }
