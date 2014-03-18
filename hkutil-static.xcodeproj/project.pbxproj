@@ -17,6 +17,7 @@
 		9B1F435417F99242009E7E4F /* HKCommonPrinter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B0F63D217F9581B0093797C /* HKCommonPrinter.h */; };
 		9B369BE218BA508F0079123C /* HKTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B369BE118BA508F0079123C /* HKTimer.m */; };
 		9B51D086184B861C009E6E09 /* UILabel+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B51D085184B861C009E6E09 /* UILabel+HKEx.m */; };
+		9B603E8018D6C29E00B401CF /* HKAttrLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B603E7F18D6C29E00B401CF /* HKAttrLabel.m */; };
 		9B68FFBB17FBE1C1006F98A2 /* HKSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B68FFBA17FBE1C1006F98A2 /* HKSocket.m */; };
 		9B6E21DF181BA71C00BF154D /* NSDictionary+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E21DE181BA71C00BF154D /* NSDictionary+HKEx.m */; };
 		9B6E21E2181BA80600BF154D /* NSMutableDictionary+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E21E1181BA80600BF154D /* NSMutableDictionary+HKEx.m */; };
@@ -83,7 +84,6 @@
 		9BFFA9F317E48DE500F353A5 /* HKTimeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA9BC17E48DE500F353A5 /* HKTimeUtil.m */; };
 		9BFFA9F417E48DE500F353A5 /* HKURLImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA9BE17E48DE500F353A5 /* HKURLImageView.m */; };
 		9BFFA9F517E48DE500F353A5 /* HKViewUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA9C017E48DE500F353A5 /* HKViewUtil.m */; };
-		9BFFA9F617E48DE500F353A5 /* HKWorkCaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA9C217E48DE500F353A5 /* HKWorkCaller.m */; };
 		9BFFA9F717E48DE500F353A5 /* UIView+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA9C417E48DE500F353A5 /* UIView+HKEx.m */; };
 		9BFFA9F917E48E2300F353A5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFFA9F817E48E2300F353A5 /* Security.framework */; };
 		9BFFA9FB17E48E2800F353A5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFFA9FA17E48E2800F353A5 /* libsqlite3.dylib */; };
@@ -134,7 +134,6 @@
 		9BFFAD2817E4B1B600F353A5 /* HKTimeUtil.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA9BB17E48DE500F353A5 /* HKTimeUtil.h */; };
 		9BFFAD2A17E4B1B600F353A5 /* HKURLImageView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA9BD17E48DE500F353A5 /* HKURLImageView.h */; };
 		9BFFAD2C17E4B1B600F353A5 /* HKViewUtil.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA9BF17E48DE500F353A5 /* HKViewUtil.h */; };
-		9BFFAD2E17E4B1B600F353A5 /* HKWorkCaller.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA9C117E48DE500F353A5 /* HKWorkCaller.h */; };
 		9BFFAD3017E4B1B600F353A5 /* UIView+HKEx.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA9C317E48DE500F353A5 /* UIView+HKEx.h */; };
 		9BFFAD3317E4B1B600F353A5 /* hkutil-static-Prefix.pch in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BFFA94917E48D7400F353A5 /* hkutil-static-Prefix.pch */; };
 /* End PBXBuildFile section */
@@ -201,7 +200,6 @@
 				9BFFAD2817E4B1B600F353A5 /* HKTimeUtil.h in CopyFiles */,
 				9BFFAD2A17E4B1B600F353A5 /* HKURLImageView.h in CopyFiles */,
 				9BFFAD2C17E4B1B600F353A5 /* HKViewUtil.h in CopyFiles */,
-				9BFFAD2E17E4B1B600F353A5 /* HKWorkCaller.h in CopyFiles */,
 				9BFFAD3017E4B1B600F353A5 /* UIView+HKEx.h in CopyFiles */,
 				9BFFAD3317E4B1B600F353A5 /* hkutil-static-Prefix.pch in CopyFiles */,
 			);
@@ -222,6 +220,8 @@
 		9B369BE118BA508F0079123C /* HKTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKTimer.m; sourceTree = "<group>"; };
 		9B51D084184B861C009E6E09 /* UILabel+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+HKEx.h"; sourceTree = "<group>"; };
 		9B51D085184B861C009E6E09 /* UILabel+HKEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+HKEx.m"; sourceTree = "<group>"; };
+		9B603E7E18D6C29E00B401CF /* HKAttrLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKAttrLabel.h; sourceTree = "<group>"; };
+		9B603E7F18D6C29E00B401CF /* HKAttrLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKAttrLabel.m; sourceTree = "<group>"; };
 		9B68FFB917FBE1C1006F98A2 /* HKSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKSocket.h; sourceTree = "<group>"; };
 		9B68FFBA17FBE1C1006F98A2 /* HKSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKSocket.m; sourceTree = "<group>"; };
 		9B6E21DD181BA71C00BF154D /* NSDictionary+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+HKEx.h"; sourceTree = "<group>"; };
@@ -337,8 +337,6 @@
 		9BFFA9BE17E48DE500F353A5 /* HKURLImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKURLImageView.m; sourceTree = "<group>"; };
 		9BFFA9BF17E48DE500F353A5 /* HKViewUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKViewUtil.h; sourceTree = "<group>"; };
 		9BFFA9C017E48DE500F353A5 /* HKViewUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKViewUtil.m; sourceTree = "<group>"; };
-		9BFFA9C117E48DE500F353A5 /* HKWorkCaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKWorkCaller.h; sourceTree = "<group>"; };
-		9BFFA9C217E48DE500F353A5 /* HKWorkCaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKWorkCaller.m; sourceTree = "<group>"; };
 		9BFFA9C317E48DE500F353A5 /* UIView+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HKEx.h"; sourceTree = "<group>"; };
 		9BFFA9C417E48DE500F353A5 /* UIView+HKEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HKEx.m"; sourceTree = "<group>"; };
 		9BFFA9F817E48E2300F353A5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -593,8 +591,6 @@
 				9BFFA9BE17E48DE500F353A5 /* HKURLImageView.m */,
 				9BFFA9BF17E48DE500F353A5 /* HKViewUtil.h */,
 				9BFFA9C017E48DE500F353A5 /* HKViewUtil.m */,
-				9BFFA9C117E48DE500F353A5 /* HKWorkCaller.h */,
-				9BFFA9C217E48DE500F353A5 /* HKWorkCaller.m */,
 				9BE0B89C17E80AC600B96412 /* HKAnimationUtil.h */,
 				9BE0B89D17E80AC700B96412 /* HKAnimationUtil.m */,
 				9BCA99B8182BB37400A81788 /* HKTableViewCell.h */,
@@ -615,6 +611,8 @@
 				9B8102CB182F40130019E0B4 /* NSString+HKEx.m */,
 				9B51D084184B861C009E6E09 /* UILabel+HKEx.h */,
 				9B51D085184B861C009E6E09 /* UILabel+HKEx.m */,
+				9B603E7E18D6C29E00B401CF /* HKAttrLabel.h */,
+				9B603E7F18D6C29E00B401CF /* HKAttrLabel.m */,
 				9BBDED03184F7FC900994DAB /* NSData+HKEx.h */,
 				9BBDED04184F7FC900994DAB /* NSData+HKEx.m */,
 				9B0E1065184EB9DD00C5D429 /* HKArrayMap.h */,
@@ -732,9 +730,9 @@
 				9BFFA9F317E48DE500F353A5 /* HKTimeUtil.m in Sources */,
 				9BFFA9F417E48DE500F353A5 /* HKURLImageView.m in Sources */,
 				9BFFA9F517E48DE500F353A5 /* HKViewUtil.m in Sources */,
-				9BFFA9F617E48DE500F353A5 /* HKWorkCaller.m in Sources */,
 				9BFFA9F717E48DE500F353A5 /* UIView+HKEx.m in Sources */,
 				9B05293518AFA0E9003CAB29 /* HKViewResponse.m in Sources */,
+				9B603E8018D6C29E00B401CF /* HKAttrLabel.m in Sources */,
 				9BE0B89E17E80AC700B96412 /* HKAnimationUtil.m in Sources */,
 				9BC8BD3917ED818100DF9423 /* HKGridTableView.m in Sources */,
 				9B0F63D417F9581B0093797C /* HKCommonPrinter.m in Sources */,
