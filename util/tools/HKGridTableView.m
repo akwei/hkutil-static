@@ -109,10 +109,10 @@
     [_pageHelper changePage:indexPath.row + 1];
     int k=0;
     if (_pageHelper.begin<0) {
-        NSLog(@"_pageHelper.begin %d < 0",_pageHelper.begin);
+        NSLog(@"_pageHelper.begin %ld < 0",(long)_pageHelper.begin);
     }
     if (_pageHelper.begin<0) {
-        NSLog(@"_pageHelper.end %d < 0",_pageHelper.end);
+        NSLog(@"_pageHelper.end %ld < 0",(long)_pageHelper.end);
     }
     NSMutableArray* list = [[NSMutableArray alloc] init];
     for (int i=_pageHelper.begin; i <= _pageHelper.end; i++,k++) {

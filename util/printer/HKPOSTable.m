@@ -31,7 +31,7 @@
 
 -(void)build{
     int chCount=0;
-    int max = self.maxWordCount * 2;
+    NSInteger max = self.maxWordCount * 2;
     NSMutableString* buf = [[NSMutableString alloc] init];
     for (int i=0; i<[self.text length]; i++) {
         if (chCount >= max) {

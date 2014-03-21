@@ -19,7 +19,7 @@
         self.page = page;
         self.list = list;
         if (self.page < 0) {
-            NSLog(@"HKPageHelper page %d < 0",self.page);
+            NSLog(@"HKPageHelper page %lld < 0",(long long)self.page);
         }
         self.begin = self.size * (page - 1);
         self.end = self.begin + self.size - 1;
@@ -52,7 +52,7 @@
 -(void)changePage:(NSInteger)page{
     self.page = page;
     if (self.page < 0) {
-        NSLog(@"HKPageHelper page %d < 0",self.page);
+        NSLog(@"HKPageHelper page %lld < 0",(long long)self.page);
     }
     self.begin = self.size * (page - 1);
     self.end = self.begin + self.size - 1;
