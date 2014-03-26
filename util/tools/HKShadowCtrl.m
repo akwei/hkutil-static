@@ -82,9 +82,9 @@
 }
 
 -(void)viewDidLoad{
-    if (!self.shadowColor) {
-        self.shadowColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:.7];
-    }
+//    if (!self.shadowColor) {
+//        self.shadowColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:.7];
+//    }
     CGRect rect = self.viewFrame;
     self.view.hidden=YES;
     self.view.frame = rect;
@@ -92,8 +92,12 @@
     self.view.clipsToBounds=YES;
     UIViewAutoresizing defViewAutoresizing = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     self.shadow=[[UIView alloc] initWithFrame:self.view.bounds];
-//    self.shadow.backgroundColor=self.shadowColor;
-    self.shadow.backgroundColor = nil;
+    if (self.shadowColor) {
+        self.shadow.backgroundColor = self.shadowColor;
+    }
+    else{
+        self.shadow.backgroundColor = nil;
+    }
     self.shadow.autoresizesSubviews=YES;
     self.shadow.autoresizingMask=defViewAutoresizing;
     [self.view addSubview:self.shadow];
