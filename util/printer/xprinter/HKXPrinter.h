@@ -114,6 +114,19 @@ enum HKXPrinterCutType {
 -(void)addText:(NSString*)text;
 
 /**
+ 添加命令
+ @param data 二进制数据
+ */
+-(void)addCommand:(NSData*)data;
+
+/**
+ 添加命令
+ @param bytes 字节数据
+ @param 字节数据长度
+ */
+- (void)addBytesCommand:(const void *)bytes length:(NSUInteger)length;
+
+/**
  打印添加的命令，并走纸n行
  @param n 走纸行数
  */

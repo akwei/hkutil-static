@@ -267,6 +267,20 @@
     [self.printer addTextCommand:text];
 }
 
+-(void)addBytesCommand:(const void *)bytes length:(NSUInteger)length{
+    if (self.textDebug) {
+        return;
+    }
+    [self.printer addBytesCommand:bytes length:length];
+}
+
+-(void)addCommand:(NSData *)data{
+    if (self.textDebug) {
+        return;
+    }
+    [self.printer addCommand:data];
+}
+
 -(void)printWithNum:(NSInteger)n{
     if (self.textDebug) {
         return ;

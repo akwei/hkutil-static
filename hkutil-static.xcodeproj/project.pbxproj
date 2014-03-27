@@ -15,6 +15,8 @@
 		9B1F435217F9909F009E7E4F /* HKPrinterCfg.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1F435117F9909F009E7E4F /* HKPrinterCfg.m */; };
 		9B1F435317F99242009E7E4F /* HKPrinterCfg.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B1F435017F9909F009E7E4F /* HKPrinterCfg.h */; };
 		9B1F435417F99242009E7E4F /* HKCommonPrinter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B0F63D217F9581B0093797C /* HKCommonPrinter.h */; };
+		9B35EDD718E4062800CCB428 /* HKXCode93Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B35EDD618E4062800CCB428 /* HKXCode93Data.m */; };
+		9B35EDD818E4077F00CCB428 /* HKXCode93Data.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B35EDD518E4062800CCB428 /* HKXCode93Data.h */; };
 		9B369BE218BA508F0079123C /* HKTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B369BE118BA508F0079123C /* HKTimer.m */; };
 		9B51D086184B861C009E6E09 /* UILabel+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B51D085184B861C009E6E09 /* UILabel+HKEx.m */; };
 		9B603E8018D6C29E00B401CF /* HKAttrLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B603E7F18D6C29E00B401CF /* HKAttrLabel.m */; };
@@ -145,6 +147,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				9B35EDD818E4077F00CCB428 /* HKXCode93Data.h in CopyFiles */,
 				9BBDED5718505A5800994DAB /* HKTimerInvoker2.h in CopyFiles */,
 				9BBDED53185057EB00994DAB /* HKXPrinter.h in CopyFiles */,
 				9BBDED06184F844B00994DAB /* NSData+HKEx.h in CopyFiles */,
@@ -216,6 +219,8 @@
 		9B0F63D317F9581B0093797C /* HKCommonPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKCommonPrinter.m; sourceTree = "<group>"; };
 		9B1F435017F9909F009E7E4F /* HKPrinterCfg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKPrinterCfg.h; sourceTree = "<group>"; };
 		9B1F435117F9909F009E7E4F /* HKPrinterCfg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKPrinterCfg.m; sourceTree = "<group>"; };
+		9B35EDD518E4062800CCB428 /* HKXCode93Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKXCode93Data.h; sourceTree = "<group>"; };
+		9B35EDD618E4062800CCB428 /* HKXCode93Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKXCode93Data.m; sourceTree = "<group>"; };
 		9B369BE018BA508F0079123C /* HKTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKTimer.h; sourceTree = "<group>"; };
 		9B369BE118BA508F0079123C /* HKTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKTimer.m; sourceTree = "<group>"; };
 		9B51D084184B861C009E6E09 /* UILabel+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+HKEx.h"; sourceTree = "<group>"; };
@@ -445,6 +450,8 @@
 		9BFFA95417E48DE500F353A5 /* printer */ = {
 			isa = PBXGroup;
 			children = (
+				9B35EDD518E4062800CCB428 /* HKXCode93Data.h */,
+				9B35EDD618E4062800CCB428 /* HKXCode93Data.m */,
 				9B1F435017F9909F009E7E4F /* HKPrinterCfg.h */,
 				9B1F435117F9909F009E7E4F /* HKPrinterCfg.m */,
 				9B0F63D217F9581B0093797C /* HKCommonPrinter.h */,
@@ -704,6 +711,7 @@
 				9B6E21E9181CBE3D00BF154D /* NSArray+HKEx.m in Sources */,
 				9BFFA9DD17E48DE500F353A5 /* GTMStringEncoding.m in Sources */,
 				9BFFA9DE17E48DE500F353A5 /* HKAFHTTPClient.m in Sources */,
+				9B35EDD718E4062800CCB428 /* HKXCode93Data.m in Sources */,
 				9BFFA9DF17E48DE500F353A5 /* HKAutoSizeLabel.m in Sources */,
 				9BFFA9E017E48DE500F353A5 /* HKCache.m in Sources */,
 				9BFFA9E117E48DE500F353A5 /* HKCtrlUtil.m in Sources */,
