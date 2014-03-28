@@ -64,10 +64,11 @@
         unsigned char heightCmd[] = {29,104,oheight};
         [self.data appendBytes:heightCmd length:3];
     }
-    unsigned char cmd[] = {29,107,72,[self.mData length]};
+    NSUInteger len = [self.mData length];
+    unsigned char cmd[] = {29,107,72,len};
     [self.data appendBytes:cmd length:4];
     [self.data appendData:self.mData];
-    return self.mData;
+    return self.data;
 }
 
 @end
