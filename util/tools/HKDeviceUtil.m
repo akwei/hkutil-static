@@ -23,4 +23,11 @@
     return rect.size;
 }
 
++(BOOL)isBelowiOS7{
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        return NO;
+    }
+    return YES;
+}
+
 @end

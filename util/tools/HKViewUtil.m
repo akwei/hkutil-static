@@ -8,6 +8,7 @@
 
 #import "HKViewUtil.h"
 #import <QuartzCore/QuartzCore.h>
+#import "HKDeviceUtil.h"
 
 static HKViewUtil* _sharedViewUtil = nil;
 @interface HKViewUtil ()
@@ -79,6 +80,9 @@ static HKViewUtil* _sharedViewUtil = nil;
 }
 
 +(void)disableDelayTouchInCell:(UITableViewCell *)cell{
+    if ([HKDeviceUtil isBelowiOS7]) {
+        return;
+    }
     for (id obj in cell.subviews){
         if ([NSStringFromClass([obj class]) isEqualToString:@"UITableViewCellScrollView"]){
             UIScrollView *scroll = (UIScrollView *) obj;

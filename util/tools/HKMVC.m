@@ -45,6 +45,9 @@ static BOOL _sharedEnableTestMode = NO;
 }
 
 -(void)setInfoValue:(id)value forKey:(NSString *)key{
+    if (!value) {
+        return;
+    }
     [self.info setValue:value forKey:key];
 }
 

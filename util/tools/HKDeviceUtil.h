@@ -17,4 +17,6 @@
 
 +(CGSize)deviceSize;
 
++(BOOL)isBelowiOS7;
+
 @end
