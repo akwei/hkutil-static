@@ -36,7 +36,6 @@
 
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
-#import <objc/message.h>
 #import <sqlite3.h>
 
 @interface HKClassWrapper : NSObject

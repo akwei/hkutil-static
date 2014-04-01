@@ -12,4 +12,8 @@
 
 +(id)ctrlFromNibWithCalss:(Class)clazz;
 
++(void)doTargetWithObj:(id)obj method:(NSString*)method sender:(id)sender delegate:(id)senderDelegate;
+
++(void)doTargetWithObj:(id)obj method:(NSString*)method sender:(id)sender delegate:(id)senderDelegate dic:(NSDictionary*)dic;
+
 @end

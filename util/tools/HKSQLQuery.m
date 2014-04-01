@@ -275,7 +275,7 @@ static NSMutableDictionary* objQueryDic=nil;
 }
 
 -(void)throwException:(NSInteger)status exName:(NSString*)exName reason:(NSString*)reason{
-    NSString* errStatus = [NSString stringWithFormat:@"%i : %@",status,reason];
+    NSString* errStatus = [NSString stringWithFormat:@"%lld : %@",(long long)status,reason];
     HKSQLException* ex = [[HKSQLException alloc] initWithName:exName reason:errStatus userInfo:nil];
     ex.status = status;
     NSLog(@"%@",[ex description]);
@@ -562,7 +562,7 @@ static NSMutableDictionary* objQueryDic=nil;
 }
 
 -(void)throwException:(NSInteger)status reason:(NSString*)reason{
-    NSString* errStatus=[NSString stringWithFormat:@"%i : %@",status,reason];
+    NSString* errStatus=[NSString stringWithFormat:@"%li : %@",(long)status,reason];
     HKSQLException* ex=[[HKSQLException alloc] initWithName:@"sql exception" reason:errStatus userInfo:nil];
     ex.status=status;
     @throw ex;
@@ -617,7 +617,7 @@ static NSMutableDictionary* objQueryDic=nil;
             // Don't pass a NULL pointer, or sqlite will bind a SQL null instead of a blob.
             bytes = "";
         }
-        sqlite3_bind_blob(pStmt, idx, bytes, [obj length], SQLITE_TRANSIENT);
+        sqlite3_bind_blob(pStmt, idx, bytes, (unsigned int)[obj length], SQLITE_TRANSIENT);
     }
     else if ([obj isKindOfClass:[NSDate class]]) {
         sqlite3_bind_double(pStmt, idx, [obj timeIntervalSince1970]);
@@ -836,7 +836,7 @@ static NSMutableDictionary* objQueryDic=nil;
         [sqlbuf appendFormat:@" order by %@",orderBy];
     }
     if (begin>=0 && size>0) {
-        [sqlbuf appendFormat:@" limit %i,%i",begin,size];
+        [sqlbuf appendFormat:@" limit %li,%lld",(long)begin,(long long)size];
     }
     NSMutableArray* list=[NSMutableArray array];
     NSArray* rowList=[self.sqlQuery listWithSQL:sqlbuf params:params];
