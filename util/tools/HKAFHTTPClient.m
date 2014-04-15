@@ -131,7 +131,7 @@
     }
     
     if (self.debug) {
-        NSLog(@"responseStatusCode:%d",self.responseStatusCode);
+        NSLog(@"responseStatusCode:%ld",(long)self.responseStatusCode);
         NSLog(@"responseStatusText:%@",self.responseStatusText);
         if (self.forText) {
             NSLog(@"responseString:%@",self.responseString);
