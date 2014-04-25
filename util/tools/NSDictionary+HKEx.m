@@ -25,6 +25,21 @@
     return defValue;
 }
 
+-(NSInteger)unsignedIntegerValueForKey:(NSString *)key{
+    return [self unsignedIntegerValueForKey:key def:0];
+}
+
+-(NSInteger)unsignedIntegerValueForKey:(NSString *)key def:(NSUInteger)defValue{
+    id obj = [self valueForKey:key];
+    if ([obj isKindOfClass:[NSNull class]]) {
+        return defValue;
+    }
+    if (obj) {
+        return [obj integerValue];
+    }
+    return defValue;
+}
+
 -(long long)longLongValueForKey:(NSString *)key{
     return [self longLongValueForKey:key def:0];
 }
