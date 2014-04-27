@@ -24,7 +24,6 @@
     for (NSString* key in array) {
         id value = [dic valueForKey:key];
         [sbuf appendFormat:@"%@=%@&",key,[HKDataUtil encodeURL:value]];
-        
     }
     [sbuf deleteCharactersInRange:NSMakeRange([sbuf length]-1, 1)];
     return sbuf;

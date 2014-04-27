@@ -22,8 +22,8 @@
                                                                                                     NULL,
                                                                                                     (__bridge CFStringRef)string,
                                                                                                     NULL,
-                                                                                                    //                                                                                  (CFStringRef)@"!*'();:@&=+$,/?%#[]",
-                                                                                                    (CFStringRef)@":/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`",
+                                                                                                   (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+//                                                                                                    (CFStringRef)@":/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`",
                                                                                                     kCFStringEncodingUTF8 ));
     return encodedString;
 }

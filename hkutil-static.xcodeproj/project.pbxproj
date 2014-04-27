@@ -23,6 +23,11 @@
 		9B4C9ED218E95451003F08F4 /* HKClassUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4C9ED118E95451003F08F4 /* HKClassUtil.m */; };
 		9B4C9ED318E954AE003F08F4 /* HKClassUtil.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B4C9ED018E95451003F08F4 /* HKClassUtil.h */; };
 		9B51D086184B861C009E6E09 /* UILabel+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B51D085184B861C009E6E09 /* UILabel+HKEx.m */; };
+		9B5F520E190B483E00D0CA9A /* CKCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5F5208190B483E00D0CA9A /* CKCalendarView.m */; };
+		9B5F520F190B489B00D0CA9A /* CKCalendarView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B5F5207190B483E00D0CA9A /* CKCalendarView.h */; };
+		9B5F5210190B489B00D0CA9A /* CKCalendarView.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B5F5208190B483E00D0CA9A /* CKCalendarView.m */; };
+		9B5F5235190D42FB00D0CA9A /* HKCaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5F5234190D42FB00D0CA9A /* HKCaller.m */; };
+		9B5F5236190D4E0500D0CA9A /* HKCaller.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B5F5233190D42FB00D0CA9A /* HKCaller.h */; };
 		9B603E8018D6C29E00B401CF /* HKAttrLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B603E7F18D6C29E00B401CF /* HKAttrLabel.m */; };
 		9B68FFBB17FBE1C1006F98A2 /* HKSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B68FFBA17FBE1C1006F98A2 /* HKSocket.m */; };
 		9B6E21DF181BA71C00BF154D /* NSDictionary+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E21DE181BA71C00BF154D /* NSDictionary+HKEx.m */; };
@@ -151,6 +156,9 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				9B5F5236190D4E0500D0CA9A /* HKCaller.h in CopyFiles */,
+				9B5F520F190B489B00D0CA9A /* CKCalendarView.h in CopyFiles */,
+				9B5F5210190B489B00D0CA9A /* CKCalendarView.m in CopyFiles */,
 				9B2C031F18EF9982006E6C05 /* UIViewController+HKEx.h in CopyFiles */,
 				9B4C9ED318E954AE003F08F4 /* HKClassUtil.h in CopyFiles */,
 				9B35EDD818E4077F00CCB428 /* HKXCode93Data.h in CopyFiles */,
@@ -235,6 +243,10 @@
 		9B4C9ED118E95451003F08F4 /* HKClassUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKClassUtil.m; sourceTree = "<group>"; };
 		9B51D084184B861C009E6E09 /* UILabel+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+HKEx.h"; sourceTree = "<group>"; };
 		9B51D085184B861C009E6E09 /* UILabel+HKEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+HKEx.m"; sourceTree = "<group>"; };
+		9B5F5207190B483E00D0CA9A /* CKCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKCalendarView.h; sourceTree = "<group>"; };
+		9B5F5208190B483E00D0CA9A /* CKCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKCalendarView.m; sourceTree = "<group>"; };
+		9B5F5233190D42FB00D0CA9A /* HKCaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKCaller.h; sourceTree = "<group>"; };
+		9B5F5234190D42FB00D0CA9A /* HKCaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKCaller.m; sourceTree = "<group>"; };
 		9B603E7E18D6C29E00B401CF /* HKAttrLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKAttrLabel.h; sourceTree = "<group>"; };
 		9B603E7F18D6C29E00B401CF /* HKAttrLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKAttrLabel.m; sourceTree = "<group>"; };
 		9B68FFB917FBE1C1006F98A2 /* HKSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKSocket.h; sourceTree = "<group>"; };
@@ -385,6 +397,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B5F5206190B483E00D0CA9A /* CKCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				9B5F5207190B483E00D0CA9A /* CKCalendarView.h */,
+				9B5F5208190B483E00D0CA9A /* CKCalendarView.m */,
+			);
+			path = CKCalendar;
+			sourceTree = "<group>";
+		};
 		9BBDED4F185057D000994DAB /* xprinter */ = {
 			isa = PBXGroup;
 			children = (
@@ -478,6 +499,7 @@
 		9BFFA96C17E48DE500F353A5 /* thirdtools */ = {
 			isa = PBXGroup;
 			children = (
+				9B5F5206190B483E00D0CA9A /* CKCalendar */,
 				9BFFA96D17E48DE500F353A5 /* AFNetworking */,
 				9BFFA98317E48DE500F353A5 /* CocoaAsyncSocket */,
 				9BFFA98717E48DE500F353A5 /* jsonkit */,
@@ -638,6 +660,8 @@
 				9B05293418AFA0E9003CAB29 /* HKViewResponse.m */,
 				9B8BCA9418B327F500480C89 /* HKMVC.h */,
 				9B8BCA9518B327F500480C89 /* HKMVC.m */,
+				9B5F5233190D42FB00D0CA9A /* HKCaller.h */,
+				9B5F5234190D42FB00D0CA9A /* HKCaller.m */,
 				9B369BE018BA508F0079123C /* HKTimer.h */,
 				9B369BE118BA508F0079123C /* HKTimer.m */,
 				9B4C9ED018E95451003F08F4 /* HKClassUtil.h */,
@@ -729,6 +753,7 @@
 				9B35EDD718E4062800CCB428 /* HKXCode93Data.m in Sources */,
 				9BFFA9DF17E48DE500F353A5 /* HKAutoSizeLabel.m in Sources */,
 				9BFFA9E017E48DE500F353A5 /* HKCache.m in Sources */,
+				9B5F520E190B483E00D0CA9A /* CKCalendarView.m in Sources */,
 				9BFFA9E117E48DE500F353A5 /* HKCtrlUtil.m in Sources */,
 				9BFFA9E217E48DE500F353A5 /* HKDataUtil.m in Sources */,
 				9B369BE218BA508F0079123C /* HKTimer.m in Sources */,
@@ -755,6 +780,7 @@
 				9BFFA9F417E48DE500F353A5 /* HKURLImageView.m in Sources */,
 				9BFFA9F517E48DE500F353A5 /* HKViewUtil.m in Sources */,
 				9BFFA9F717E48DE500F353A5 /* UIView+HKEx.m in Sources */,
+				9B5F5235190D42FB00D0CA9A /* HKCaller.m in Sources */,
 				9B05293518AFA0E9003CAB29 /* HKViewResponse.m in Sources */,
 				9B603E8018D6C29E00B401CF /* HKAttrLabel.m in Sources */,
 				9BE0B89E17E80AC700B96412 /* HKAnimationUtil.m in Sources */,

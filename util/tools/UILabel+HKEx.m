@@ -13,6 +13,11 @@
 
 -(void)resizeWidth{
     CGRect frame = self.frame;
+    if (!self.text) {
+        frame.size.width = 0;
+        self.frame = frame;
+        return ;
+    }
     CGSize size = CGSizeMake(MAXFLOAT, frame.size.height);
     size = [self.text sizeWithFont:self.font constrainedToSize:size lineBreakMode:NSLineBreakByWordWrapping];
     CGFloat _width = size.width;
@@ -22,6 +27,11 @@
 
 -(void)resizeHeight{
     CGRect frame = self.frame;
+    if (!self.text) {
+        frame.size.height = 0;
+        self.frame = frame;
+        return ;
+    }
     CGSize size = CGSizeMake(frame.size.width, MAXFLOAT);
     size = [self.text sizeWithFont:self.font constrainedToSize:size lineBreakMode:NSLineBreakByWordWrapping];
     CGFloat _height = size.height;
