@@ -15,7 +15,13 @@
     if (self) {
         self.dataCount = dataCount;
         self.size = size;
-        self.totalPage = (self.dataCount + self.size - 1) / self.size;
+        if (self.size > 0) {
+            self.totalPage = (self.dataCount + self.size - 1) / self.size;
+        }
+        else{
+            self.totalPage = 0;
+        }
+        
         self.page = page;
         self.list = list;
         if (self.page < 0) {

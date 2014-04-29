@@ -19,7 +19,7 @@
         return ;
     }
     CGSize size = CGSizeMake(MAXFLOAT, frame.size.height);
-    size = [self.text sizeWithFont:self.font constrainedToSize:size lineBreakMode:NSLineBreakByWordWrapping];
+    size = [self.text sizeWithFont:self.font constrainedToSize:size lineBreakMode:self.lineBreakMode];
     CGFloat _width = size.width;
     frame.size.width = _width;
     self.frame = frame;
@@ -33,10 +33,11 @@
         return ;
     }
     CGSize size = CGSizeMake(frame.size.width, MAXFLOAT);
-    size = [self.text sizeWithFont:self.font constrainedToSize:size lineBreakMode:NSLineBreakByWordWrapping];
+    size = [self.text sizeWithFont:self.font constrainedToSize:size lineBreakMode:self.lineBreakMode];
     CGFloat _height = size.height;
     frame.size.height = _height;
     self.frame = frame;
+    [self sizeToFit];
 }
 
 @end
