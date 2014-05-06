@@ -228,4 +228,8 @@
  */
 //-(void)removeAllSubviews;
 
+-(void)hideWithAnimated;
+
+-(void)showWithAnimated;
+
 @end

@@ -400,4 +400,26 @@
     return self.frame.origin.x + self.frame.size.width;
 }
 
+-(void)hideWithAnimated{
+    CATransition *transition = [CATransition animation];
+    transition.duration = .25;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type=kCATransitionFade;
+    transition.removedOnCompletion = YES;
+    transition.fillMode = kCAFillModeBoth;
+    [self.superview.layer addAnimation:transition forKey:nil];
+    self.hidden = YES;
+}
+
+-(void)showWithAnimated{
+    CATransition *transition = [CATransition animation];
+    transition.duration = .25;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type=kCATransitionFade;
+    transition.removedOnCompletion = YES;
+    transition.fillMode = kCAFillModeBoth;
+    [self.superview.layer addAnimation:transition forKey:nil];
+    self.hidden = NO;
+}
+
 @end
