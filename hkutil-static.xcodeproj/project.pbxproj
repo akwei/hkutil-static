@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		9B00540E17E80D9400231190 /* HKAnimationUtil.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BE0B89C17E80AC600B96412 /* HKAnimationUtil.h */; };
-		9B05293518AFA0E9003CAB29 /* HKViewResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B05293418AFA0E9003CAB29 /* HKViewResponse.m */; };
 		9B0E1067184EB9DD00C5D429 /* HKArrayMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0E1066184EB9DD00C5D429 /* HKArrayMap.m */; };
 		9B0E1068184EBB7400C5D429 /* HKArrayMap.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B0E1065184EB9DD00C5D429 /* HKArrayMap.h */; };
 		9B0F63D417F9581B0093797C /* HKCommonPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0F63D317F9581B0093797C /* HKCommonPrinter.m */; };
@@ -225,8 +224,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9B05293318AFA0E9003CAB29 /* HKViewResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKViewResponse.h; sourceTree = "<group>"; };
-		9B05293418AFA0E9003CAB29 /* HKViewResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKViewResponse.m; sourceTree = "<group>"; };
 		9B0E1065184EB9DD00C5D429 /* HKArrayMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKArrayMap.h; sourceTree = "<group>"; };
 		9B0E1066184EB9DD00C5D429 /* HKArrayMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKArrayMap.m; sourceTree = "<group>"; };
 		9B0F63D217F9581B0093797C /* HKCommonPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKCommonPrinter.h; sourceTree = "<group>"; };
@@ -656,8 +653,6 @@
 				9BBDED04184F7FC900994DAB /* NSData+HKEx.m */,
 				9B0E1065184EB9DD00C5D429 /* HKArrayMap.h */,
 				9B0E1066184EB9DD00C5D429 /* HKArrayMap.m */,
-				9B05293318AFA0E9003CAB29 /* HKViewResponse.h */,
-				9B05293418AFA0E9003CAB29 /* HKViewResponse.m */,
 				9B8BCA9418B327F500480C89 /* HKMVC.h */,
 				9B8BCA9518B327F500480C89 /* HKMVC.m */,
 				9B5F5233190D42FB00D0CA9A /* HKCaller.h */,
@@ -781,7 +776,6 @@
 				9BFFA9F517E48DE500F353A5 /* HKViewUtil.m in Sources */,
 				9BFFA9F717E48DE500F353A5 /* UIView+HKEx.m in Sources */,
 				9B5F5235190D42FB00D0CA9A /* HKCaller.m in Sources */,
-				9B05293518AFA0E9003CAB29 /* HKViewResponse.m in Sources */,
 				9B603E8018D6C29E00B401CF /* HKAttrLabel.m in Sources */,
 				9BE0B89E17E80AC700B96412 /* HKAnimationUtil.m in Sources */,
 				9BC8BD3917ED818100DF9423 /* HKGridTableView.m in Sources */,
