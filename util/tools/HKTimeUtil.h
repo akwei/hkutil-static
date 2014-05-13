@@ -72,4 +72,12 @@
 //获得时间的当天结束时间
 +(NSDate*)getDateEndWithDate:(NSDate*)date;
 
+/**
+ 获得指定时间基础上增减后的时间
+ @param date 指定时间
+ @param components 时间的增减
+ @return 增减后的时间
+ */
++(NSDate*)date:(NSDate*)date addComponents:(NSDateComponents*)components;
+
 @end

@@ -186,4 +186,9 @@
     return d;
 }
 
++(NSDate *)date:(NSDate *)date addComponents:(NSDateComponents *)components{
+    NSCalendar* cal=[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    return [cal dateByAddingComponents:components toDate:date options:0];
+}
+
 @end
