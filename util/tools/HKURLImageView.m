@@ -14,10 +14,14 @@
 static HKDownloaderMgr* _shareDownloaderMgr;
 static NSTimeInterval _globalTimeout;
 static HKCache* _cache = nil;
+
+@interface HKURLImageView ()
+@property(nonatomic,strong)UIImage* oimage;
+@property(nonatomic,strong)NSString* imageUrl;
+@end
+
 @implementation HKURLImageView{
     //    NSData* _imageData;
-    UIImage* _oimage;
-    NSString* _imageUrl;
     UIActivityIndicatorView* _indicatorView;
 }
 
@@ -86,21 +90,19 @@ static HKCache* _cache = nil;
         [_indicatorView startAnimating];
         [self addSubview:_indicatorView];
     }
-    if (_imageUrl && [_imageUrl isEqualToString:url] && _oimage) {
+    if (self.imageUrl && [self.imageUrl isEqualToString:url] && self.oimage) {
         [self showImage];
         return;
     }
     [self clear];
-    _imageUrl = [url copy];
-    //    _imageData = nil;
-    _oimage = nil;
+    self.imageUrl = [url copy];
+    self.oimage = nil;
     __weak HKURLImageView* me = self;
     [[HKThreadUtil shareInstance] async:^{
-        HKCacheData* cd = [_cache objectForKey:_imageUrl];
+        HKCacheData* cd = [_cache objectForKey:me.imageUrl];
         if (cd) {
-            if ([_imageUrl isEqualToString:url]) {
-                //                _imageData = cd.data;
-                _oimage = cd.object;
+            if ([me.imageUrl isEqualToString:url]) {
+                me.oimage = cd.object;
                 [me showImage];
             }
         }
@@ -110,9 +112,8 @@ static HKCache* _cache = nil;
                 if (statusCode == 200) {
                     UIImage* image = [me buildImage:data];
                     [_cache setObject:image forKey:url];
-                    if ([_imageUrl isEqualToString:url]) {
-                        //                        _imageData = pd;
-                        _oimage = image;
+                    if ([me.imageUrl isEqualToString:url]) {
+                        me.oimage = image;
                         [me showImage];
                     }
                 }
@@ -147,7 +148,6 @@ static HKCache* _cache = nil;
         if (_indicatorView.superview == self) {
             [_indicatorView removeFromSuperview];
         }
-        //        me.image = [[UIImage alloc] initWithData:_imageData];
         me.image = _oimage;
     }];
 }
