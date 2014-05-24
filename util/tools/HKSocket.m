@@ -41,6 +41,9 @@
         self.done = NO;
         self.cond = [[NSCondition alloc] init];
         self.con_cond = [[NSCondition alloc] init];
+        self.writeTimeout = timeout;
+        self.readTimeout = timeout;
+        self.debug = NO;
     }
     return self;
 }
@@ -84,7 +87,7 @@
 -(void)writeData:(NSData*)data{
     HKSocket* me = self;
     [self workWithBlock:^{
-        [me.socket writeData:data withTimeout:me.timeout tag:1];
+        [me.socket writeData:data withTimeout:me.writeTimeout tag:1];
     }];
 }
 
@@ -118,7 +121,7 @@
     me.receivedData = nil;
     me.receivedData = [[NSMutableData alloc] init];
     [me workWithBlock:^{
-        [me.socket readDataWithTimeout:me.timeout buffer:me.receivedData bufferOffset:0 tag:2];
+        [me.socket readDataWithTimeout:me.readTimeout buffer:me.receivedData bufferOffset:0 tag:2];
         
     }];
     return self.receivedData;
@@ -145,9 +148,9 @@
 //}
 
 - (void)socket:(GCDAsyncSocket *)sender didConnectToHost:(NSString *)host port:(UInt16)port{
-#if HK_SOCKET_DEBUG
-    NSLog(@"connect to %@:%i",host,port);
-#endif
+    if (self.debug) {
+        NSLog(@"connect to %@:%i",host,port);
+    }
     [self.con_cond lock];
     self.error = nil;
     self.done = YES;
@@ -156,29 +159,29 @@
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag{
-#if HK_SOCKET_DEBUG
-    NSLog(@"data for tag %llu sent",(unsigned long long)tag);
-#endif
+    if (self.debug) {
+        NSLog(@"data for tag %llu sent",(unsigned long long)tag);
+    }
     [self afterResponse];
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag{
-#if HK_SOCKET_DEBUG
-    NSLog(@"data for tag %llu didRead",(unsigned long long)tag);
-#endif
+    if (self.debug) {
+        NSLog(@"data for tag %llu didRead",(unsigned long long)tag);
+    }
     [self afterResponse];
 }
 
 -(void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err{
-#if HK_SOCKET_DEBUG
-    if (err) {
-        NSLog(@"socket disconnect err:%@",[err description]);
-    }
-    else{
-        NSLog(@"socket disconnect ok");
-    }
-#endif
     [self.con_cond lock];
+    if (self.debug) {
+        if (err) {
+            NSLog(@"socket disconnect err:%@",[err description]);
+        }
+        else{
+            NSLog(@"socket disconnect ok");
+        }
+    }
     self.done = YES;
     self.error = err;
     [self.con_cond signal];
@@ -200,9 +203,9 @@
     NSError *err = nil;
     NSException* ex;
     @try {
-#if HK_SOCKET_DEBUG
-        NSLog(@"try to connect to host:%@ port:%d",self.host,self.port);
-#endif
+        if (self.debug) {
+            NSLog(@"try to connect to host:%@ port:%d",self.host,self.port);
+        }
         if (![self.socket connectToHost:self.host onPort:self.port withTimeout:self.timeout error:&err]) // Asynchronous!
         {
             // If there was an error, it's likely something like "already connected" or "no delegate set"

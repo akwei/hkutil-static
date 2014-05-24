@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9B00540E17E80D9400231190 /* HKAnimationUtil.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BE0B89C17E80AC600B96412 /* HKAnimationUtil.h */; };
+		9B02BE50192F5E9F00F662B0 /* HKNFCReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B02BE4F192F5E9F00F662B0 /* HKNFCReader.m */; };
+		9B02BE51193055B300F662B0 /* HKNFCReader.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B02BE4E192F5E9F00F662B0 /* HKNFCReader.h */; };
 		9B0E1067184EB9DD00C5D429 /* HKArrayMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0E1066184EB9DD00C5D429 /* HKArrayMap.m */; };
 		9B0E1068184EBB7400C5D429 /* HKArrayMap.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B0E1065184EB9DD00C5D429 /* HKArrayMap.h */; };
 		9B0F63D417F9581B0093797C /* HKCommonPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0F63D317F9581B0093797C /* HKCommonPrinter.m */; };
@@ -155,6 +157,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				9B02BE51193055B300F662B0 /* HKNFCReader.h in CopyFiles */,
 				9B5F5236190D4E0500D0CA9A /* HKCaller.h in CopyFiles */,
 				9B5F520F190B489B00D0CA9A /* CKCalendarView.h in CopyFiles */,
 				9B5F5210190B489B00D0CA9A /* CKCalendarView.m in CopyFiles */,
@@ -224,6 +227,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9B02BE4E192F5E9F00F662B0 /* HKNFCReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKNFCReader.h; sourceTree = "<group>"; };
+		9B02BE4F192F5E9F00F662B0 /* HKNFCReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKNFCReader.m; sourceTree = "<group>"; };
 		9B0E1065184EB9DD00C5D429 /* HKArrayMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKArrayMap.h; sourceTree = "<group>"; };
 		9B0E1066184EB9DD00C5D429 /* HKArrayMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKArrayMap.m; sourceTree = "<group>"; };
 		9B0F63D217F9581B0093797C /* HKCommonPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKCommonPrinter.h; sourceTree = "<group>"; };
@@ -573,6 +578,8 @@
 			children = (
 				9B68FFB917FBE1C1006F98A2 /* HKSocket.h */,
 				9B68FFBA17FBE1C1006F98A2 /* HKSocket.m */,
+				9B02BE4E192F5E9F00F662B0 /* HKNFCReader.h */,
+				9B02BE4F192F5E9F00F662B0 /* HKNFCReader.m */,
 				9B7E400B17F4932800258ACA /* CfgHeader.h */,
 				9BC8BD3817ED818100DF9423 /* HKGridTableView.h */,
 				9BC8BD3717ED818100DF9423 /* HKGridTableView.m */,
@@ -740,6 +747,7 @@
 				9BBDED561850596B00994DAB /* HKTimerInvoker2.m in Sources */,
 				9B6E21E2181BA80600BF154D /* NSMutableDictionary+HKEx.m in Sources */,
 				9BFFA9DA17E48DE500F353A5 /* GCDAsyncSocket.m in Sources */,
+				9B02BE50192F5E9F00F662B0 /* HKNFCReader.m in Sources */,
 				9BFFA9DB17E48DE500F353A5 /* JSONKit.m in Sources */,
 				9BFFA9DC17E48DE500F353A5 /* MBProgressHUD.m in Sources */,
 				9B6E21E9181CBE3D00BF154D /* NSArray+HKEx.m in Sources */,
