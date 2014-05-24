@@ -127,6 +127,37 @@
     return self.receivedData;
 }
 
+-(NSData *)readLineData{
+    BOOL hasNext = YES;
+    NSMutableData* buf = [[NSMutableData alloc] init];
+    while (hasNext) {
+        NSData* data = [self readData];
+        if (!data) {
+            hasNext = NO;
+        }
+        else{
+            [buf appendData:data];
+            if ([buf length] >=2) {
+                UInt8 bytes[2];
+                [buf getBytes:&bytes range:NSMakeRange([buf length] - 2, 2)];
+                if (bytes[0]=='\r' && bytes[1]=='\n') {
+                    hasNext = NO;
+                }
+                else{
+                    hasNext = YES;
+                }
+            }
+            else{
+                hasNext = YES;
+            }
+        }
+    }
+    NSInteger len = [buf length] - 2;
+    char bytes[len];
+    [buf getBytes:&bytes length:len];
+    return [NSData dataWithBytes:bytes length:len];
+}
+
 -(void)afterResponse{
     [self.cond lock];
     self.error = nil;

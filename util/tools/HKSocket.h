@@ -37,5 +37,6 @@
  */
 -(void)writeData:(NSData*)data blockSize:(NSUInteger)blockSize;
 -(NSData*)readData;
+-(NSData*)readLineData;
 -(void)close;
 @end
