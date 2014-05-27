@@ -241,6 +241,7 @@
 		9B35EDD618E4062800CCB428 /* HKXCode93Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKXCode93Data.m; sourceTree = "<group>"; };
 		9B369BE018BA508F0079123C /* HKTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKTimer.h; sourceTree = "<group>"; };
 		9B369BE118BA508F0079123C /* HKTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKTimer.m; sourceTree = "<group>"; };
+		9B3CAAFA1934695F001531C4 /* hk_cache.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = hk_cache.sqlite; sourceTree = "<group>"; };
 		9B4C9ED018E95451003F08F4 /* HKClassUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKClassUtil.h; sourceTree = "<group>"; };
 		9B4C9ED118E95451003F08F4 /* HKClassUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKClassUtil.m; sourceTree = "<group>"; };
 		9B51D084184B861C009E6E09 /* UILabel+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+HKEx.h"; sourceTree = "<group>"; };
@@ -576,6 +577,7 @@
 		9BFFA98D17E48DE500F353A5 /* tools */ = {
 			isa = PBXGroup;
 			children = (
+				9B3CAAFA1934695F001531C4 /* hk_cache.sqlite */,
 				9B68FFB917FBE1C1006F98A2 /* HKSocket.h */,
 				9B68FFBA17FBE1C1006F98A2 /* HKSocket.m */,
 				9B02BE4E192F5E9F00F662B0 /* HKNFCReader.h */,
