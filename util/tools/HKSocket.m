@@ -224,7 +224,12 @@
 -(void)open{
     [self.con_cond lock];
     if (!self.host || self.port<=0) {
-        @throw [HKSocketConnectionException exceptionWithName:@"connect error" reason:@"must set host and port" userInfo:nil];
+        @try {
+            @throw [HKSocketConnectionException exceptionWithName:@"connect error" reason:@"must set host and port" userInfo:nil];
+        }
+        @finally {
+            [self.con_cond unlock];
+        }
     }
     self.done = NO;
     if (self.socket) {
@@ -235,7 +240,7 @@
     NSException* ex;
     @try {
         if (self.debug) {
-            NSLog(@"try to connect to host:%@ port:%d",self.host,self.port);
+            NSLog(@"try to connect to host:%@ port:%llu",self.host,(unsigned long long)self.port);
         }
         if (![self.socket connectToHost:self.host onPort:self.port withTimeout:self.timeout error:&err]) // Asynchronous!
         {

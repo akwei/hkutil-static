@@ -17,13 +17,11 @@
 
 -(instancetype)initWithHost:(NSString*)host
                        port:(NSUInteger)port
-                    timeout:(NSTimeInterval)timeout
-            beginSwipeBlock:(void (^)(void))beginSwipeBlock
-                  onGetData:(void (^)(NSString* uid))onGetData;
+                    timeout:(NSTimeInterval)timeout;
 
 -(void)open;
 
--(void)swipe;
+-(NSString*)swipeWithBeginSwipeBlock:(void (^)(void))beginSwipeBlock;
 
 -(void)close;
 

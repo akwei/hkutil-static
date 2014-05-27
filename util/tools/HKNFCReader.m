@@ -11,23 +11,17 @@
 
 @interface HKNFCReader ()
 @property(nonatomic,strong)HKSocket* socket;
-@property(nonatomic,strong)void (^beginSwipeBlock)(void);
-@property(nonatomic,strong)void (^onGetData)(NSString* uid);
 @end
 
 @implementation HKNFCReader
 
 -(instancetype)initWithHost:(NSString*)host
                        port:(NSUInteger)port
-                    timeout:(NSTimeInterval)timeout
-            beginSwipeBlock:(void (^)(void))beginSwipeBlock
-                  onGetData:(void (^)(NSString* uid))onGetData{
+                    timeout:(NSTimeInterval)timeout{
     self = [super init];
     if (self) {
         self.socket = [[HKSocket alloc] initWithHost:host port:port timeout:timeout];
         self.socket.debug = YES;
-        self.beginSwipeBlock = beginSwipeBlock;
-        self.onGetData = onGetData;
     }
     return self;
 }
@@ -46,21 +40,28 @@
     [self.socket open];
 }
 
--(void)swipe{
+-(NSString*)swipeWithBeginSwipeBlock:(void (^)(void))beginSwipeBlock{
     NSString* cmd = @"swipe\r\n";
     [self.socket writeData:[cmd dataUsingEncoding:NSUTF8StringEncoding]];
-    if (self.beginSwipeBlock) {
-        self.beginSwipeBlock();
+    if (beginSwipeBlock) {
+        beginSwipeBlock();
     }
     NSData* data = [self.socket readLineData];
     NSString* uid = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    if (self.onGetData) {
-        self.onGetData(uid);
-    }
+    return uid;
 }
 
 -(void)close{
     [self.socket close];
+}
+
+-(void)dealloc{
+    @try {
+        [self close];
+    }
+    @finally {
+        //
+    }
 }
 
 @end
