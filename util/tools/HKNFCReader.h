@@ -19,10 +19,10 @@
                        port:(NSUInteger)port
                     timeout:(NSTimeInterval)timeout;
 
--(void)open;
+-(BOOL)test;
 
 -(NSString*)swipeWithBeginSwipeBlock:(void (^)(void))beginSwipeBlock;
 
--(void)close;
+-(void)stopSwipe;
 
 @end

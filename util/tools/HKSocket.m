@@ -67,7 +67,6 @@
         [self checkException];
     }
     @finally {
-        self.done = NO;
         [self.cond unlock];
     }
 }
@@ -207,7 +206,7 @@
     [self.con_cond lock];
     if (self.debug) {
         if (err) {
-            NSLog(@"socket disconnect err:%@",[err description]);
+            NSLog(@"socket disconnect ok:%@",[err description]);
         }
         else{
             NSLog(@"socket disconnect ok");
@@ -216,6 +215,7 @@
     self.done = YES;
     self.error = err;
     [self.con_cond signal];
+    [self.cond signal];
     [self.con_cond unlock];
 }
 
@@ -269,7 +269,6 @@
         @throw exception;
     }
     @finally {
-        self.done = NO;
         [self.con_cond unlock];
     }
 }
@@ -277,13 +276,12 @@
 -(void)close{
     [self.con_cond lock];
     self.done = NO;
-    if (self.socket) {
+    if (self.socket && ![self.socket isDisconnected]) {
         [self.socket disconnect];
         while (!self.done) {
             [self.con_cond wait];
         }
     }
-    self.done = NO;
     self.socket = nil;
     [self.con_cond unlock];
 }

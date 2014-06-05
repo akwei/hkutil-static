@@ -40,24 +40,49 @@
     [self.socket open];
 }
 
--(NSString*)swipeWithBeginSwipeBlock:(void (^)(void))beginSwipeBlock{
-    NSString* cmd = @"swipe\r\n";
-    [self.socket writeData:[cmd dataUsingEncoding:NSUTF8StringEncoding]];
-    if (beginSwipeBlock) {
-        beginSwipeBlock();
+-(BOOL)test{
+    @try {
+        [self.socket open];
+        [self.socket close];
+        return YES;
     }
-    NSData* data = [self.socket readLineData];
-    NSString* uid = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    return uid;
+    @catch (NSException *exception) {
+        return NO;
+    }
+    @finally{
+        [self.socket close];
+    }
 }
 
--(void)close{
+-(NSString*)swipeWithBeginSwipeBlock:(void (^)(void))beginSwipeBlock{
+    @try {
+        [self.socket open];
+        NSString* cmd = @"swipe\r\n";
+        [self.socket writeData:[cmd dataUsingEncoding:NSUTF8StringEncoding]];
+        if (beginSwipeBlock) {
+            beginSwipeBlock();
+        }
+        NSData* data = [self.socket readLineData];
+        NSString* str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        //nfcuid:
+        if ([str length] > 7) {
+            NSString* uid = [str substringFromIndex:7];
+            return uid;
+        }
+        return nil;
+    }
+    @finally {
+        [self.socket close];
+    }
+}
+
+-(void)stopSwipe{
     [self.socket close];
 }
 
 -(void)dealloc{
     @try {
-        [self close];
+        [self stopSwipe];
     }
     @finally {
         //
