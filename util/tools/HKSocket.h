@@ -15,6 +15,9 @@
 @interface HKSocketException : NSException
 @end
 
+@interface HKSocketInterruptException : NSException
+@end
+
 @interface HKSocket : NSObject<GCDAsyncSocketDelegate>
 @property(nonatomic,copy)NSString* host;
 @property(nonatomic,assign)NSUInteger port;

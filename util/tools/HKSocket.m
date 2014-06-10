@@ -15,11 +15,17 @@
 @implementation HKSocketException
 @end
 
+@implementation HKSocketInterruptException
+@end
+
 @interface HKSocket ()
 @property(nonatomic,strong)GCDAsyncSocket* socket;
 @property(nonatomic,strong)NSCondition* cond;
-@property(nonatomic,strong)NSCondition* con_cond;
+@property(nonatomic,strong)NSCondition* open_cond;
+@property(nonatomic,strong)NSCondition* close_cond;
 @property(nonatomic,assign)BOOL done;
+@property(nonatomic,assign)BOOL interrupted;
+@property(nonatomic,assign)BOOL openning;
 @property(nonatomic,strong)NSMutableData* receivedData;
 @property(nonatomic,strong)NSError* error;
 @property(nonatomic,assign)BOOL isReadTimeout;
@@ -40,10 +46,13 @@
         _queue = dispatch_queue_create([queueName UTF8String], DISPATCH_QUEUE_SERIAL);
         self.done = NO;
         self.cond = [[NSCondition alloc] init];
-        self.con_cond = [[NSCondition alloc] init];
+        self.open_cond = [[NSCondition alloc] init];
+        self.close_cond = [[NSCondition alloc] init];
         self.writeTimeout = timeout;
         self.readTimeout = timeout;
         self.debug = NO;
+        self.interrupted = NO;
+        self.openning = NO;
     }
     return self;
 }
@@ -181,11 +190,11 @@
     if (self.debug) {
         NSLog(@"connect to %@:%i",host,port);
     }
-    [self.con_cond lock];
+    [self.open_cond lock];
     self.error = nil;
     self.done = YES;
-    [self.con_cond signal];
-    [self.con_cond unlock];
+    [self.open_cond signal];
+    [self.open_cond unlock];
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag{
@@ -203,7 +212,9 @@
 }
 
 -(void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err{
-    [self.con_cond lock];
+    [self.open_cond lock];
+    [self.close_cond lock];
+    [self.cond lock];
     if (self.debug) {
         if (err) {
             NSLog(@"socket disconnect ok:%@",[err description]);
@@ -214,21 +225,25 @@
     }
     self.done = YES;
     self.error = err;
-    [self.con_cond signal];
+    [self.open_cond signal];
+    [self.close_cond signal];
     [self.cond signal];
-    [self.con_cond unlock];
+    [self.cond unlock];
+    [self.close_cond unlock];
+    [self.open_cond unlock];
 }
 
 #pragma mark - open and close
 
 -(void)open{
-    [self.con_cond lock];
+    [self.open_cond lock];
+    self.openning = YES;
     if (!self.host || self.port<=0) {
         @try {
             @throw [HKSocketConnectionException exceptionWithName:@"connect error" reason:@"must set host and port" userInfo:nil];
         }
         @finally {
-            [self.con_cond unlock];
+            [self.open_cond unlock];
         }
     }
     self.done = NO;
@@ -253,7 +268,14 @@
             @throw ex;
         }
         while (!self.done) {
-            [self.con_cond wait];
+            [self.open_cond wait];
+            if (self.interrupted) {
+                break;
+            }
+        }
+        if (self.interrupted) {
+            ex = [HKSocketInterruptException exceptionWithName:@"socket interrupted" reason:@"socket was force closed" userInfo:nil];
+            @throw ex;
         }
         if (self.error) {
             NSString* name = [NSString stringWithFormat:@"connect to [%@:%llu] error",self.host,(unsigned long long)self.port];
@@ -269,21 +291,23 @@
         @throw exception;
     }
     @finally {
-        [self.con_cond unlock];
+        self.openning = NO;
+        [self.open_cond unlock];
     }
 }
 
 -(void)close{
-    [self.con_cond lock];
+    [self.close_cond lock];
     self.done = NO;
     if (self.socket && ![self.socket isDisconnected]) {
         [self.socket disconnect];
+        self.interrupted = self.openning;
         while (!self.done) {
-            [self.con_cond wait];
+            [self.close_cond wait];
         }
     }
     self.socket = nil;
-    [self.con_cond unlock];
+    [self.close_cond unlock];
 }
 
 -(void)dealloc{
