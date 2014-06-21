@@ -14,6 +14,10 @@
 @interface HKNFCReader : NSObject
 @property(nonatomic,assign)NSTimeInterval writeTimeout;
 @property(nonatomic,assign)NSTimeInterval readTimeout;
+@property(nonatomic,strong)void (^openedBlock)(void);
+@property(nonatomic,strong)void (^closedBlock)(void);
+@property(nonatomic,strong)void (^getNFCBlock)(NSString* nfc);
+@property(nonatomic,strong)void (^failBlock)(NSError* error);
 
 -(instancetype)initWithHost:(NSString*)host
                        port:(NSUInteger)port
@@ -21,8 +25,12 @@
 
 -(BOOL)test;
 
--(NSString*)swipeWithBeginSwipeBlock:(void (^)(void))beginSwipeBlock;
+-(void)open;
 
--(void)stopSwipe;
+-(BOOL)isConnected;
+
+-(void)swipe;
+
+-(void)stop;
 
 @end

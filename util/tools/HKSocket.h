@@ -28,16 +28,35 @@
 
 -(id)initWithHost:(NSString*)host port:(NSUInteger)port timeout:(NSTimeInterval)timeout;
 -(void)open;
+
 /*
- 发送打印指令
+ 写入数据
  */
 -(void)writeData:(NSData*)data;
+
 /*
- 发送打印指令
- @param blockSize 每次发送的字节数量
+ 写入数据
  */
 -(void)writeData:(NSData*)data blockSize:(NSUInteger)blockSize;
+
+/**
+ 读取数据
+ @return 读到的数据
+ */
 -(NSData*)readData;
+
+/**
+ 读取数据
+ @param length 读取数据的长度
+ @return 读到的数据
+ */
+-(NSData*)readDataWithLength:(NSUInteger)length;
+
+/**
+ 读取一行数据
+ @return 读到的数据
+ */
 -(NSData*)readLineData;
+
 -(void)close;
 @end
