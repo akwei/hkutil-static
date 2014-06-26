@@ -18,6 +18,9 @@
 		9B1F435417F99242009E7E4F /* HKCommonPrinter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B0F63D217F9581B0093797C /* HKCommonPrinter.h */; };
 		9B2C031E18EF97A4006E6C05 /* UIViewController+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B2C031D18EF97A4006E6C05 /* UIViewController+HKEx.m */; };
 		9B2C031F18EF9982006E6C05 /* UIViewController+HKEx.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B2C031C18EF97A4006E6C05 /* UIViewController+HKEx.h */; };
+		9B343976195AA671005DD310 /* HKQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B343975195AA671005DD310 /* HKQueue.m */; };
+		9B343977195AAAF0005DD310 /* HKQueue.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B343974195AA671005DD310 /* HKQueue.h */; };
+		9B34397A195AAD08005DD310 /* HKNFCReader2.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B343979195AAD08005DD310 /* HKNFCReader2.m */; };
 		9B35EDD718E4062800CCB428 /* HKXCode93Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B35EDD618E4062800CCB428 /* HKXCode93Data.m */; };
 		9B35EDD818E4077F00CCB428 /* HKXCode93Data.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9B35EDD518E4062800CCB428 /* HKXCode93Data.h */; };
 		9B369BE218BA508F0079123C /* HKTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B369BE118BA508F0079123C /* HKTimer.m */; };
@@ -158,6 +161,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				9B343977195AAAF0005DD310 /* HKQueue.h in CopyFiles */,
 				9B02BE51193055B300F662B0 /* HKNFCReader.h in CopyFiles */,
 				9B5F5236190D4E0500D0CA9A /* HKCaller.h in CopyFiles */,
 				9B5F520F190B489B00D0CA9A /* CKCalendarView.h in CopyFiles */,
@@ -238,6 +242,10 @@
 		9B1F435117F9909F009E7E4F /* HKPrinterCfg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKPrinterCfg.m; sourceTree = "<group>"; };
 		9B2C031C18EF97A4006E6C05 /* UIViewController+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HKEx.h"; sourceTree = "<group>"; };
 		9B2C031D18EF97A4006E6C05 /* UIViewController+HKEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HKEx.m"; sourceTree = "<group>"; };
+		9B343974195AA671005DD310 /* HKQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKQueue.h; sourceTree = "<group>"; };
+		9B343975195AA671005DD310 /* HKQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKQueue.m; sourceTree = "<group>"; };
+		9B343978195AAD08005DD310 /* HKNFCReader2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKNFCReader2.h; sourceTree = "<group>"; };
+		9B343979195AAD08005DD310 /* HKNFCReader2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKNFCReader2.m; sourceTree = "<group>"; };
 		9B35EDD518E4062800CCB428 /* HKXCode93Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKXCode93Data.h; sourceTree = "<group>"; };
 		9B35EDD618E4062800CCB428 /* HKXCode93Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKXCode93Data.m; sourceTree = "<group>"; };
 		9B369BE018BA508F0079123C /* HKTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKTimer.h; sourceTree = "<group>"; };
@@ -587,6 +595,8 @@
 				9B9E70381952FBC000BD14BF /* HKAsyncSocket.m */,
 				9B02BE4E192F5E9F00F662B0 /* HKNFCReader.h */,
 				9B02BE4F192F5E9F00F662B0 /* HKNFCReader.m */,
+				9B343978195AAD08005DD310 /* HKNFCReader2.h */,
+				9B343979195AAD08005DD310 /* HKNFCReader2.m */,
 				9B7E400B17F4932800258ACA /* CfgHeader.h */,
 				9BC8BD3817ED818100DF9423 /* HKGridTableView.h */,
 				9BC8BD3717ED818100DF9423 /* HKGridTableView.m */,
@@ -677,6 +687,8 @@
 				9B4C9ED118E95451003F08F4 /* HKClassUtil.m */,
 				9B2C031C18EF97A4006E6C05 /* UIViewController+HKEx.h */,
 				9B2C031D18EF97A4006E6C05 /* UIViewController+HKEx.m */,
+				9B343974195AA671005DD310 /* HKQueue.h */,
+				9B343975195AA671005DD310 /* HKQueue.m */,
 			);
 			path = tools;
 			sourceTree = "<group>";
@@ -789,6 +801,7 @@
 				9BFFA9F317E48DE500F353A5 /* HKTimeUtil.m in Sources */,
 				9BFFA9F417E48DE500F353A5 /* HKURLImageView.m in Sources */,
 				9BFFA9F517E48DE500F353A5 /* HKViewUtil.m in Sources */,
+				9B343976195AA671005DD310 /* HKQueue.m in Sources */,
 				9BFFA9F717E48DE500F353A5 /* UIView+HKEx.m in Sources */,
 				9B5F5235190D42FB00D0CA9A /* HKCaller.m in Sources */,
 				9B603E8018D6C29E00B401CF /* HKAttrLabel.m in Sources */,
@@ -799,6 +812,7 @@
 				9BA56D4F1820AADD006A73FB /* UIImage+HKEx.m in Sources */,
 				9B1F435217F9909F009E7E4F /* HKPrinterCfg.m in Sources */,
 				9BBDED05184F7FC900994DAB /* NSData+HKEx.m in Sources */,
+				9B34397A195AAD08005DD310 /* HKNFCReader2.m in Sources */,
 				9B68FFBB17FBE1C1006F98A2 /* HKSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

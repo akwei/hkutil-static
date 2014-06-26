@@ -1,29 +1,29 @@
 //
-//  HKNFCReader.m
+//  HKNFCReader2.m
 //  hkutil-static
 //
-//  Created by akwei on 5/23/14.
+//  Created by akwei on 6/25/14.
 //  Copyright (c) 2014 huoku. All rights reserved.
 //
 
-#import "HKNFCReader.h"
+#import "HKNFCReader2.h"
+#import "HKQueue.h"
 #import "HKSocket.h"
 #import "HKAsyncSocket.h"
-#import "HKDataUtil.h"
 
-@interface HKNFCReader ()
+@interface HKNFCReader2 ()
 @property(nonatomic,strong)HKSocket* socket;
 @property(nonatomic,strong)HKAsyncSocket* asyncSocket;
+@property(nonatomic,strong)HKQueue* queue;
 @end
 
-@implementation HKNFCReader
-
+@implementation HKNFCReader2
 -(instancetype)initWithHost:(NSString*)host
                        port:(NSUInteger)port
                     timeout:(NSTimeInterval)timeout{
     self = [super init];
     if (self) {
-        __weak HKNFCReader* me = self;
+        __weak HKNFCReader2* me = self;
         self.socket = [[HKSocket alloc] initWithHost:host port:port timeout:timeout];
         self.socket.debug = YES;
         self.asyncSocket = [[HKAsyncSocket alloc] initWithHost:host port:port timeout:timeout];
@@ -56,7 +56,7 @@
                     NSString* uid = nil;
                     //nfcuid:
                     if ([str length] > 7) {
-                        uid = [HKDataUtil trim:[str substringFromIndex:7]];
+                        uid = [str substringFromIndex:7];
                     }
                     if (me.getNFCBlock) {
                         me.getNFCBlock(uid);
@@ -121,5 +121,4 @@
     [self.socket close];
     [self.asyncSocket close];
 }
-
 @end
