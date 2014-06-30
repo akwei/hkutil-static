@@ -25,7 +25,7 @@
     if (self) {
         __weak HKNFCReader* me = self;
         self.socket = [[HKSocket alloc] initWithHost:host port:port timeout:timeout];
-        self.socket.debug = YES;
+        self.socket.debug = NO;
         self.asyncSocket = [[HKAsyncSocket alloc] initWithHost:host port:port timeout:timeout];
         self.asyncSocket.debug = YES;
         self.readTimeout = -1;
