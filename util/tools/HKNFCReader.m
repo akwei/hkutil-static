@@ -57,6 +57,15 @@
                     //nfcuid:
                     if ([str length] > 7) {
                         uid = [HKDataUtil trim:[str substringFromIndex:7]];
+                        NSInteger remain = 10 - [uid length];
+                        NSMutableString* buf = [[NSMutableString alloc] init];
+                        if (remain > 0) {
+                            for (int i = 0; i < remain; i++) {
+                                [buf appendString:@"0"];
+                            }
+                            [buf appendString:uid];
+                            uid = [buf copy];
+                        }
                     }
                     if (me.getNFCBlock) {
                         me.getNFCBlock(uid);
