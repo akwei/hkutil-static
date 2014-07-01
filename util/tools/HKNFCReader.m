@@ -27,7 +27,7 @@
         self.socket = [[HKSocket alloc] initWithHost:host port:port timeout:timeout];
         self.socket.debug = NO;
         self.asyncSocket = [[HKAsyncSocket alloc] initWithHost:host port:port timeout:timeout];
-        self.asyncSocket.debug = YES;
+        self.asyncSocket.debug = NO;
         self.readTimeout = -1;
         [self.asyncSocket setSuccessBlock:^(long tag, NSDictionary *info) {
             switch (tag) {
