@@ -10,6 +10,11 @@
 
 @implementation UILabel (HKEx)
 
++(CGFloat)heightForFixedWidth:(CGFloat)width text:(NSString *)text font:(UIFont*)font lineBreakMode:(NSLineBreakMode)lineBreakMode{
+    CGSize size = CGSizeMake(width, MAXFLOAT);
+    size = [text sizeWithFont:font constrainedToSize:size lineBreakMode:lineBreakMode];
+    return size.height;
+}
 
 -(void)resizeWidth{
     CGRect frame = self.frame;
@@ -37,7 +42,6 @@
     CGFloat _height = size.height;
     frame.size.height = _height;
     self.frame = frame;
-    [self sizeToFit];
 }
 
 @end

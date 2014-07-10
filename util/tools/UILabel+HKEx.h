@@ -10,6 +10,8 @@
 
 @interface UILabel (HKEx)
 
++(CGFloat)heightForFixedWidth:(CGFloat)width text:(NSString *)text font:(UIFont*)font lineBreakMode:(NSLineBreakMode)lineBreakMode;
+
 /**
  固定高度，根据文字匹配宽度
  */
