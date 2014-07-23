@@ -34,6 +34,7 @@
 @protocol PullTableViewDelegate <NSObject>
 
 /* After one of the delegate methods is invoked a loading animation is started, to end it use the respective status update property */
+@optional //add by akwei
 - (void)pullTableViewDidTriggerRefresh:(PullTableView*)pullTableView;
 - (void)pullTableViewDidTriggerLoadMore:(PullTableView*)pullTableView;
 
@@ -81,5 +82,10 @@
 
 /* Delegate */
 @property (nonatomic, assign) IBOutlet id<PullTableViewDelegate> pullDelegate;
+
+//add by akwei
+-(void)addRefreshView;
+
+-(void)addLoadMoreView;
 
 @end

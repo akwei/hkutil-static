@@ -28,6 +28,8 @@
 
 +(NSString*)stringWithDate:(NSDate*)date format:(NSString*)format;
 
++(NSString*)stringWithDate:(NSDate*)date format:(NSString*)format timeZone:(NSTimeZone*)timeZone locale:(NSLocale*)locale;
+
 +(NSString*)stringWithDoubleDate:(double)doubleDate format:(NSString*)format;
 
 /**

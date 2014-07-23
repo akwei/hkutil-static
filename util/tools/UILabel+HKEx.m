@@ -7,10 +7,14 @@
 //
 
 #import "UILabel+HKEx.h"
+#import "HKDataUtil.h"
 
 @implementation UILabel (HKEx)
 
 +(CGFloat)heightForFixedWidth:(CGFloat)width text:(NSString *)text font:(UIFont*)font lineBreakMode:(NSLineBreakMode)lineBreakMode{
+    if ([HKDataUtil isEmpty:text]) {
+        return 0;
+    }
     CGSize size = CGSizeMake(width, MAXFLOAT);
     size = [text sizeWithFont:font constrainedToSize:size lineBreakMode:lineBreakMode];
     return size.height;
@@ -32,7 +36,7 @@
 
 -(void)resizeHeight{
     CGRect frame = self.frame;
-    if (!self.text) {
+    if (!self.text || [HKDataUtil isEmpty:self.text]) {
         frame.size.height = 0;
         self.frame = frame;
         return ;

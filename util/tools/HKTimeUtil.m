@@ -58,6 +58,15 @@
     return v;
 }
 
++(NSString *)stringWithDate:(NSDate *)date format:(NSString *)format timeZone:(NSTimeZone *)timeZone locale:(NSLocale *)locale{
+    NSDateFormatter *fmt=[[NSDateFormatter alloc] init];
+	[fmt setTimeZone:timeZone];
+	[fmt setLocale:locale];
+	[fmt setDateFormat:format];
+    NSString* v=[fmt stringFromDate:date];
+    return v;
+}
+
 +(NSString *)stringWithDoubleDate:(double)doubleDate format:(NSString *)format{
     NSDate* date=[[NSDate alloc] initWithTimeIntervalSince1970:doubleDate];
     NSString* value = [HKTimeUtil stringWithDate:date format:format];
