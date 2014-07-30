@@ -20,6 +20,8 @@
 
 +(NSString *)uintegerToString:(NSUInteger)n;
 
++(NSString*)doubleToString:(double)value;
+
 +(NSInteger)randNSInteger;
 
 +(NSInteger)randNSInteger:(NSInteger)from to:(NSInteger)to;

@@ -69,6 +69,8 @@
 		9B9E70391952FBC000BD14BF /* HKAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9E70381952FBC000BD14BF /* HKAsyncSocket.m */; };
 		9BA56D4F1820AADD006A73FB /* UIImage+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA56D4E1820AADD006A73FB /* UIImage+HKEx.m */; };
 		9BA56D501820AB3A006A73FB /* UIImage+HKEx.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BA56D4D1820AADD006A73FB /* UIImage+HKEx.h */; };
+		9BB1DF5419877B1F0048A39D /* UIColor+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB1DF5319877B1F0048A39D /* UIColor+HKEx.m */; };
+		9BB1DF5519877C4A0048A39D /* UIColor+HKEx.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BB1DF5219877B1F0048A39D /* UIColor+HKEx.h */; };
 		9BBDED05184F7FC900994DAB /* NSData+HKEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBDED04184F7FC900994DAB /* NSData+HKEx.m */; };
 		9BBDED06184F844B00994DAB /* NSData+HKEx.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BBDED03184F7FC900994DAB /* NSData+HKEx.h */; };
 		9BBDED53185057EB00994DAB /* HKXPrinter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BBDED50185057D000994DAB /* HKXPrinter.h */; };
@@ -181,6 +183,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				9BB1DF5519877C4A0048A39D /* UIColor+HKEx.h in CopyFiles */,
 				9B4AF56F197777480002E1F0 /* EGORefreshTableHeaderView.h in CopyFiles */,
 				9B4AF570197777480002E1F0 /* EGORefreshTableHeaderView.m in CopyFiles */,
 				9B4AF571197777480002E1F0 /* LoadMoreTableFooterView.h in CopyFiles */,
@@ -333,6 +336,8 @@
 		9B9E70381952FBC000BD14BF /* HKAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKAsyncSocket.m; sourceTree = "<group>"; };
 		9BA56D4D1820AADD006A73FB /* UIImage+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HKEx.h"; sourceTree = "<group>"; };
 		9BA56D4E1820AADD006A73FB /* UIImage+HKEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HKEx.m"; sourceTree = "<group>"; };
+		9BB1DF5219877B1F0048A39D /* UIColor+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HKEx.h"; sourceTree = "<group>"; };
+		9BB1DF5319877B1F0048A39D /* UIColor+HKEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HKEx.m"; sourceTree = "<group>"; };
 		9BBDED03184F7FC900994DAB /* NSData+HKEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+HKEx.h"; sourceTree = "<group>"; };
 		9BBDED04184F7FC900994DAB /* NSData+HKEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+HKEx.m"; sourceTree = "<group>"; };
 		9BBDED50185057D000994DAB /* HKXPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKXPrinter.h; sourceTree = "<group>"; };
@@ -781,6 +786,8 @@
 				9B2C031D18EF97A4006E6C05 /* UIViewController+HKEx.m */,
 				9B343974195AA671005DD310 /* HKQueue.h */,
 				9B343975195AA671005DD310 /* HKQueue.m */,
+				9BB1DF5219877B1F0048A39D /* UIColor+HKEx.h */,
+				9BB1DF5319877B1F0048A39D /* UIColor+HKEx.m */,
 			);
 			path = tools;
 			sourceTree = "<group>";
@@ -880,6 +887,7 @@
 				9B2C031E18EF97A4006E6C05 /* UIViewController+HKEx.m in Sources */,
 				9BFFA9E517E48DE500F353A5 /* HKEncUtil.m in Sources */,
 				9BCA99BA182BB37400A81788 /* HKTableViewCell.m in Sources */,
+				9BB1DF5419877B1F0048A39D /* UIColor+HKEx.m in Sources */,
 				9BFFA9E617E48DE500F353A5 /* HKFileUtil.m in Sources */,
 				9BFFA9E717E48DE500F353A5 /* HKKeyboardNotice.m in Sources */,
 				9BFFA9E817E48DE500F353A5 /* HKKVEncoder.m in Sources */,

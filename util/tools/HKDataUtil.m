@@ -47,6 +47,9 @@
     return [[NSNumber numberWithUnsignedInteger:n] stringValue];
 }
 
++(NSString *)doubleToString:(double)value{
+    return [[NSNumber numberWithDouble:value] stringValue];
+}
 
 /*
  有时候我们需要在程序中生成随机数，但是在Objective-c中并没有提供相应的函数，好在C中提供了rand()、srand()、random()、arc4random()几个函数。那么怎么使用呢？下面将简单介绍：
