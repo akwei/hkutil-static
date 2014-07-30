@@ -46,6 +46,12 @@
     return self;
 }
 
+-(void)dealloc{
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0 // iOS 5.X or earlier
+    dispatch_release(_queue);
+#endif
+}
+
 -(BOOL)open{
     self.socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:_queue];
     NSError* err = nil;
