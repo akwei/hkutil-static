@@ -57,8 +57,8 @@ static BOOL _sharedEnableTestMode = NO;
 
 -(void)dealloc{
     [self removeObserver:self forKeyPath:@"result"];
-#if NEEDS_DISPATCH_RETAIN_RELEASE
-	if (_asyncQueue) dispatch_release(_asyncQueue);
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0 // iOS 5.X or earlier
+    if (_asyncQueue) dispatch_release(_asyncQueue);
 #endif
 }
 

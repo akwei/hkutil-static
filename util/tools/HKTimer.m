@@ -31,8 +31,8 @@
 
 -(void)dealloc{
     [self stop];
-#if NEEDS_DISPATCH_RETAIN_RELEASE
-	if (_queue) dispatch_release(_queue);
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0 // iOS 5.X or earlier
+    if (_queue) dispatch_release(_queue);
 #endif
 }
 
