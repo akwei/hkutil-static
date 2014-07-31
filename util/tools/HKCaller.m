@@ -60,6 +60,7 @@ static BOOL _sharedEnableTestMode = NO;
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0 // iOS 5.X or earlier
     if (_asyncQueue) dispatch_release(_asyncQueue);
 #endif
+    [self.info removeAllObjects];
 }
 
 -(void)async:(NSString *(^)(HKCaller *))block{
@@ -79,6 +80,7 @@ static BOOL _sharedEnableTestMode = NO;
 
 -(void)cancel{
     self.stopFlag = YES;
+    [self.info removeAllObjects];
 }
 
 -(id)valueForKey:(NSString *)key{
