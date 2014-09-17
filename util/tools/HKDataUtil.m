@@ -132,4 +132,29 @@
     return (byte >> bitIndex) & 1;
 }
 
++(NSString *)formattedMobile:(NSString *)mobile{
+    if (!mobile) {
+        return @"";
+    }
+    NSMutableArray* inputList = [[NSMutableArray alloc] init];
+    NSInteger len = [mobile length];
+    for (int i=0; i < len; i++) {
+        NSString* sub = [mobile substringWithRange:NSMakeRange(i, 1)];
+        [inputList addObject:sub];
+    }
+    NSMutableArray* list = [[NSMutableArray alloc] init];
+    [list addObjectsFromArray:inputList];
+    if ([inputList count] > 3) {
+        [list insertObject:@"-" atIndex:3];
+    }
+    if ([inputList count] > 7) {
+        [list insertObject:@"-" atIndex:8];
+    }
+    NSMutableString* sbuf = [[NSMutableString alloc] init];
+    for (NSString* s in list) {
+        [sbuf appendString:s];
+    }
+    return sbuf;
+}
+
 @end

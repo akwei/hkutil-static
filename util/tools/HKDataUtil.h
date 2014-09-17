@@ -47,4 +47,6 @@
  */
 +(NSInteger)getBit:(NSInteger)bitIndex fromByte:(char)byte;
 
++(NSString *)formattedMobile:(NSString*)mobile;
+
 @end
