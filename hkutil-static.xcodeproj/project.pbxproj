@@ -80,6 +80,8 @@
 		9BC8BD3A17ED819300DF9423 /* HKGridTableView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BC8BD3817ED818100DF9423 /* HKGridTableView.h */; };
 		9BCA99BA182BB37400A81788 /* HKTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA99B9182BB37400A81788 /* HKTableViewCell.m */; };
 		9BCA99BB182BB4EF00A81788 /* HKTableViewCell.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BCA99B8182BB37400A81788 /* HKTableViewCell.h */; };
+		9BDD577919C98E57008C41F3 /* GCDiscreetNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BDD577819C98E57008C41F3 /* GCDiscreetNotificationView.m */; };
+		9BDD577A19C99DD1008C41F3 /* GCDiscreetNotificationView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9BDD577719C98E57008C41F3 /* GCDiscreetNotificationView.h */; };
 		9BE0B89E17E80AC700B96412 /* HKAnimationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE0B89D17E80AC700B96412 /* HKAnimationUtil.m */; };
 		9BFFA94617E48D7400F353A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFFA94517E48D7400F353A5 /* Foundation.framework */; };
 		9BFFA94D17E48D7400F353A5 /* hkutil_static.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFFA94C17E48D7400F353A5 /* hkutil_static.m */; };
@@ -183,6 +185,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				9BDD577A19C99DD1008C41F3 /* GCDiscreetNotificationView.h in CopyFiles */,
 				9BB1DF5519877C4A0048A39D /* UIColor+HKEx.h in CopyFiles */,
 				9B4AF56F197777480002E1F0 /* EGORefreshTableHeaderView.h in CopyFiles */,
 				9B4AF570197777480002E1F0 /* EGORefreshTableHeaderView.m in CopyFiles */,
@@ -348,6 +351,8 @@
 		9BC8BD3817ED818100DF9423 /* HKGridTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKGridTableView.h; sourceTree = "<group>"; };
 		9BCA99B8182BB37400A81788 /* HKTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKTableViewCell.h; sourceTree = "<group>"; };
 		9BCA99B9182BB37400A81788 /* HKTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKTableViewCell.m; sourceTree = "<group>"; };
+		9BDD577719C98E57008C41F3 /* GCDiscreetNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDiscreetNotificationView.h; sourceTree = "<group>"; };
+		9BDD577819C98E57008C41F3 /* GCDiscreetNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDiscreetNotificationView.m; sourceTree = "<group>"; };
 		9BE0B89C17E80AC600B96412 /* HKAnimationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKAnimationUtil.h; sourceTree = "<group>"; };
 		9BE0B89D17E80AC700B96412 /* HKAnimationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKAnimationUtil.m; sourceTree = "<group>"; };
 		9BFFA94217E48D7400F353A5 /* libhkutil-static.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libhkutil-static.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -525,6 +530,15 @@
 			path = xprinter;
 			sourceTree = "<group>";
 		};
+		9BDD577619C98E57008C41F3 /* GCDiscreetNotificationView */ = {
+			isa = PBXGroup;
+			children = (
+				9BDD577719C98E57008C41F3 /* GCDiscreetNotificationView.h */,
+				9BDD577819C98E57008C41F3 /* GCDiscreetNotificationView.m */,
+			);
+			path = GCDiscreetNotificationView;
+			sourceTree = "<group>";
+		};
 		9BFFA93917E48D7400F353A5 = {
 			isa = PBXGroup;
 			children = (
@@ -609,6 +623,7 @@
 		9BFFA96C17E48DE500F353A5 /* thirdtools */ = {
 			isa = PBXGroup;
 			children = (
+				9BDD577619C98E57008C41F3 /* GCDiscreetNotificationView */,
 				9B4AF558197777300002E1F0 /* EGOTableViewPullRefresh */,
 				9B5F5206190B483E00D0CA9A /* CKCalendar */,
 				9BFFA96D17E48DE500F353A5 /* AFNetworking */,
@@ -853,6 +868,7 @@
 				9BFFA9D117E48DE500F353A5 /* AFHTTPRequestOperation.m in Sources */,
 				9BFFA9D217E48DE500F353A5 /* AFImageRequestOperation.m in Sources */,
 				9B8102CC182F40130019E0B4 /* NSString+HKEx.m in Sources */,
+				9BDD577919C98E57008C41F3 /* GCDiscreetNotificationView.m in Sources */,
 				9BFFA9D317E48DE500F353A5 /* AFJSONRequestOperation.m in Sources */,
 				9B8BCA9618B327F500480C89 /* HKMVC.m in Sources */,
 				9BFFA9D417E48DE500F353A5 /* AFJSONUtilities.m in Sources */,

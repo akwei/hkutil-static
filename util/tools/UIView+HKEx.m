@@ -298,6 +298,18 @@
     [self changeFrameSizeWidth:width];
 }
 
+-(void)addFrameOriginX:(CGFloat)add{
+    CGRect frame = self.frame;
+    CGFloat x = frame.origin.x + add;
+    [self changeFrameOriginX:x];
+}
+
+-(void)addFrameOriginY:(CGFloat)add{
+    CGRect frame = self.frame;
+    CGFloat y = frame.origin.y + add;
+    [self changeFrameOriginY:y];
+}
+
 -(void)changePositionAbove:(UIView *)refView distance:(CGFloat)distance{
     CGRect refFrame = refView.frame;
     CGFloat x = self.frame.origin.x;
