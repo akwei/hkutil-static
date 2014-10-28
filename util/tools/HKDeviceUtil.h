@@ -19,4 +19,6 @@
 
 +(BOOL)isBelowiOS7;
 
++(BOOL)isBelowiOS8;
+
 @end

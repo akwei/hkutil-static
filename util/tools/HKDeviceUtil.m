@@ -30,4 +30,11 @@
     return YES;
 }
 
++(BOOL)isBelowiOS8{
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        return NO;
+    }
+    return YES;
+}
+
 @end
