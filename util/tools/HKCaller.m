@@ -55,8 +55,16 @@ static BOOL _sharedEnableTestMode = NO;
     return self;
 }
 
+-(void)_removeObserver{
+    @try {
+        [self removeObserver:self forKeyPath:@"result"];
+    }
+    @catch (NSException *exception) {
+    }
+}
+
 -(void)dealloc{
-    [self removeObserver:self forKeyPath:@"result"];
+    [self _removeObserver];
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0 // iOS 5.X or earlier
     if (_asyncQueue) dispatch_release(_asyncQueue);
 #endif
@@ -65,6 +73,7 @@ static BOOL _sharedEnableTestMode = NO;
 
 -(void)async:(NSString *(^)(HKCaller *))block{
     if (self.stopFlag) {
+        [self _removeObserver];
         return;
     }
     [self addObserver:self forKeyPath:@"result" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
@@ -125,9 +134,11 @@ static BOOL _sharedEnableTestMode = NO;
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     if (self.stopFlag) {
+        [self _removeObserver];
         return;
     }
     if (!self.result) {
+        [self _removeObserver];
         return;
     }
     __weak HKCaller* me = self;
@@ -142,6 +153,7 @@ static BOOL _sharedEnableTestMode = NO;
         NSString* className=[NSString stringWithCString:class_getName([me.callbackObj class]) encoding:NSUTF8StringEncoding];
         NSLog(@"can not find [%@ %@]",className,self.result);
     }
+    
 }
 
 @end
