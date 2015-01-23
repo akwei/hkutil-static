@@ -36,6 +36,14 @@
     [_array addObject:value];
 }
 
+-(void)insertValue:(id)value forKey:(NSString *)key index:(NSUInteger)index{
+    if ([self valueForKey:key]) {
+        return;
+    }
+    [_dic setValue:value forKey:key];
+    [_array insertObject:value atIndex:index];
+}
+
 -(id)valueForKey:(NSString *)key{
     return [_dic valueForKey:key];
 }

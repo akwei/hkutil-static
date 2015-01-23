@@ -26,9 +26,17 @@
 /**
  存储key对应的值
  @param value 要存储的数据
- @param key 对于数据的key
+ @param key 对应数据的key
  */
 -(void)setValue:(id)value forKey:(NSString *)key;
+
+/**
+ 插入到数组指定位置
+ @param value 要存储的数据
+ @param key 对应数据的key
+ @param index 在数组中的位置
+ */
+-(void)insertValue:(id)value forKey:(NSString*)key index:(NSUInteger)index;
 
 /**
  删除所有存储的数据
